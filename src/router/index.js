@@ -1,9 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Public from '../views/Public'
+import Settings from '../components/Settings'
+
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    name: 'Settings',
+    component: Settings
+  },
   {
     path: '/public',
     name: 'Public',
