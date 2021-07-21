@@ -3,7 +3,7 @@
                :to="this.data.link"
                active-class="active">
     <div class="item">
-    <img :src="require('../assets/'+ this.data.src)"
+      <img :src="require('../assets/'+ this.data.src)"
            alt="Emoticon">
       <p>{{this.data.text}}</p>
     </div>
@@ -31,23 +31,23 @@ a{
 }
 li{
   list-style: none;
-  opacity: 0.2;
+  opacity: 0.5;
 }
-   .item {
-     width: 100px;
-     height: 72px;
-     text-align: center;
-     padding-top: 10px;
-     img {
-       margin-top: 10px;
-     }
-     p {
-       font-family: Roboto-Medium;
-       text-align: center;
-       font-size: 12px;
-       line-spacing: 16px;
-       color: #FFF;
-       margin: 0;
-     }
-   }
+.item {
+  width: 100px;
+  height: 72px;
+  text-align: center;
+  padding-top: 10px;
+  img {
+    margin-top: 10px;
+  }
+  p {
+    font-family: Roboto-Medium;
+    text-align: center;
+    font-size: 12px;
+    word-spacing: 16px;
+    color: #FFF;
+    margin: 0;
+  }
+}
 </style>

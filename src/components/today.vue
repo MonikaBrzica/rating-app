@@ -1,20 +1,19 @@
 <template>
   <div class="today">
-    <LeftNav />
+    <img src="../assets/Artwork.svg"
+         alt="woman">
   </div>
 </template>
 <script>
-import LeftNav from '../components/leftNav'
 export default {
-  name: 'Today',
-  components: {
-    LeftNav
-  }
+  name: 'Today'
 }
 </script>
-<style>
+<style lang="scss">
 .today{
   height: 100vh;
   width: 100%;
-}
+img  {
+  text-align: center;
+}}
 </style>

@@ -45,6 +45,7 @@ export default {
   width: 100px;
   height: 100%;
   position: relative;
+  display: inline-block;
 }
 li:last-of-type {
   position: absolute;

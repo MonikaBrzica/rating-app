@@ -1,14 +1,18 @@
 <template>
   <div class="statistics">
-    <leftNav />
+    <LeftNav />
+    <router-view />
+    <RightNav />
   </div>
 </template>
 <script>
-import leftNav from '../components/leftNav'
+import LeftNav from '../components/leftNav'
+import RightNav from '../components/rightNav'
 export default {
-  name: 'statistics',
+  name: 'Statistics',
   components: {
-    leftNav
+    LeftNav,
+    RightNav
   }
 }
 </script>
