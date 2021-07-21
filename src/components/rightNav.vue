@@ -21,7 +21,7 @@ export default {
   background-color:#2C3039;
   width: 64px;
   height: 100%;
-  position: absolute;
+  float: right;
   right: 0;
   display: inline-block;
   text-align: center;

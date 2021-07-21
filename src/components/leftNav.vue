@@ -1,5 +1,7 @@
 <template>
   <div class="rectangle">
+    <img src="../assets/logo.png"
+         alt="logo">
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
              v-bind:key="item.id"
@@ -20,7 +22,7 @@ export default {
           id: 1,
           text: 'Today',
           src: 'view-dashboard.svg',
-          link: '/today'
+          link: '/'
         },
         {
           id: 2,
@@ -44,11 +46,9 @@ export default {
   background-color: #2D3038;
   width: 100px;
   height: 100%;
-  position: relative;
-  display: inline-block;
 }
 li:last-of-type {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
 }
 </style>

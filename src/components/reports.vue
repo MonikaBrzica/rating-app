@@ -1,25 +1,25 @@
 <template>
-  <div class="statistics">
-    <LeftNav />
-    <router-view />
-    <RightNav />
+  <div class="reports">
+    <LeftNav/>
+    <RightNav/>
   </div>
 </template>
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 export default {
-  name: 'Statistics',
+  name: 'Reports',
   components: {
     LeftNav,
     RightNav
   }
 }
 </script>
-
-<style>
-.statistics {
+<style lang="scss">
+.reports {
   height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
