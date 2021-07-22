@@ -59,6 +59,10 @@ export default {
       this.dataValidated = false
       // if block used for checking number of emojis
       if (name === 'numOfEmoticons') {
+        // if block validating that value is a number
+        if (isNaN(value)) {
+          return
+        }
         // Rule value can only be between 3 and 5.
         if (value < 3 || value > 5) {
           return
@@ -66,6 +70,9 @@ export default {
       }
       // if block used for checking message
       if (name === 'msg') {
+        if (typeof (value) !== 'string') {
+          return
+        }
         // Rule msg can be empty.
         if (value.length === 0) {
           this.dataValidated = true
@@ -78,6 +85,10 @@ export default {
       }
       // if block used for checking timeout number
       if (name === 'timeout') {
+        // if block validating that value is a number
+        if (isNaN(value)) {
+          return
+        }
         // Rule timeout is between 0 and 10.
         if (value < 0 || value > 10) {
           return

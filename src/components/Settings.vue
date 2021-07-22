@@ -76,9 +76,9 @@ export default {
     }
   },
   methods: {
-    changeSelectedEmotionsNum (event) {
+    changeSelectedEmotionsNum (data) {
       // method that is called on updateEmotions event.It takes new value and sets it in settings.
-      this.settings.numOfEmoticons = event
+      this.settings.numOfEmoticons = parseInt(data)
     },
     updateSettings (data) {
       // method that is called on updateSettings event.
