@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Rating from '../../rating-app-client/src/views/rating'
+import Rating from '../../../rating-app-client/src/views/rating'
 export default {
   name: 'Public',
   components: {

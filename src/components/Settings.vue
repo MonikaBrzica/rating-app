@@ -38,9 +38,13 @@ export default {
   },
   computed: {
     emotionsArr () {
+      // var that returns array of emotions that need to be displayed.
+      // calling getter that takes number user selected as an argument.
+      // getEmotionsArr is a mapper.
       return this.$store.getters.getEmotionsArr(this.emotionsSelected)
     },
     inputsArr () {
+      // var stores all data about Input component.
       return [
         {
           name: 'msg',
@@ -59,7 +63,7 @@ export default {
         {
           name: 'timeout',
           legend: 'Message timeout',
-          text: 'Can be from 0-15',
+          text: 'Can be from 0-10',
           type: 'number',
           value: this.$store.getters.getSettings.timeout
         }]
@@ -73,16 +77,45 @@ export default {
   },
   methods: {
     changeSelectedEmotionsNum (event) {
+      // method that is called on updateEmotions event.It takes new value and sets it in settings.
       this.settings.numOfEmoticons = event
     },
     updateSettings (data) {
+      // method that is called on updateSettings event.
+      // copying settings.
       const updatedSettings = this.settings
+      // if block that sets msg to null if it is empty.
+      // This is because the msg can be empty and it is stored as null in database.
+      if (data.name === 'msg' && data.value === '') {
+        data.value = null
+      }
+      // for block that goes through all properties from updatedSettings object.
       for (const property in updatedSettings) {
+        // if block that updates correct value in object.
         if (property === data.name) {
           updatedSettings[property] = data.value
         }
       }
+      // PUT request sent to backend to store updated settings.
       HTTP.put('/rating/settings', updatedSettings)
+        .catch(function (error) {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+          } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request)
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message)
+          }
+          console.log(error.config)
+        })
     }
   }
 }
