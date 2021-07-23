@@ -101,6 +101,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and (max-width: 768px) {
+  .input-container{
+    margin: 0 auto;
+  }
+}
+
 /* Invalid data input styles */
 .invalidFieldset {
   animation: invalidField 1s ease 0s 1 normal none;
@@ -147,7 +153,7 @@ export default {
 
 .input-container{
   flex-basis: calc(50% - 24px);
-  min-width: 280px;
+  min-width: 330px;
   fieldset{
     border-radius: 5px;
     border-color: rgba(255,255,255,0.2);

@@ -9,13 +9,13 @@
       <div class="emoticons-preview-container">
         <p>Emotions preview</p>
         <img
-          v-for="item in this.emotionsArr"
+          v-for="item in this.emotions"
           v-bind:key="item.id"
           :src="require('../assets/' + item)"
           alt="Emoticon"
         />
       </div>
-      <Input v-for="item in this.inputsArr"
+      <Input v-for="item in this.inputs"
              v-bind:key="item.name"
              v-bind:data="item"
              @updateEmotions="changeSelectedEmotionsNum"
@@ -37,13 +37,13 @@ export default {
     }
   },
   computed: {
-    emotionsArr () {
+    emotions () {
       // var that returns array of emotions that need to be displayed.
       // calling getter that takes number user selected as an argument.
       // getEmotionsArr is a mapper.
       return this.$store.getters.getEmotionsArr(this.emotionsSelected)
     },
-    inputsArr () {
+    inputs () {
       // var stores all data about Input component.
       return [
         {
@@ -122,9 +122,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media only screen and (max-width: 768px) {
+  .settings-container{
+    .main-container {
+      display: unset;
+    }
+    .emoticons-preview-container{
+      flex-basis: 100%!important;
+      text-align: center;
+    }
+  }
+}
 .settings-container {
   width: 1015px;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   background-color: #2D3038;
   padding: 2rem 3rem;
