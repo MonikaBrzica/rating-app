@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Public from '../views/Public'
 import Statistics from '../views/statistics'
 import Today from '../components/today'
+
 Vue.use(VueRouter)
 
 const routes = [
