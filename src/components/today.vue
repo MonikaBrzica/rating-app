@@ -7,9 +7,18 @@
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
       <div class="image-container">
-        <img class="img" id="bg-1" src="../assets/ovalcopy.svg" alt="">
-        <img class="img" id="bg-2" src="../assets/Oval.svg" alt="">
-        <img class="img" id="artwork" src="../assets/Artwork.svg" alt="">
+        <img class="img"
+             id="bg-1"
+             src="../assets/ovalcopy.svg"
+             alt="background-one">
+        <img class="img"
+             id="bg-2"
+             src="../assets/Oval.svg"
+             alt="background-two">
+        <img class="img"
+             id="artwork"
+             src="../assets/Artwork.svg"
+             alt="artwork">
       </div>
     </div>
     <RightNav/>
