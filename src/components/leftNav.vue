@@ -1,7 +1,5 @@
 <template>
-  <div class="rectangle">
-    <img src="../assets/logo.png"
-         alt="logo">
+  <div class="nav-container">
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
              v-bind:key="item.id"
@@ -42,7 +40,7 @@ export default {
 }
 </script>
 <style>
-.rectangle {
+.nav-container {
   background-color: #2D3038;
   width: 100px;
   height: 100%;

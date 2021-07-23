@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Public from '../views/Public'
 import Today from '../components/today'
 import Reports from '../components/reports'
+
 Vue.use(VueRouter)
 const routes = [
   {

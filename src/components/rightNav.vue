@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div class="right-nav-container">
     <div class="dropbtn">
       <img src="../assets/profile.png"
            alt="Profile">
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.dropdown {
+.right-nav-container {
   background-color:#2C3039;
   width: 64px;
   height: 100%;
@@ -65,7 +65,7 @@ export default {
     border: 0;
   }
 }
-.dropdown:hover .dropdown-content {
+.right-nav-container:hover .dropdown-content {
   display: block;
 }
 .dropdown-content a:hover {
