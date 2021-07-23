@@ -2,7 +2,9 @@
   <div class="settings-container">
     <div class="title-container">
       <p class="title">Settings</p>
-      <p>X</p>
+      <img src="../assets/cancel.svg"
+           alt="X"
+           v-on:click="closeModal">
     </div>
     <div class="separator"></div>
     <div class="main-container">
@@ -116,6 +118,9 @@ export default {
           }
           console.log(error.config)
         })
+    },
+    closeModal () {
+      this.$emit('close')
     }
   }
 }
@@ -149,6 +154,11 @@ export default {
       font-family: Roboto-Bold;
       font-size: 24px;
       line-height: 29px;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+      margin: 24px 0px;
     }
   }
   .separator {

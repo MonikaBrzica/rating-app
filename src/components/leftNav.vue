@@ -3,15 +3,21 @@
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
              v-bind:key="item.id"
-    />
+             v-on:show="itemClicked()"/>
+    <div class="set-container"
+         v-show="showModal">
+      <Settings v-on:close="itemClicked()"/>
+    </div>
   </div>
 </template>
 <script>
 import NavLink from '../components/navLink'
+import Settings from '../components/Settings'
 export default {
   name: 'LeftNav',
   components: {
-    NavLink
+    NavLink,
+    Settings
   },
   data () {
     return {
@@ -32,19 +38,36 @@ export default {
           id: 3,
           text: 'Settings',
           src: 'cog.svg',
-          link: '/settings'
+          link: ''
         }
-      ]
+      ],
+      showModal: false
+    }
+  },
+  methods: {
+    itemClicked () {
+      this.showModal = !this.showModal
     }
   }
 }
 </script>
-<style>
+<style scoped>
 .nav-container {
   background-color: #2D3038;
   width: 100px;
   height: 100%;
 }
+.set-container {
+  margin-left: 100px;
+  height: 100vh;
+  width: 1015px;
+  position: fixed;
+  bottom: 0;
+  top:0;
+  z-index: 1;
+  box-shadow: 5px 5px 5px 5px #1B1E24;
+}
+
 li:last-of-type {
   position: absolute;
   bottom: 0;

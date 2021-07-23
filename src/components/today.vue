@@ -1,7 +1,7 @@
 <template>
   <div class="today">
     <LeftNav/>
-    <div class="main">
+    <div class="main-today">
       <div class="header-container">
         <p class="header">Today is a new day. Check your ratings!</p>
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
@@ -33,14 +33,13 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.main {
+.main-today {
   width: calc(100% - 164px);
   .header-container{
     width: 35%;
     height: 40%;
     display: inline-block;
     margin: 0px 0px 0px 64px;
-    position: relative;
     .header{
       color: rgba(255, 255, 255, 0.6);
       font-family: Roboto-Black;
@@ -69,11 +68,9 @@ export default {
       inset: 0;
     }
     #bg-1{
-      z-index: 3;
       left: -60px;
     }
     #bg-2{
-      z-index: 4;
       left: -65px;
     }
   }
