@@ -60,7 +60,8 @@ export default {
 .set-container {
   margin-left: 100px;
   height: 100vh;
-  width: 1015px;
+  width: calc(100% - 100px);
+  max-width: 1056px;
   position: fixed;
   bottom: 0;
   top:0;
