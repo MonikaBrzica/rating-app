@@ -3,15 +3,21 @@
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
              v-bind:key="item.id"
-    />
+             v-on:show="itemClicked()"/>
+    <div class="set-container"
+         v-show="showModal">
+      <Settings v-on:close="itemClicked()"/>
+    </div>
   </div>
 </template>
 <script>
 import NavLink from '../components/navLink'
+import Settings from '../components/Settings'
 export default {
   name: 'LeftNav',
   components: {
-    NavLink
+    NavLink,
+    Settings
   },
   data () {
     return {
@@ -20,7 +26,7 @@ export default {
           id: 1,
           text: 'Today',
           src: 'view-dashboard.svg',
-          link: '/today'
+          link: '/'
         },
         {
           id: 2,
@@ -32,23 +38,57 @@ export default {
           id: 3,
           text: 'Settings',
           src: 'cog.svg',
-          link: '/settings'
+          link: ''
         }
-      ]
+      ],
+      showModal: false
+    }
+  },
+  methods: {
+    itemClicked () {
+      this.showModal = !this.showModal
     }
   }
 }
 </script>
-<style>
+<style scoped>
 .nav-container {
   background-color: #2D3038;
   width: 100px;
   height: 100%;
-  position: relative;
-  display: inline-block;
+}
+.set-container {
+  margin-left: 100px;
+  height: 100vh;
+  width: calc(100% - 100px);
+  max-width: 1056px;
+  position: fixed;
+  bottom: 0;
+  top:0;
+  z-index: 1;
+  box-shadow: 5px 5px 5px 5px #1B1E24;
 }
 li:last-of-type {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
+}
+@media only screen and (max-width: 768px) {
+  .nav-container {
+    width: calc(100% - 64px);
+    height: 60px;
+    position: absolute;
+  }
+  .set-container {
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    top:60px;
+  }
+  li:last-of-type {
+    position: relative;
+  }
+  li {
+    display: inline-block;
+  }
 }
 </style>

@@ -2,7 +2,9 @@
   <div class="settings-container">
     <div class="title-container">
       <p class="title">Settings</p>
-      <p>X</p>
+      <img src="../assets/cancel.svg"
+           alt="X"
+           v-on:click="closeModal">
     </div>
     <div class="separator"></div>
     <div class="main-container">
@@ -23,7 +25,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Input from './inputComponent'
 import { HTTP } from '../../api/axios'
@@ -116,11 +117,13 @@ export default {
           }
           console.log(error.config)
         })
+    },
+    closeModal () {
+      this.$emit('close')
     }
   }
 }
 </script>
-
 <style lang="scss" scoped>
 @media only screen and (max-width: 768px) {
   .settings-container{
@@ -134,7 +137,7 @@ export default {
   }
 }
 .settings-container {
-  width: 1015px;
+  width: 100%;
   height: 100%;
   min-height: 100vh;
   box-sizing: border-box;
@@ -149,6 +152,11 @@ export default {
       font-family: Roboto-Bold;
       font-size: 24px;
       line-height: 29px;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+      margin: 24px 0px;
     }
   }
   .separator {
@@ -175,6 +183,20 @@ export default {
       font-family: Roboto-Medium;
       font-size: 12px;
       line-height: 16px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .settings-container{
+    width: 100%;
+    padding: 10px;
+    .main-container {
+      display: unset;
+      width: 100%;
+    }
+    .emoticons-preview-container{
+      flex-basis: 100%!important;
+      text-align: center;
     }
   }
 }

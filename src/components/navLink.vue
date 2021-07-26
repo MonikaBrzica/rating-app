@@ -2,7 +2,7 @@
   <router-link tag="li"
                :to="this.data.link"
                active-class="active">
-    <div class="item">
+    <div class="item" v-on:click="itemClicked(data.id)">
       <img :src="require('../assets/'+ this.data.src)"
            alt="Emoticon">
       <p>{{this.data.text}}</p>
@@ -16,7 +16,15 @@ export default {
     data: Object
   },
   data: function () {
-    return {}
+    return {
+    }
+  },
+  methods: {
+    itemClicked: function (id) {
+      if (id === 3) {
+        this.$emit('show')
+      }
+    }
   }
 }
 </script>
@@ -48,6 +56,21 @@ li{
     word-spacing: 16px;
     color: #FFF;
     margin: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .item {
+    width: 64px;
+    height: 60px;
+    padding-top: 0;
+    .item {
+      display: inline;
+    }
+    p {
+      font-family: Roboto-Medium;
+      font-size: 10px;
+      word-spacing: 10px;
+    }
   }
 }
 </style>

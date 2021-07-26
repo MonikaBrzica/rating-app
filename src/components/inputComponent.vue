@@ -195,5 +195,11 @@ export default {
     margin: 4px;
   }
 }
+@media only screen and (max-width: 768px) {
+  .input-container{
+    min-width: 0;
+    width: calc(100% - 20px);
+  }
+}
 
 </style>

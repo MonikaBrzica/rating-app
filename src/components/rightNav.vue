@@ -1,6 +1,6 @@
 <template>
   <div class="right-nav-container">
-    <div class="dropbtn">
+    <div class="drop">
       <img src="../assets/profile.png"
            alt="Profile">
       <div class="dropdown-content">
@@ -21,11 +21,11 @@ export default {
   background-color:#2C3039;
   width: 64px;
   height: 100%;
-  position: absolute;
+  float: right;
   right: 0;
   display: inline-block;
   text-align: center;
-  .dropbtn {
+  .drop {
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -64,11 +64,26 @@ export default {
     height: 1px;
     border: 0;
   }
-}
-.right-nav-container:hover .dropdown-content {
-  display: block;
-}
+}.drop:hover .dropdown-content {
+   display: block;
+ }
 .dropdown-content a:hover {
   opacity: 0.5;
+}
+@media only screen and (max-width: 768px) {
+  .right-nav-container {
+    width: 64px;
+    height: 60px;
+    position: absolute;
+    .drop {
+      height: 100%;
+      img {
+        margin-top: 10px;
+      }
+    }
+    hr {
+      visibility: hidden;
+    }
+  }
 }
 </style>
