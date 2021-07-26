@@ -1,5 +1,8 @@
 <template>
   <div class="nav-container">
+    <img class="logo"
+         src="../assets/logo.png"
+         alt="logo">
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
              v-bind:key="item.id"
@@ -57,6 +60,10 @@ export default {
   width: 100px;
   height: 100%;
 }
+img {
+  margin: 14px 23px;
+  text-align: center;
+}
 .set-container {
   margin-left: 100px;
   height: 100vh;
@@ -77,6 +84,12 @@ li:last-of-type {
     width: calc(100% - 64px);
     height: 60px;
     position: absolute;
+    display: flex;
+  }
+  img {
+    margin: 3px 5px;
+    width: 54px;
+    height: 54px;
   }
   .set-container {
     margin-left: 0px;

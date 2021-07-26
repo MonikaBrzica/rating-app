@@ -59,18 +59,21 @@ li{
   }
 }
 @media only screen and (max-width: 768px) {
-  .item {
+  li {
     width: 64px;
     height: 60px;
-    padding-top: 0;
+    display: inline;
+  }
     .item {
-      display: inline;
-    }
-    p {
-      font-family: Roboto-Medium;
-      font-size: 10px;
-      word-spacing: 10px;
+      width: 64px;
+      height: 60px;
+      padding-top: 0;
+      p {
+        font-family: Roboto-Medium;
+        font-size: 10px;
+        word-spacing: 10px;
+      }
     }
   }
-}
+
 </style>
