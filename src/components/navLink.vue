@@ -58,4 +58,19 @@ li{
     margin: 0;
   }
 }
+@media only screen and (max-width: 768px) {
+  .item {
+    width: 64px;
+    height: 60px;
+    padding-top: 0;
+    .item {
+      display: inline;
+    }
+    p {
+      font-family: Roboto-Medium;
+      font-size: 10px;
+      word-spacing: 10px;
+    }
+  }
+}
 </style>

@@ -25,7 +25,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Input from './inputComponent'
 import { HTTP } from '../../api/axios'
@@ -125,7 +124,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 @media only screen and (max-width: 768px) {
   .settings-container{
@@ -185,6 +183,20 @@ export default {
       font-family: Roboto-Medium;
       font-size: 12px;
       line-height: 16px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .settings-container{
+    width: 100%;
+    padding: 10px;
+    .main-container {
+      display: unset;
+      width: 100%;
+    }
+    .emoticons-preview-container{
+      flex-basis: 100%!important;
+      text-align: center;
     }
   }
 }

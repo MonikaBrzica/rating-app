@@ -66,21 +66,64 @@ export default {
     }
   }
   .image-container {
-    width: calc(60% - 64px);
+    width: calc(50% - 64px);
     height: 40%;
     display:inline-block;
-    position: absolute;
+    position: fixed;
+    right: 64px;
     .img{
-      position: absolute;
       height: 100%;
       width: 100%;
       inset: 0;
+      position: absolute;
     }
     #bg-1{
       left: -60px;
     }
     #bg-2{
       left: -65px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main-today {
+    height: calc(100% - 50px);
+    margin-top: 60px;
+    width: 100%;
+    .header-container{
+      margin: 0px 0px 0px 32px;
+      .header{
+        font-size: 32px;
+        line-height: 30px;
+      }
+      .sub-header{
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    .image-container {
+      width: 50%;
+      right: 0px;
+      margin-right: 32px;
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .main-today {
+    padding: 0px 16px;
+    .header-container {
+      width: 100%;
+      height: 20%;
+      margin: 200px 0px 0px 0px;
+    }
+
+    .image-container {
+      display: block;
+      height: 20%;
+      width: 100%;
+      margin-right: 0px;
+      top: 60px;
     }
   }
 }

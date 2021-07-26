@@ -22,4 +22,9 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+@media only screen and (max-width: 768px) {
+  .reports {
+    display: inline-block;
+  }
+}
 </style>

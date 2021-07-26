@@ -67,9 +67,27 @@ export default {
   z-index: 1;
   box-shadow: 5px 5px 5px 5px #1B1E24;
 }
-
 li:last-of-type {
   position: absolute;
   bottom: 0;
+}
+@media only screen and (max-width: 768px) {
+  .nav-container {
+    width: calc(100% - 64px);
+    height: 60px;
+    position: absolute;
+  }
+  .set-container {
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    top:60px;
+  }
+  li:last-of-type {
+    position: relative;
+  }
+  li {
+    display: inline-block;
+  }
 }
 </style>
