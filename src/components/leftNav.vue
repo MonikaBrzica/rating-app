@@ -28,19 +28,19 @@ export default {
         {
           id: 1,
           text: 'Today',
-          src: 'images/view-dashboard.svg',
+          src: 'view-dashboard.svg',
           link: '/'
         },
         {
           id: 2,
           text: 'Reports',
-          src: 'images/file-document.svg',
+          src: 'file-document.svg',
           link: '/reports'
         },
         {
           id: 3,
           text: 'Settings',
-          src: 'images/cog.svg',
+          src: 'cog.svg',
           link: ''
         }
       ],

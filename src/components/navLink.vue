@@ -3,7 +3,7 @@
                :to="this.data.link"
                active-class="active">
     <div class="item" v-on:click="itemClicked(data.id)">
-      <img :src="require('../assets/'+ this.data.src)"
+      <img :src="require('../assets/images/'+ this.data.src)"
            alt="Emoticon">
       <p>{{this.data.text}}</p>
     </div>
@@ -13,7 +13,7 @@
 export default {
   name: 'NavLink',
   props: {
-    data: Object
+    data: Array
   },
   data: function () {
     return {

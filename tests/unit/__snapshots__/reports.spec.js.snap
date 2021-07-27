@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reports renders correctly 1`] = `
+<div
+  class="reports"
+>
+  <leftnav-stub />
+   
+  <div
+    class="main-reports"
+  />
+   
+  <rightnav-stub />
+</div>
+`;

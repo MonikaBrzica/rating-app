@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`leftNav renders correctly 1`] = `
+<div
+  class="nav-container"
+>
+  <img
+    alt="logo"
+    class="logo"
+    src="../assets/images/logo.png"
+  />
+   
+  <navlink-stub
+    data="[object Object]"
+  />
+  <navlink-stub
+    data="[object Object]"
+  />
+  <navlink-stub
+    data="[object Object]"
+  />
+   
+  <div
+    class="set-container"
+    style="display: none;"
+  >
+    <settings-stub />
+  </div>
+</div>
+`;
