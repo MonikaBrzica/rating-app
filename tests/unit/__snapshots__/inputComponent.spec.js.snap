@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputComponent renders correctly 1`] = `
+<div
+  class="input-container"
+>
+  <fieldset
+    class="invalidFieldset"
+  >
+    <legend>
+      Thank you message
+    </legend>
+     
+    <input
+      type="text"
+    />
+  </fieldset>
+   
+  <p
+    class="invalidText"
+  >
+    
+  </p>
+</div>
+`;
