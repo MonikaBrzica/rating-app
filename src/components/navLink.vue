@@ -50,7 +50,7 @@ li{
     margin-top: 10px;
   }
   p {
-    font-family: Roboto-Medium;
+    font-family: 'Roboto-Medium';
     text-align: center;
     font-size: 12px;
     word-spacing: 16px;
@@ -69,7 +69,7 @@ li{
       height: 60px;
       padding-top: 0;
       p {
-        font-family: Roboto-Medium;
+        font-family: 'Roboto-Medium';
         font-size: 10px;
         word-spacing: 10px;
       }

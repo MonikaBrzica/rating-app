@@ -1,7 +1,7 @@
 <template>
   <div class="right-nav-container">
     <div class="drop">
-      <img src="../assets/profile.png"
+      <img src="../assets/images/profile.png"
            alt="Profile">
       <div class="dropdown-content">
         <a>Pero Peric</a>
@@ -47,7 +47,7 @@ export default {
       display: none;
     }
     a {
-      font-family: Roboto-Medium;
+      font-family: 'Roboto-Medium';
       text-align: left;
       font-size: 15px;
       color: #FFF;

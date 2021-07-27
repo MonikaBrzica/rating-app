@@ -9,15 +9,15 @@
       <div class="image-container">
         <img class="img"
              id="bg-1"
-             src="../assets/ovalcopy.svg"
+             src="../assets/images/ovalcopy.svg"
              alt="background-one">
         <img class="img"
              id="bg-2"
-             src="../assets/Oval.svg"
+             src="../assets/images/Oval.svg"
              alt="background-two">
         <img class="img"
              id="artwork"
-             src="../assets/Artwork.svg"
+             src="../assets/images/Artwork.svg"
              alt="artwork">
       </div>
     </div>
@@ -51,14 +51,14 @@ export default {
     margin: 0px 0px 0px 64px;
     .header{
       color: rgba(255, 255, 255, 0.6);
-      font-family: Roboto-Black;
+      font-family: 'Roboto-Bold';
       font-size: 48px;
       line-height: 58px;
       text-align: left;
     }
     .sub-header{
       color: rgba(255, 255, 255, 0.6);
-      font-family: Roboto-Regular;
+      font-family: 'Roboto-Regular';
       font-size: 18px;
       line-height: 26px;
       text-align: left;

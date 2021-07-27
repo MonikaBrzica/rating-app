@@ -1,7 +1,7 @@
 <template>
   <div class="nav-container">
     <img class="logo"
-         src="../assets/logo.png"
+         src="../assets/images/logo.png"
          alt="logo">
     <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
              v-for="item in nav"
@@ -28,19 +28,19 @@ export default {
         {
           id: 1,
           text: 'Today',
-          src: 'view-dashboard.svg',
+          src: 'images/view-dashboard.svg',
           link: '/'
         },
         {
           id: 2,
           text: 'Reports',
-          src: 'file-document.svg',
+          src: 'images/file-document.svg',
           link: '/reports'
         },
         {
           id: 3,
           text: 'Settings',
-          src: 'cog.svg',
+          src: 'images/cog.svg',
           link: ''
         }
       ],
@@ -54,9 +54,9 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang=scss>
 .nav-container {
-  background-color: #2D3038;
+  background-color: $bg;
   width: 100px;
   height: 100%;
 }

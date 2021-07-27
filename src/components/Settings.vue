@@ -2,7 +2,7 @@
   <div class="settings-container">
     <div class="title-container">
       <p class="title">Settings</p>
-      <img src="../assets/cancel.svg"
+      <img src="../assets/images/cancel.svg"
            alt="X"
            v-on:click="closeModal">
     </div>
@@ -13,7 +13,7 @@
         <img
           v-for="item in this.emotions"
           v-bind:key="item.id"
-          :src="require('../assets/' + item)"
+          :src="require('../assets/images/' + item)"
           alt="Emoticon"
         />
       </div>
@@ -149,7 +149,7 @@ export default {
     justify-content: space-between;
     p {
       color: rgba(255, 255, 255, 0.85);
-      font-family: Roboto-Bold;
+      font-family: 'Roboto-Bold';
       font-size: 24px;
       line-height: 29px;
     }
@@ -180,7 +180,7 @@ export default {
         width: 24px;
         margin-right: 12px;
       }
-      font-family: Roboto-Medium;
+      font-family: 'Roboto-Medium';
       font-size: 12px;
       line-height: 16px;
     }
