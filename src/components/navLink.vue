@@ -28,10 +28,10 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 li.router-link-active,
 li.router-link-exact-active {
-  background-color: #3E4148;
+  background-color: $bg-light;
   opacity: 1;
 }
 a{
@@ -40,40 +40,41 @@ a{
 li{
   list-style: none;
   opacity: 0.5;
-}
-.item {
-  width: 100px;
-  height: 72px;
-  text-align: center;
-  padding-top: 10px;
-  img {
-    margin-top: 10px;
-  }
-  p {
-    font-family: 'Roboto-Medium';
+  .item {
+    width: 100px;
+    height: 72px;
     text-align: center;
-    font-size: 12px;
-    word-spacing: 16px;
-    color: #FFF;
-    margin: 0;
+    padding-top: 10px;
+    img {
+      margin-top: 10px;
+    }
+    p {
+      font-family: 'Roboto-Medium',sans-serif;
+      text-align: center;
+      font-size: 0.75rem;
+      word-spacing: 1rem;
+      color: $white-850;
+      margin: 0;
+    }
   }
 }
+
 @media only screen and (max-width: 768px) {
   li {
     width: 64px;
     height: 60px;
     display: inline;
-  }
     .item {
       width: 64px;
       height: 60px;
       padding-top: 0;
       p {
-        font-family: 'Roboto-Medium';
+        font-family: 'Roboto-Medium',sans-serif;
         font-size: 10px;
         word-spacing: 10px;
       }
     }
   }
+}
 
 </style>

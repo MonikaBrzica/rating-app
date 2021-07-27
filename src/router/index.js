@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Public from '../views/Public'
+import Public from '../views/public'
 import Today from '../components/today'
 import Reports from '../components/reports'
 

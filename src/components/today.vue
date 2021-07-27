@@ -6,20 +6,6 @@
         <p class="header">Today is a new day. Check your ratings!</p>
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
-      <div class="image-container">
-        <img class="img"
-             id="bg-1"
-             src="../assets/images/ovalcopy.svg"
-             alt="background-one">
-        <img class="img"
-             id="bg-2"
-             src="../assets/images/Oval.svg"
-             alt="background-two">
-        <img class="img"
-             id="artwork"
-             src="../assets/images/Artwork.svg"
-             alt="artwork">
-      </div>
     </div>
     <RightNav/>
   </div>
@@ -35,95 +21,64 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+
 .today {
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-.main-today {
-  width: calc(100% - 164px);
-  .header-container{
-    width: 35%;
-    height: 40%;
-    display: inline-block;
-    margin: 0px 0px 0px 64px;
-    .header{
-      color: rgba(255, 255, 255, 0.6);
-      font-family: 'Roboto-Bold';
-      font-size: 48px;
-      line-height: 58px;
-      text-align: left;
-    }
-    .sub-header{
-      color: rgba(255, 255, 255, 0.6);
-      font-family: 'Roboto-Regular';
-      font-size: 18px;
-      line-height: 26px;
-      text-align: left;
-      border: 0;
-    }
-  }
-  .image-container {
-    width: calc(50% - 64px);
-    height: 40%;
-    display:inline-block;
-    position: fixed;
-    right: 64px;
-    .img{
-      height: 100%;
-      width: 100%;
-      inset: 0;
-      position: absolute;
-    }
-    #bg-1{
-      left: -60px;
-    }
-    #bg-2{
-      left: -65px;
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
   .main-today {
-    height: calc(100% - 50px);
-    margin-top: 60px;
-    width: 100%;
+    flex-grow: 1;
+    order:2;
+    display: flex;
+    background-image: url('../assets/images/ovalcopy.svg'),
+    url('../assets/images/Oval.svg'),
+    url('../assets/images/Artwork.svg');
+    background-repeat: no-repeat;
+    background-position: top right, top right,top right;
+    background-size: 50%;
     .header-container{
-      margin: 0px 0px 0px 32px;
+      max-width: 75%;
+      height: 40%;
+      padding: 4rem 0 0 4rem;
+      .header, .sub-header{
+        color: $white-600;
+        text-align: left;
+      }
       .header{
-        font-size: 32px;
-        line-height: 30px;
+        font-family: 'Roboto-Bold',sans-serif;
+        font-size: 3rem;
+        line-height: 58px;
+        margin: 0;
       }
       .sub-header{
-        font-size: 14px;
-        line-height: 20px;
+        font-family: 'Roboto-Regular',sans-serif;
+        font-size: 18px;
+        line-height: 26px;
       }
-    }
-    .image-container {
-      width: 50%;
-      right: 0px;
-      margin-right: 32px;
     }
   }
 }
-
-@media only screen and (max-width: 425px) {
-  .main-today {
-    padding: 0px 16px;
-    .header-container {
+/* Media query */
+@media only screen and (max-width: 768px) {
+  .today{
+    .main-today {
+      margin-top: 60px;
       width: 100%;
-      height: 20%;
-      margin: 200px 0px 0px 0px;
-    }
-
-    .image-container {
-      display: block;
-      height: 20%;
-      width: 100%;
-      margin-right: 0px;
-      top: 60px;
+      .header-container{
+        padding: 2rem 0 0 2rem;
+        max-width: unset;
+        width: 100%;
+        .header{
+          font-size: 1.5rem;
+          line-height: 30px;
+        }
+        .sub-header{
+          font-size: 1rem;
+          line-height: 20px;
+        }
+      }
     }
   }
 }

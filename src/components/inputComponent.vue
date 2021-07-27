@@ -24,8 +24,6 @@ export default {
       dataValidated: true
     }
   },
-  computed: {
-  },
   methods: {
     // method that is called on data change inside input fields
     updateData (name, value) {
@@ -93,8 +91,53 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.input-container{
+  flex-basis: calc(50% - 24px);
+  legend,p {
+    color: $white-500;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  fieldset{
+    border-radius: 5px;
+    border-color: $white-200;
+    padding: 0;
+    &:focus-within{
+      border-color: $white-500;
+    }
+    legend{
+      font-family: "Roboto-Medium",sans-serif;
+      padding: 0 0.5rem;
+      margin-left: 0.5rem;
+    }
+    input {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      width: 100%;
+      height: 100%;
+      padding: 0.5rem 1rem;
+      color: $white-850;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+  p{
+    font-family: "Roboto-Regular",sans-serif;
+    margin: 4px;
+  }
+}
+/* Media query  */
 @media only screen and (max-width: 768px) {
   .input-container{
+    min-width: 224px;
+    width: calc(100% - 20px);
     margin: 0 auto;
   }
 }
@@ -139,56 +182,6 @@ export default {
   }
   99.5%{
     transform: rotate(0deg);
-  }
-}
-.input-container{
-  flex-basis: calc(50% - 24px);
-  min-width: 330px;
-  fieldset{
-    border-radius: 5px;
-    border-color: $white-200;
-    padding: 0;
-    &:focus-within{
-      border-color: $white-500;
-    }
-    legend{
-      color: $white-500;
-      font-family: "Roboto-Medium";
-      font-size: 12px;
-      line-height: 16px;
-      padding: 0 8px;
-      margin-left: 8px;
-    }
-    input {
-      background-color: transparent;
-      outline: none;
-      border: none;
-      width: 100%;
-      height: 100%;
-      padding: 9px 16px;
-      color: $white-850;
-    }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-  }
-  p{
-    color: $white-500;
-    font-family: "Roboto-Regular";
-    font-size: 12px;
-    line-height: 16px;
-    margin: 4px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .input-container{
-    min-width: 0;
-    width: calc(100% - 20px);
   }
 }
 </style>

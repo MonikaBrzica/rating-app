@@ -1,5 +1,5 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import Settings from '../../src/components/Settings'
+import Settings from '../../src/components/settings'
 import Vuex from 'vuex'
 const localVue = createLocalVue()
 localVue.use(Vuex)
