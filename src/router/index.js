@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Public from '../views/public'
 import Today from '../components/today'
 import Reports from '../components/reports'
+import PieChart from '../components/pieChart'
 
 Vue.use(VueRouter)
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
     path: '/reports',
     name: 'Reports',
     component: Reports
+  },
+  {
+    path: '/pie',
+    name: 'PieChart',
+    component: PieChart
   },
   {
     path: '/public',

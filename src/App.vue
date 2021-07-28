@@ -100,6 +100,6 @@ export default {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: #1B1E24;
+  background-color: $bg-dark;
 }
 </style>
