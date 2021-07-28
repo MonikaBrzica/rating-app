@@ -1,9 +1,8 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import Settings from '../../src/components/Settings'
+import Settings from '../../src/components/settings'
 import Vuex from 'vuex'
 const localVue = createLocalVue()
 localVue.use(Vuex)
-
 const store = new Vuex.Store({
   state: {
     settings: {},
@@ -43,9 +42,8 @@ describe('Settings', () => {
     store,
     localVue
   })
-
-  it('is vue instance', () => {
-    expect(wrapper.isVueInstance()).toBe(true)
+  it('renders correctly', () => {
+    expect(wrapper.element).toMatchSnapshot()
   })
   it('should have changeSelectedEmotionsNum method', function () {
     expect(typeof wrapper.vm.changeSelectedEmotionsNum).toBe('function')

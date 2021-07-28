@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`today renders correctly 1`] = `
+<div
+  class="today"
+>
+  <leftnav-stub />
+   
+  <div
+    class="main-today"
+  >
+    <div
+      class="header-container"
+    >
+      <p
+        class="header"
+      >
+        Today is a new day. Check your ratings!
+      </p>
+       
+      <p
+        class="sub-header"
+      >
+        Graphs presents you rating results. Today you have 225 rates, check it on dashboard.
+      </p>
+    </div>
+  </div>
+   
+  <rightnav-stub />
+</div>
+`;

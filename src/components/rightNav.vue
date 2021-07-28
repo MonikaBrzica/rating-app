@@ -1,11 +1,11 @@
 <template>
   <div class="right-nav-container">
     <div class="drop">
-      <img src="../assets/profile.png"
+      <img src="../assets/images/profile.png"
            alt="Profile">
       <div class="dropdown-content">
-        <a>Pero Peric</a>
-        <a href="#">Logout</a>
+        <p>Pero Peric</p>
+        <button @click="logOut()">Logout</button>
       </div>
     </div>
     <hr>
@@ -13,70 +13,86 @@
 </template>
 <script>
 export default {
-  name: 'RightNav'
+  name: 'RightNav',
+  methods: {
+    logOut () {
+      console.log('Logout')
+    }
+  }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .right-nav-container {
-  background-color:#2C3039;
+  background-color: $bg;
   width: 64px;
-  height: 100%;
-  float: right;
-  right: 0;
-  display: inline-block;
   text-align: center;
+  order: 3;
+
   .drop {
-    font-size: 16px;
-    border: none;
+    font-size: 1rem;
     cursor: pointer;
     width: 64px;
     height: 64px;
+
+    &:hover {
+      .dropdown-content {
+        display: block;
+      }
+    }
+
     img {
-      background-size: 100%;
       border-radius: 100%;
       width: 40px;
       height: 40px;
       margin-top: 12px;
     }
+
     .dropdown-content {
       position: absolute;
-      right: 0;
+      right: 30px;
       min-width: 160px;
-      background-color: #2C3039;
+      background-color: $bg-light;
       z-index: 1;
       display: none;
-    }
-    a {
-      font-family: Roboto-Medium;
-      text-align: left;
-      font-size: 15px;
-      color: #FFF;
-    }
-    .dropdown-content a {
-      text-decoration: none;
-      padding: 12px 16px;
-      display: block;
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+      border-radius: 15px;
+      border-top-right-radius: 0;
+
+      p, button {
+        font-family: 'Roboto-Medium', sans-serif;
+        font-size: 1rem;
+        color: $white-850;
+
+        &:hover {
+          color: $white-500;
+        }
+      }
+
+      p {
+        margin: 0 0 1rem 0;
+      }
+
+      button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        width: 100%;
+      }
     }
   }
   hr {
-    background-color: #FFFFFF;
-    opacity: 0.5;
+    background-color: $white-500;
     height: 1px;
-    border: 0;
+    border: none;
   }
-}.drop:hover .dropdown-content {
-   display: block;
- }
-.dropdown-content a:hover {
-  opacity: 0.5;
 }
+/* Media query */
 @media only screen and (max-width: 768px) {
   .right-nav-container {
     width: 64px;
     height: 60px;
-    position: absolute;
     .drop {
-      height: 100%;
       img {
         margin-top: 10px;
       }
