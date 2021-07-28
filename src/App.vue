@@ -11,9 +11,15 @@ export default {
   },
   data () {
     return {
+      loggedIn: false
     }
   },
-  mounted () {
+  async mounted () {
+    if (this.$store.state.loggedIn !== true) {
+      const googleUser = await this.$gAuth.signIn()
+      googleUser.getBasicProfile()
+      this.$store.state.loggedIn = this.$gAuth.isAuthorized
+    }
   },
   created () {
     HTTP.get('rating/settings')

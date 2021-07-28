@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Public from '../views/public'
 import Today from '../components/today'
 import Reports from '../components/reports'
-
 Vue.use(VueRouter)
 const routes = [
   {
@@ -27,4 +26,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 export default router
