@@ -29,7 +29,7 @@ export default {
           id: 1,
           text: 'Today',
           src: 'view-dashboard.svg',
-          link: '/'
+          link: '/today'
         },
         {
           id: 2,

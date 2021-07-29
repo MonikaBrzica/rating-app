@@ -14,16 +14,9 @@ export default {
       loggedIn: false
     }
   },
-  async mounted () {
-    if (this.$store.state.loggedIn !== true) {
-      const googleUser = await this.$gAuth.signIn()
-      googleUser.getBasicProfile()
-      this.$store.state.loggedIn = this.$gAuth.isAuthorized
-    }
-  },
   created () {
-    HTTP.get('rating/settings')
-      .then(response => this.$store.commit('setSettings', response.data))
+    HTTP.get('api/rating/current-settings')
+      .then(response => this.$store.commit('setSettings', response.data.ratingSettings))
       .catch(function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -42,8 +35,8 @@ export default {
         }
         console.log(error.config)
       })
-    HTTP.get('emoji')
-      .then(response => this.$store.commit('setEmoticons', response.data))
+    HTTP.get('api/emoji')
+      .then(response => this.$store.commit('setEmoticons', response.data.emojiList))
       .catch(function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -64,7 +57,7 @@ export default {
       })
     // event triggered in emoticon component that has payload with id of the emoticon user has selected and that should trigger POST request
     this.$root.$on('post', (id) => {
-      HTTP.post('rating', {
+      HTTP.post('api/rating', {
         emojiId: id
       })
         .catch(function (error) {
