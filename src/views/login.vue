@@ -24,7 +24,7 @@ export default {
         if (!googleUser) {
           return null
         }
-        this.sendToBackend(googleUser.getAuthResponse())
+        // this.sendToBackend(googleUser.getAuthResponse())
         this.storeData(googleUser, googleUser.getAuthResponse())
       } catch (error) {
         // on fail do something
@@ -40,13 +40,15 @@ export default {
         loggedIn: true,
         token: auth.access_token
       }
+      console.log(user)
       this.$store.commit('loginUser', user)
       this.$router.push('/today')
     },
     sendToBackend (data) {
-      HTTP.get('test', {
+      HTTP.get('auth', {
         accessToken: data.access_token
       })
+      console.log('accessToken:', data.access_token)
     }
   }
 }

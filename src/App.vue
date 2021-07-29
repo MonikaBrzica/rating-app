@@ -15,7 +15,7 @@ export default {
     }
   },
   created () {
-    HTTP.get('api/rating/current-settings')
+    HTTP.get('/rating/current-settings')
       .then(response => this.$store.commit('setSettings', response.data.ratingSettings))
       .catch(function (error) {
         if (error.response) {
@@ -35,7 +35,7 @@ export default {
         }
         console.log(error.config)
       })
-    HTTP.get('api/emoji')
+    HTTP.get('/emoji')
       .then(response => this.$store.commit('setEmoticons', response.data.emojiList))
       .catch(function (error) {
         if (error.response) {
@@ -57,7 +57,7 @@ export default {
       })
     // event triggered in emoticon component that has payload with id of the emoticon user has selected and that should trigger POST request
     this.$root.$on('post', (id) => {
-      HTTP.post('api/rating', {
+      HTTP.post('/rating', {
         emojiId: id
       })
         .catch(function (error) {

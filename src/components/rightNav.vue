@@ -12,17 +12,25 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   name: 'RightNav',
   methods: {
     async logOut () {
       try {
         await this.$gAuth.signOut()
+        this.revokeToken(this.$store.state.user.token)
         this.$store.commit('logoutUser')
         this.$router.push('/')
       } catch (error) {
         console.error(error)
       }
+    },
+    revokeToken (token) {
+      axios.post('https://oauth2.googleapis.com/revoke?token=' + token, {}, {
+        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+      })
     }
   }
 }
