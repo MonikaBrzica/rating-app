@@ -18,38 +18,8 @@ export default {
     }
   },
   methods: {
-    async login () {
-      try {
-        const googleUser = await this.$gAuth.signIn()
-        if (!googleUser) {
-          return null
-        }
-        // this.sendToBackend(googleUser.getAuthResponse())
-        this.storeData(googleUser, googleUser.getAuthResponse())
-      } catch (error) {
-        // on fail do something
-        console.error(error)
-        return null
-      }
-    },
-    storeData (data, auth) {
-      const user = {
-        fullname: data.Ss.Me,
-        email: data.Ss.Dt,
-        imgSrc: data.Ss.hJ,
-        loggedIn: true,
-        token: auth.access_token
-      }
-      console.log(user)
-      this.$store.commit('loginUser', user)
-      this.$router.push('/today')
-    },
-    sendToBackend (data) {
-      HTTP.get('auth', {
-        accessToken: data.access_token
-      })
-      console.log('accessToken:', data.access_token)
-    }
+  },
+  created () {
   }
 }
 </script>

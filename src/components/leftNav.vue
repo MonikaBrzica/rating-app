@@ -9,7 +9,7 @@
              v-on:show="itemClicked()"/>
     <div class="set-container"
          v-show="showModal">
-      <Settings v-on:close="itemClicked()"/>
+      <Settings  v-on:close="itemClicked()"/>
     </div>
   </div>
 </template>
@@ -24,26 +24,6 @@ export default {
   },
   data () {
     return {
-      nav: [
-        {
-          id: 1,
-          text: 'Today',
-          src: 'view-dashboard.svg',
-          link: '/today'
-        },
-        {
-          id: 2,
-          text: 'Reports',
-          src: 'file-document.svg',
-          link: '/reports'
-        },
-        {
-          id: 3,
-          text: 'Settings',
-          src: 'cog.svg',
-          link: ''
-        }
-      ],
       showModal: false
     }
   },
@@ -51,11 +31,16 @@ export default {
     itemClicked () {
       this.showModal = !this.showModal
     }
+  },
+  computed: {
+    nav () {
+      return this.$store.getters.getNav
+    }
   }
 }
 </script>
 <style scoped lang=scss>
-li:last-of-type {
+li:nth-child(4) {
   position: absolute;
   bottom: 0;
 }

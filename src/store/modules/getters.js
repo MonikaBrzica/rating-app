@@ -23,5 +23,14 @@ export default {
         }
       })
     }
+  },
+  getNav (state) {
+    if (state.user.role !== 'admin') {
+      return state.nav.filter((e) => {
+        return e.id !== 3
+      })
+    } else {
+      return state.nav
+    }
   }
 }

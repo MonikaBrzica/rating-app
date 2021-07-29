@@ -7,6 +7,27 @@ export default {
     email: '',
     imgSrc: '',
     loggedIn: false,
-    token: ''
-  }
+    token: '',
+    role: null
+  },
+  nav: [
+    {
+      id: 1,
+      text: 'Today',
+      src: 'view-dashboard.svg',
+      link: '/today'
+    },
+    {
+      id: 2,
+      text: 'Reports',
+      src: 'file-document.svg',
+      link: '/reports'
+    },
+    {
+      id: 3,
+      text: 'Settings',
+      src: 'cog.svg',
+      link: ''
+    }
+  ]
 }

@@ -14,6 +14,43 @@ export default {
       loggedIn: false
     }
   },
+  methods: {
+    async login () {
+      try {
+        const googleUser = await this.$gAuth.signIn()
+        const role = await this.sendToBackend(googleUser)
+        console.log(role)
+        this.storeData(googleUser, role)
+        if (!googleUser) {
+          return null
+        }
+      } catch (error) {
+        // on fail do something
+        console.error(error)
+      }
+    },
+    storeData (data, role) {
+      const user = {
+        fullname: data.Ss.Me,
+        email: data.Ss.Dt,
+        imgSrc: data.Ss.hJ,
+        loggedIn: true,
+        token: data.Zb.access_token,
+        role: role
+      }
+      this.$store.commit('loginUser', user)
+      this.$router.push('/today')
+    },
+    sendToBackend (data) {
+      let role
+      HTTP.post('auth', {
+        accessToken: data.Zb.access_token
+      }).then(response => {
+        this.role = response.data.role
+      })
+      return role
+    }
+  },
   created () {
     HTTP.get('/rating/current-settings')
       .then(response => this.$store.commit('setSettings', response.data.ratingSettings))
@@ -79,6 +116,15 @@ export default {
           console.log(error.config)
         })
     })
+    const that = this
+    const checkGauthLoad = setInterval(function () {
+      that.isInit = that.$gAuth.isInit
+      that.isSignIn = that.$gAuth.isAuthorized
+      if (that.isInit) {
+        clearInterval(checkGauthLoad)
+        that.login()
+      }
+    }, 100)
   }
 }
 </script>
