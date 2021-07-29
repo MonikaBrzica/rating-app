@@ -25,27 +25,6 @@ export default {
     }
   },
   getRatings (state) {
-    let i = 0
-    for (i = 0; i < state.ratings.length; i++) {
-      switch (state.ratings[i].emojiId.id) {
-        case (1):
-          state.statistics[0]++
-          break
-        case (2):
-          state.statistics[1]++
-          break
-        case (3):
-          state.statistics[2]++
-          break
-        case (4):
-          state.statistics[3]++
-          break
-        case (5):
-          state.statistics[4]++
-          break
-      }
-    }
-    console.log(state.statistics, 'get')
-    return state.statistics
+    return state.ratings
   }
 }

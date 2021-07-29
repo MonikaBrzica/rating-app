@@ -17,7 +17,7 @@ export default {
     return {
       firstDate: '',
       endDate: '',
-      series: [0, 0, 0, 0, 0],
+      series: [],
       chartOptions: {
         chart: {
           width: 380,
@@ -37,15 +37,15 @@ export default {
         },
         dataLabels: {
           textAnchor: 'middle',
-          formatter: function (val, opts) {
+          formatter: function (values, opts) {
             return opts.w.config.series[opts.seriesIndex]
           }
         },
         labels: ['Very happy', 'Happy', 'Meh', 'Sad', 'Very sad'],
-        colors: ['#00ff10', '#04D27C', '#B0B0B2', '#F9585A', '#ff1416'],
+        colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         stroke: {
           colors: 'rgb(45, 48, 56)',
-          width: 4
+          width: 2
         },
         responsive: [{
           breakpoint: 480,
@@ -61,9 +61,10 @@ export default {
   created () {
     HTTP.post('rating/statistics',
       {
-        firstDate: '2021-07-26T12:12:16.365Z',
-        endDate: '2021-07-26T16:12:16.365Z'
+        firstDate: this.first,
+        endDate: this.end
       }).then(response => this.$store.commit('setRatings', response.data))
+      .then(this.series = this.$store.getters.getRatings)
       .catch(function (error) {
         if (error.response) {
           console.log(error.response.data)
@@ -71,16 +72,19 @@ export default {
       })
   },
   computed: {
-    ratings () {
-      return this.$store.getters.getRatings
+    end () {
+      const event = new Date()
+      return event.toISOString()
+    },
+    first () {
+      const event = new Date()
+      event.setHours(2, 0, 0, 0)
+      return event.toISOString()
     }
   },
-  watch: {
-    ratings: {
-      handler (value) {
-        this.series = value
-      }
-    }
+  mounted () {
+    // verrrrry important dont erase everything brakes :(((((((((((((
+    this.series = [0, 0, 0, 0, 0]
   }
 }
 </script>
