@@ -21,7 +21,7 @@ export default {
       try {
         await this.$gAuth.signOut()
         this.revokeToken(this.$store.state.user.token)
-        this.$store.commit('logoutUser')
+        this.$store.dispatch('logoutUser')
         this.$router.push('/')
       } catch (error) {
         console.error(error)
