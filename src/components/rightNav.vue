@@ -1,10 +1,10 @@
 <template>
   <div class="right-nav-container">
     <div class="drop">
-      <img src="../assets/images/profile.png"
+      <img :src= this.$store.state.user.imgSrc
            alt="Profile">
       <div class="dropdown-content">
-        <p>Pero Peric</p>
+        <p>{{this.$store.state.user.fullname}}</p>
         <button @click="logOut()">Logout</button>
       </div>
     </div>
@@ -12,11 +12,25 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   name: 'RightNav',
   methods: {
-    logOut () {
-      console.log('Logout')
+    async logOut () {
+      try {
+        await this.$gAuth.signOut()
+        this.revokeToken(this.$store.state.user.token)
+        this.$store.commit('logoutUser')
+        this.$router.push('/')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    revokeToken (token) {
+      axios.post('https://oauth2.googleapis.com/revoke?token=' + token, {}, {
+        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+      })
     }
   }
 }

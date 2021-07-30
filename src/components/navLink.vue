@@ -13,7 +13,7 @@
 export default {
   name: 'NavLink',
   props: {
-    data: Array
+    data: Object
   },
   data: function () {
     return {

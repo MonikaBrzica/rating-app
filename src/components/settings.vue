@@ -98,7 +98,9 @@ export default {
         }
       }
       // PUT request sent to backend to store updated settings.
-      HTTP.put('/rating/settings', updatedSettings)
+      HTTP.put('rating/settings', updatedSettings, {
+        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
+      })
         .catch(function (error) {
           if (error.response) {
             // The request was made and the server responded with a status code
