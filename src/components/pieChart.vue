@@ -1,5 +1,9 @@
 <template>
   <div id="chart" class="pie-chart" >
+    <div class="title-container">
+      <p class="title">Ratings</p>
+      <img src="../assets/images/dots-vertical.png">
+    </div>
     <apexchart type="pie" width="380" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
@@ -13,10 +17,11 @@ export default {
   components: {
     apexchart: VueApexCharts
   },
+  props: {
+    data: Object
+  },
   data: function () {
     return {
-      firstDate: '',
-      endDate: '',
       series: [],
       chartOptions: {
         chart: {
@@ -33,6 +38,7 @@ export default {
           markers: {
             radius: 0
           },
+          padding: 5,
           offsetX: 10
         },
         dataLabels: {
@@ -61,8 +67,8 @@ export default {
   created () {
     HTTP.post('rating/statistics',
       {
-        firstDate: this.first,
-        endDate: this.end
+        firstDate: this.data.first,
+        endDate: this.data.end
       }).then(response => this.$store.commit('setRatings', response.data))
       .then(this.series = this.$store.getters.getRatings)
       .catch(function (error) {
@@ -71,19 +77,7 @@ export default {
         }
       })
   },
-  computed: {
-    end () {
-      const event = new Date()
-      return event.toISOString()
-    },
-    first () {
-      const event = new Date()
-      event.setHours(2, 0, 0, 0)
-      return event.toISOString()
-    }
-  },
   mounted () {
-    // verrrrry important dont erase everything brakes :(((((((((((((
     this.series = [0, 0, 0, 0, 0]
   }
 }
@@ -94,5 +88,20 @@ export default {
   background-color: $bg;
   height: 100%;
   width: 100%;
+  .title-container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    p {
+      color: $white-850;
+      font-family: 'Roboto-Medium', sans-serif;
+      font-size: 16px;
+      line-height: 29px;
+      margin: 0;
+    }
+    img {
+
+    }
+  }
 }
 </style>

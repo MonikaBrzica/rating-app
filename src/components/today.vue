@@ -6,6 +6,9 @@
         <p class="header">Today is a new day. Check your ratings!</p>
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
+      <div class="pie-chart-container">
+        <PieChart  v-bind:data="{end: this.dateend, first: this.datefirst}"/>
+      </div>
     </div>
     <RightNav/>
   </div>
@@ -13,11 +16,29 @@
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
+import PieChart from '../components/pieChart'
+
 export default {
   name: 'Today',
   components: {
     LeftNav,
-    RightNav
+    RightNav,
+    PieChart
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    datefirst () {
+      const event = new Date()
+      event.setHours(2, 0, 0, 0)
+      return event.toISOString()
+    },
+    dateend () {
+      const event = new Date()
+      return event.toISOString()
+    }
   }
 }
 </script>
@@ -38,6 +59,13 @@ export default {
     background-repeat: no-repeat;
     background-position: top right, top right,top right;
     background-size: 50%;
+    .pie-chart-container {
+      width: 419px;
+      height: 432px;
+      margin-top: 200px;
+      margin-right: 20px;
+      display: inline;
+    }
     .header-container{
       max-width: 75%;
       height: 40%;
