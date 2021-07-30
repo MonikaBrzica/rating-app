@@ -16,20 +16,28 @@ export default {
   },
   methods: {
     async login () {
-      try {
-        const googleUser = await this.$gAuth.signIn()
-        const role = await this.sendToBackend(googleUser)
-        console.log(role)
-        this.storeData(googleUser, role)
-        if (!googleUser) {
-          return null
+      // method logs user into google using oAuth2
+      // if block checks if the user is connected
+      if (!this.$store.state.user.loggedIn) {
+        try {
+          // opening pop up google sign in
+          const googleUser = await this.$gAuth.signIn()
+          // after successful login sending user data to backend
+          this.sendToBackend(googleUser)
+          // if the login is unsuccessful returning
+          if (!googleUser) {
+            return null
+          }
+        } catch (error) {
+          // on fail do something
+          console.error(error)
         }
-      } catch (error) {
-        // on fail do something
-        console.error(error)
       }
     },
     storeData (data, role) {
+      // method that sets user info in store.
+      // it's called inside sendToBackend method
+      // constructing user object
       const user = {
         fullname: data.Ss.Me,
         email: data.Ss.Dt,
@@ -38,17 +46,19 @@ export default {
         token: data.Zb.access_token,
         role: role
       }
+      // storing it in store.
       this.$store.commit('loginUser', user)
+      // redirecting user to /today
       this.$router.push('/today')
     },
     sendToBackend (data) {
-      let role
+      // method that sends access token to backend for authentication
       HTTP.post('auth', {
         accessToken: data.Zb.access_token
       }).then(response => {
-        this.role = response.data.role
+        // if everything is alright storing user in vuex store.
+        this.storeData(data, response.data.role)
       })
-      return role
     }
   },
   created () {

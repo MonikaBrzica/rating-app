@@ -25,7 +25,7 @@ export default {
     }
   },
   getNav (state) {
-    if (state.user.role !== 'admin') {
+    if (state.user.role !== 'ADMIN') {
       return state.nav.filter((e) => {
         return e.id !== 3
       })
