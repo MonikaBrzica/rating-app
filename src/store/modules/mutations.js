@@ -5,6 +5,7 @@ export default {
   setEmoticons (state, data) {
     state.emoticons = data
   },
+<<<<<<< HEAD
   setRatings (state, data) {
     let i = 0
     for (i = 0; i < data.length; i++) {
@@ -24,5 +25,20 @@ export default {
         state.ratings[4]++
       }
     }
+  loginUser (state, data) {
+    state.user = data
+  },
+  logoutUser (state) {
+    state.user = {
+      fullname: '',
+      email: '',
+      imgSrc: '',
+      loggedIn: false,
+      token: ''
+    }
+  },
+  setToken (state, data) {
+    state.user.role = data.toLowerCase()
+    console.log(state.user)
   }
 }

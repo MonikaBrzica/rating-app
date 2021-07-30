@@ -26,5 +26,15 @@ export default {
   },
   getRatings (state) {
     return state.ratings
+  },
+
+  getNav (state) {
+    if (state.user.role !== 'ADMIN') {
+      return state.nav.filter((e) => {
+        return e.id !== 3
+      })
+    } else {
+      return state.nav
+    }
   }
 }
