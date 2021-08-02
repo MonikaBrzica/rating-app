@@ -2,7 +2,8 @@
   <div id="chart" class="pie-chart" >
     <div class="title-container">
       <p class="title">Ratings</p>
-      <img src="../assets/images/dots-vertical.png">
+      <img src="../assets/images/dots-vertical.png"
+      alt="...">
     </div>
     <apexchart type="pie" width="380" :options="chartOptions" :series="series"></apexchart>
   </div>
@@ -76,7 +77,7 @@ export default {
   },
   computed: {
     ratings () {
-      return this.$store.getters.getRatings
+      return this.$store.getters.getSumRatings
     }
   },
   methods: {

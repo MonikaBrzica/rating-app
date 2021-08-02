@@ -4,6 +4,7 @@
     <div class="main-today">
       <div class="header-container">
         <p class="header">Today is a new day. Check your ratings!</p>
+        <button @click="funkcijajedan">click</button>
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
       <div class="pie-chart-container">
@@ -38,6 +39,11 @@ export default {
     dateend () {
       const event = new Date()
       return event.toISOString()
+    }
+  },
+  methods: {
+    funkcijajedan () {
+      this.$router.push('/table')
     }
   }
 }
