@@ -20,7 +20,7 @@ export default {
   },
   data: function () {
     return {
-      series: [],
+      series: [0, 0, 0, 0, 0],
       chartOptions: {
         chart: {
           width: 380,

@@ -2,18 +2,39 @@
   <div class="reports">
     <LeftNav/>
     <div class="main-reports">
-  </div>
+      <div class="pie-chart-container">
+        <PieChart  v-bind:data="{end: this.dateend, first: this.datefirst}"/>
+      </div>
+    </div>
     <RightNav/>
   </div>
 </template>
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
+import PieChart from '../components/pieChart'
+
 export default {
   name: 'Reports',
   components: {
     LeftNav,
-    RightNav
+    RightNav,
+    PieChart
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    datefirst () {
+      const event = new Date()
+      event.setMonth(6, 3)
+      return event.toISOString()
+    },
+    dateend () {
+      const event = new Date()
+      return event.toISOString()
+    }
   }
 }
 </script>
