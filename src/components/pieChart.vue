@@ -7,11 +7,9 @@
     <apexchart type="pie" width="380" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
-
 <script>
 import VueApexCharts from 'vue-apexcharts'
 import { HTTP } from '../../api/axios'
-
 export default {
   name: 'PieChart',
   components: {
@@ -33,7 +31,6 @@ export default {
           }
         },
         legend: {
-          show: true,
           position: 'bottom',
           markers: {
             radius: 0
@@ -42,10 +39,7 @@ export default {
           offsetX: 10
         },
         dataLabels: {
-          textAnchor: 'middle',
-          formatter: function (values, opts) {
-            return opts.w.config.series[opts.seriesIndex]
-          }
+          textAnchor: 'middle'
         },
         labels: ['Very happy', 'Happy', 'Meh', 'Sad', 'Very sad'],
         colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
@@ -67,22 +61,38 @@ export default {
   created () {
     HTTP.post('rating/statistics',
       {
-        firstDate: this.data.first,
+        startDate: this.data.first,
         endDate: this.data.end
-      }).then(response => this.$store.commit('setRatings', response.data))
-      .then(this.series = this.$store.getters.getRatings)
+      },
+      {
+        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
+      })
+      .then(response => this.$store.dispatch('setRatings', response.data.ratings))
       .catch(function (error) {
         if (error.response) {
           console.log(error.response.data)
         }
       })
   },
-  mounted () {
-    this.series = [0, 0, 0, 0, 0]
+  computed: {
+    ratings () {
+      return this.$store.getters.getRatings
+    }
+  },
+  methods: {
+    updateSeries () {
+      this.series = this.ratings
+    }
+  },
+  watch: {
+    ratings: {
+      handler () {
+        this.updateSeries()
+      }
+    }
   }
 }
 </script>
-
 <style scoped lang="scss">
 .pie-chart {
   background-color: $bg;
@@ -100,7 +110,6 @@ export default {
       margin: 0;
     }
     img {
-
     }
   }
 }
