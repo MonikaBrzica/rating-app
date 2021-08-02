@@ -5,6 +5,7 @@
 </template>
 <script>
 import { HTTP } from '../api/axios'
+import Pusher from 'pusher-js'
 export default {
   name: 'app',
   components: {
@@ -47,7 +48,7 @@ export default {
         role: role
       }
       // storing it in store.
-      this.$store.commit('loginUser', user)
+      this.$store.dispatch('loginUser', user)
       // redirecting user to /today
       this.$router.push('/today')
     },
@@ -59,11 +60,32 @@ export default {
         // if everything is alright storing user in vuex store.
         this.storeData(data, response.data.role)
       })
+    },
+    subscribe () {
+      const pusher = new Pusher('f47f2ad6b875f07ee437', {
+        cluster: 'eu'
+      })
+      pusher.subscribe('settings')
+      pusher.bind('settings-updated', (data) => {
+        this.$store.dispatch('setSettings', data.value)
+      })
     }
   },
   created () {
+    // waititng for $gAuts to initialize.
+    const that = this
+    const checkGauthLoad = setInterval(function () {
+      that.isInit = that.$gAuth.isInit
+      that.isSignIn = that.$gAuth.isAuthorized
+      if (that.isInit) {
+        clearInterval(checkGauthLoad)
+        // that.login()
+      }
+    }, 100)
+    // initilazing socket
+    this.subscribe()
     HTTP.get('/rating/current-settings')
-      .then(response => this.$store.commit('setSettings', response.data.ratingSettings))
+      .then(response => this.$store.dispatch('setSettings', response.data.ratingSettings))
       .catch(function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -83,7 +105,7 @@ export default {
         console.log(error.config)
       })
     HTTP.get('/emoji')
-      .then(response => this.$store.commit('setEmoticons', response.data.emojiList))
+      .then(response => this.$store.dispatch('setEmoticons', response.data.emojiList))
       .catch(function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -126,15 +148,6 @@ export default {
           console.log(error.config)
         })
     })
-    const that = this
-    const checkGauthLoad = setInterval(function () {
-      that.isInit = that.$gAuth.isInit
-      that.isSignIn = that.$gAuth.isAuthorized
-      if (that.isInit) {
-        clearInterval(checkGauthLoad)
-        that.login()
-      }
-    }, 100)
   }
 }
 </script>

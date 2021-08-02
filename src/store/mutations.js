@@ -16,9 +16,5 @@ export default {
       loggedIn: false,
       token: ''
     }
-  },
-  setToken (state, data) {
-    state.user.role = data.toLowerCase()
-    console.log(state.user)
   }
 }
