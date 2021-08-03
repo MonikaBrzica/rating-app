@@ -28,7 +28,7 @@ export default {
   computed: {
     datefirst () {
       const event = new Date()
-      event.setMonth(6, 3)
+      event.setMonth(6, 7)
       return event.toISOString()
     },
     dateend () {
