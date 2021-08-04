@@ -5,6 +5,9 @@ export default {
   setEmoticons (state, data) {
     state.emoticons = data
   },
+  setRatings (state, data) {
+    state.ratings = data
+  },
   loginUser (state, data) {
     state.user = data
   },
