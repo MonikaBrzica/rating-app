@@ -7,7 +7,7 @@
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
       <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateend, first: this.datefirst}"/>
+        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
       </div>
     </div>
     <RightNav/>
@@ -30,12 +30,12 @@ export default {
     }
   },
   computed: {
-    datefirst () {
+    dateFirst () {
       const event = new Date()
       event.setHours(2, 0, 0, 0)
       return event.toISOString()
     },
-    dateend () {
+    dateEnd () {
       const event = new Date()
       return event.toISOString()
     }

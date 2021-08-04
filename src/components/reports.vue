@@ -3,7 +3,7 @@
     <LeftNav/>
     <div class="main-reports">
       <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateend, first: this.datefirst}"/>
+        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
       </div>
     </div>
     <RightNav/>
@@ -26,12 +26,12 @@ export default {
     }
   },
   computed: {
-    datefirst () {
+    dateFirst () {
       const event = new Date()
       event.setMonth(6, 7)
       return event.toISOString()
     },
-    dateend () {
+    dateEnd () {
       const event = new Date()
       return event.toISOString()
     }

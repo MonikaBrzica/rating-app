@@ -139,6 +139,11 @@ export default {
 }
 </script>
 <style lang="scss">
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
