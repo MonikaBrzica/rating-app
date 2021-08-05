@@ -7,7 +7,10 @@
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
       <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
+        <PieChart/>
+      </div>
+      <div class="table-container">
+        <Table/>
       </div>
     </div>
     <RightNav/>
@@ -17,17 +20,36 @@
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import PieChart from '../components/pieChart'
+import Table from '../components/table'
+import { HTTP } from '../../api/axios'
 
 export default {
   name: 'Today',
   components: {
     LeftNav,
     RightNav,
-    PieChart
+    PieChart,
+    Table
   },
   data () {
     return {
     }
+  },
+  created () {
+    HTTP.post('rating/statistics',
+      {
+        startDate: this.dateFirst,
+        endDate: this.dateEnd
+      },
+      {
+        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
+      })
+      .then(response => this.$store.dispatch('setRatings', response.data.ratings))
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data)
+        }
+      })
   },
   computed: {
     dateFirst () {
@@ -59,13 +81,6 @@ export default {
     background-repeat: no-repeat;
     background-position: top right, top right,top right;
     background-size: 50%;
-    .pie-chart-container {
-      width: 419px;
-      height: 432px;
-      margin-top: 200px;
-      margin-right: 20px;
-      display: inline;
-    }
     .header-container{
       max-width: 75%;
       height: 40%;
@@ -85,6 +100,16 @@ export default {
         font-size: 18px;
         line-height: 26px;
       }
+    }
+    .pie-chart-container {
+      width: 419px;
+      height: 432px;
+      margin-top: 200px;
+      margin-right: 20px;
+      display: inline;
+    }
+    .table-container {
+      padding-top: 200px;
     }
   }
 }

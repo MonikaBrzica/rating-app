@@ -3,21 +3,17 @@
     <div class="title-container">
       <p class="title">Ratings</p>
       <img src="../assets/images/dots-vertical.png"
-      alt="...">
+           alt="...">
     </div>
     <apexchart type="pie" width="419" height="390" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 <script>
 import VueApexCharts from 'vue-apexcharts'
-import { HTTP } from '../../api/axios'
 export default {
   name: 'PieChart',
   components: {
     apexchart: VueApexCharts
-  },
-  props: {
-    data: Object
   },
   data: function () {
     return {
@@ -59,22 +55,6 @@ export default {
         }]
       }
     }
-  },
-  created () {
-    HTTP.post('rating/statistics',
-      {
-        startDate: this.data.first,
-        endDate: this.data.end
-      },
-      {
-        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
-      })
-      .then(response => this.$store.dispatch('setRatings', response.data.ratings))
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
-      })
   },
   computed: {
     ratings () {

@@ -79,7 +79,7 @@ export default {
       that.isSignIn = that.$gAuth.isAuthorized
       if (that.isInit) {
         clearInterval(checkGauthLoad)
-        // that.login()
+        that.login()
       }
     }, 100)
     // initilazing socket
