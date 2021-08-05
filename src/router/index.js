@@ -3,34 +3,18 @@ import VueRouter from 'vue-router'
 import Public from '../views/public'
 import Today from '../components/today'
 import Reports from '../components/reports'
-import store from '../store/index'
+import oauthSignIn from '../utils/oAuth'
 Vue.use(VueRouter)
 const routes = [
   {
     path: '/today',
     name: 'Today',
-    component: Today,
-    beforeEnter (to, from, next) {
-      // navigation guard that checks if the user is logged in and if he isn't redirects him to login.
-      if (store.state.user.token !== '') {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    component: Today
   },
   {
     path: '/reports',
     name: 'Reports',
-    component: Reports,
-    beforeEnter (to, from, next) {
-      // navigation guard that checks if the user is logged in and if he isn't redirects him to login.
-      if (store.state.user.token !== '') {
-        next()
-      } else {
-        next('/')
-      }
-    }
+    component: Reports
   },
   {
     path: '/',
@@ -43,5 +27,12 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeResolve(async (to, from, next) => {
+  const token = localStorage.getItem('token')
+  if ((token !== null && token !== '') || to.path === '/') {
+    next()
+  } else {
+    await oauthSignIn()
+  }
+})
 export default router

@@ -12,25 +12,11 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
-
 export default {
   name: 'RightNav',
   methods: {
-    async logOut () {
-      try {
-        await this.$gAuth.signOut()
-        this.revokeToken(this.$store.state.user.token)
-        this.$store.dispatch('logoutUser')
-        this.$router.push('/')
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    revokeToken (token) {
-      axios.post('https://oauth2.googleapis.com/revoke?token=' + token, {}, {
-        headers: { 'content-type': 'application/x-www-form-urlencoded' }
-      })
+    logOut () {
+      this.$store.dispatch('logoutUser')
     }
   }
 }
@@ -41,26 +27,22 @@ export default {
   width: 64px;
   text-align: center;
   order: 3;
-
   .drop {
     font-size: 1rem;
     cursor: pointer;
     width: 64px;
     height: 64px;
-
     &:hover {
       .dropdown-content {
         display: block;
       }
     }
-
     img {
       border-radius: 100%;
       width: 40px;
       height: 40px;
       margin-top: 12px;
     }
-
     .dropdown-content {
       position: absolute;
       right: 30px;
@@ -72,21 +54,17 @@ export default {
       padding: 1.5rem 0.5rem;
       border-radius: 15px;
       border-top-right-radius: 0;
-
       p, button {
         font-family: 'Roboto-Medium', sans-serif;
         font-size: 1rem;
         color: $white-850;
-
         &:hover {
           color: $white-500;
         }
       }
-
       p {
         margin: 0 0 1rem 0;
       }
-
       button {
         background-color: transparent;
         outline: none;

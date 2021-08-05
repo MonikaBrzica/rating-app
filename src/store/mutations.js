@@ -5,8 +5,17 @@ export default {
   setEmoticons (state, data) {
     state.emoticons = data
   },
-  loginUser (state, data) {
-    state.user = data
+  storeUser (state, data) {
+    const user = {
+      fullname: data.user.info.name,
+      email: data.user.info.email,
+      imgSrc: data.user.info.picture,
+      loggedIn: true,
+      token: data.user.token,
+      role: data.role
+    }
+    state.user = user
+    console.log(state.user)
   },
   logoutUser (state) {
     state.user = {
