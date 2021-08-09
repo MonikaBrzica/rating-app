@@ -22,8 +22,9 @@ export default {
     RightNav
   },
   created () {
+    debugger
     const token = localStorage.getItem('token')
-    if (store.state.user.token === '') {
+    if (token) {
       axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
         headers: {
           Authorization: 'Bearer ' + token

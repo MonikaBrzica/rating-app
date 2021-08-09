@@ -27,9 +27,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-router.beforeResolve(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  const fragmentString = location.hash.substring(1)
+  const accessToken = fragmentString.slice(13, 176)
+  if (accessToken) {
+    localStorage.setItem('token', accessToken)
+  }
   const token = localStorage.getItem('token')
-  if ((token !== null && token !== '') || to.path === '/') {
+  if ((token !== null && token !== '') || accessToken !== '' || to.path === '/') {
     next()
   } else {
     await oauthSignIn()
