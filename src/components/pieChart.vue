@@ -78,8 +78,8 @@ export default {
 <style scoped lang="scss">
 .pie-chart {
   background-color: $bg;
-  width: 419px;
-  height: 432px;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   .title-container {
     padding: 10px 20px 20px 20px;

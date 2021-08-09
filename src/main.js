@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VCalendar from 'v-calendar'
 
 import GAuth from 'vue-google-oauth2'
 const gauthOption = {
@@ -9,6 +10,7 @@ const gauthOption = {
   scope: 'profile email openid',
   prompt: 'select_account'
 }
+Vue.use(VCalendar)
 Vue.use(GAuth, gauthOption)
 Vue.config.productionTip = false
 

@@ -65,7 +65,6 @@ export default {
   computed: {
     sortedItems () {
       const list = this.tableData.slice()
-      console.log(list)
       let i
       for (i = 0; i < list.length; i++) {
         list[i].score = this.$store.getters.getSumRatings[i]
@@ -92,13 +91,27 @@ export default {
 .table {
   width: 100%;
   height: 100%;
+  color: rgba(255, 255, 255, 0.85);
   table {
-    color: rgba(255, 255, 255, 0.85);
     border-collapse: collapse;
-    tr {
-      background-color: rgb(62, 65, 72);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
+    border-style: hidden;
+  }
+  table tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+  }
+  table tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+  }
+  table tr:first-child th:first-child {
+    border-top-left-radius: 4px;
+  }
+  table tr:first-child th:last-child {
+    border-top-right-radius: 4px;
+  }
+  tr {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgb(62, 65, 72);
+  }
     th {
       font-size: 14px;
       padding-left: 20px;
@@ -121,5 +134,4 @@ export default {
       height: 48px;
     }
   }
-}
 </style>

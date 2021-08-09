@@ -109,7 +109,11 @@ export default {
       display: inline;
     }
     .table-container {
-      padding-top: 200px;
+      padding-left: 16px;
+      position: absolute;
+      margin-top: 500px;
+      border-radius: 4px;
+      width: 707px;
     }
   }
 }
@@ -131,6 +135,16 @@ export default {
           font-size: 1rem;
           line-height: 20px;
         }
+      }
+      .pie-chart-container {
+        width: 100%;
+        height: 300px;
+        margin-top: 300px;
+        margin-right: 0px;
+        display: inline;
+      }
+      .table-container {
+        padding-top: 600px;
       }
     }
   }
