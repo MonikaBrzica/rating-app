@@ -38,6 +38,11 @@ export default {
 }
 </script>
 <style lang="scss">
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @font-face {
   font-family: 'Roboto-Bold';
   src: url('assets/fonts/Roboto-Bold.ttf') format('truetype');
@@ -54,6 +59,6 @@ export default {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: #1B1E24;
+  background-color: $bg-dark;
 }
 </style>

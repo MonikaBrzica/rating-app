@@ -2,12 +2,16 @@ import { HTTP } from '../../api/axios'
 import router from '../router/index'
 import axios from 'axios'
 export default {
+  
   logoutUser ({ state }) {
     localStorage.removeItem('token')
     HTTP.post('auth/revoke', {
       accessToken: state.user.token
     }).then(() => router.push('/'))
       .then(() => localStorage.removeItem('token'))
+  },
+   setRatings (context, data) {
+    context.commit('setRatings', data)
   },
   getCurrentSettings ({ commit }) {
     HTTP.get('/rating/current-settings')
