@@ -12,6 +12,7 @@
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
+import store from '../store'
 import PieChart from '../components/pieChart'
 
 export default {
@@ -20,6 +21,9 @@ export default {
     LeftNav,
     RightNav,
     PieChart
+  },
+  created () {
+    store.dispatch('checkToken')
   },
   data () {
     return {
