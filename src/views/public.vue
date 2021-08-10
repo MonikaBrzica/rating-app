@@ -22,8 +22,6 @@ export default {
     emoticons () {
       return this.$store.getters.getEmoticons
     }
-  },
-  created () {
   }
 }
 </script>

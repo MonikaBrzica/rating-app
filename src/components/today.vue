@@ -13,7 +13,6 @@
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
-import axios from 'axios'
 import store from '../store/index'
 export default {
   name: 'Today',
@@ -22,18 +21,7 @@ export default {
     RightNav
   },
   created () {
-    debugger
-    const token = localStorage.getItem('token')
-    if (token) {
-      axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-          Authorization: 'Bearer ' + token
-        }
-      })
-        .then(response => {
-          store.dispatch('checkToken', { token: token, info: response.data })
-        })
-    }
+    store.dispatch('checkToken')
   }
 }
 </script>

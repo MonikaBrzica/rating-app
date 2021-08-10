@@ -15,7 +15,6 @@ export default {
       role: data.role
     }
     state.user = user
-    console.log(state.user)
   },
   logoutUser (state) {
     state.user = {

@@ -1,11 +1,13 @@
 import { HTTP } from '../../api/axios'
 import router from '../router/index'
+import axios from 'axios'
 export default {
   logoutUser ({ state }) {
     localStorage.removeItem('token')
     HTTP.post('auth/revoke', {
       accessToken: state.user.token
     }).then(() => router.push('/'))
+      .then(() => localStorage.removeItem('token'))
   },
   getCurrentSettings ({ commit }) {
     HTTP.get('/rating/current-settings')
@@ -29,12 +31,29 @@ export default {
         console.error(error)
       })
   },
-  checkToken ({ commit }, data) {
+  storeUser ({ commit }, data) {
     HTTP.post('auth', {
       accessToken: data.token
     }).then(response => {
       // if everything is alright storing user in vuex store.
       commit('storeUser', { role: response.data.role.toLowerCase(), user: data })
     })
+  },
+  checkToken ({ dispatch, state }) {
+    const token = localStorage.getItem('token')
+    if (token && !state.user.token) {
+      axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      })
+        .then(response => {
+          dispatch('storeUser', { token: token, info: response.data })
+        })
+        .catch(() => {
+          router.push('/')
+          localStorage.removeItem('token')
+        })
+    }
   }
 }
