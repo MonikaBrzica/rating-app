@@ -21,7 +21,6 @@ import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import PieChart from '../components/pieChart'
 import Table from '../components/table'
-import { HTTP } from '../../api/axios'
 
 export default {
   name: 'Today',
@@ -36,20 +35,7 @@ export default {
     }
   },
   created () {
-    HTTP.post('rating/statistics',
-      {
-        startDate: this.dateFirst,
-        endDate: this.dateEnd
-      },
-      {
-        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
-      })
-      .then(response => this.$store.dispatch('setRatings', response.data.ratings))
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
-      })
+    this.$store.dispatch('getReports', { start: this.dateFirst, end: this.dateEnd })
   },
   computed: {
     dateFirst () {
