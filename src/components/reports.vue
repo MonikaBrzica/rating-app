@@ -2,8 +2,16 @@
   <div class="reports">
     <LeftNav/>
     <div class="main-reports">
-      <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
+        <div class="main-container">
+          <div class="line-chart-container">
+            <LineChart/>
+          </div>
+          <div class="pie-chart-container">
+            <PieChart/>
+          </div>
+          <div class="table-container">
+            <!-- <Table/> -->
+          </div>
       </div>
     </div>
     <RightNav/>
@@ -14,16 +22,25 @@ import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import store from '../store'
 import PieChart from '../components/pieChart'
-
+import LineChart from '../components/lineChart.vue'
 export default {
   name: 'Reports',
   components: {
     LeftNav,
     RightNav,
-    PieChart
+    PieChart,
+    LineChart
   },
   created () {
-    store.dispatch('checkToken')
+    const token = localStorage.getItem('token')
+    if (token && !store.state.user.token) {
+      console.log('if block')
+      store.dispatch('checkToken')
+        .then(() => store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+        )
+    } else {
+      store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+    }
   },
   data () {
     return {
@@ -32,7 +49,7 @@ export default {
   computed: {
     dateFirst () {
       const event = new Date()
-      event.setMonth(6, 7)
+      event.setMonth(7, 7)
       return event.toISOString()
     },
     dateEnd () {
@@ -49,14 +66,29 @@ export default {
   display: flex;
   justify-content: space-between;
   .main-reports {
-    width: calc(100% - 164px);
+    flex-grow: 1;
     order:2;
-    .pie-chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    .main-container{
       width: 100%;
-      height: 100%;
-      margin-top: 200px;
-      margin-right: 20px;
-      display: inline;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 16px;
+      padding-bottom: 100px;
+      column-gap: 1rem;
+      row-gap: 1rem;
+      justify-content: space-between;
+      .line-chart-container{
+        width: 72.5%;
+        background-color: $bg;
+      }
+      .pie-chart-container {
+        width: 25%;
+        background-color: $bg;
+      }
+      .table-container {
+      }
     }
   }
 }

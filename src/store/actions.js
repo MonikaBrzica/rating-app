@@ -2,7 +2,7 @@ import { HTTP } from '../../api/axios'
 import router from '../router/index'
 import axios from 'axios'
 export default {
-  
+
   logoutUser ({ state }) {
     localStorage.removeItem('token')
     HTTP.post('auth/revoke', {
@@ -10,7 +10,7 @@ export default {
     }).then(() => router.push('/'))
       .then(() => localStorage.removeItem('token'))
   },
-   setRatings (context, data) {
+  setRatings (context, data) {
     context.commit('setRatings', data)
   },
   getCurrentSettings ({ commit }) {
@@ -45,19 +45,33 @@ export default {
   },
   checkToken ({ dispatch, state }) {
     const token = localStorage.getItem('token')
-    if (token && !state.user.token) {
-      axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-          Authorization: 'Bearer ' + token
+    axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
+      .then(response => {
+        dispatch('storeUser', { token: token, info: response.data })
+      })
+      .catch(() => {
+        router.push('/')
+        localStorage.removeItem('token')
+      })
+  },
+  getStatistic ({ commit, state }, data) {
+    HTTP.post('rating/statistics',
+      {
+        startDate: data.dateFirst,
+        endDate: data.dateEnd
+      },
+      {
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+      })
+      .then(response => commit('setRatings', response.data.ratings))
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data)
         }
       })
-        .then(response => {
-          dispatch('storeUser', { token: token, info: response.data })
-        })
-        .catch(() => {
-          router.push('/')
-          localStorage.removeItem('token')
-        })
-    }
   }
 }

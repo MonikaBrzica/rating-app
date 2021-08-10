@@ -21,7 +21,6 @@ export default {
   },
   data: function () {
     return {
-      series: [0, 0, 0, 0, 0],
       chartOptions: {
         chart: {
           type: 'pie',
@@ -77,20 +76,8 @@ export default {
       })
   },
   computed: {
-    ratings () {
+    series () {
       return this.$store.getters.getSumRatings
-    }
-  },
-  methods: {
-    updateSeries () {
-      this.series = this.ratings
-    }
-  },
-  watch: {
-    ratings: {
-      handler () {
-        this.updateSeries()
-      }
     }
   }
 }

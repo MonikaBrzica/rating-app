@@ -57,5 +57,39 @@ export default {
       }
     }
     return series
+  },
+  getSumRatingsLine (state) {
+    const lineChart = [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+    // setting date array with elements
+    // first getting all ratings, then replacing minutes and seconds
+    // and pushing to array if the element isn't already in.
+    state.ratings.forEach((elem) => {
+      const remind = elem.date.slice(13)
+      elem.date = elem.date.replace(remind, ':00:00Z')
+      if (lineChart[5].indexOf(elem.date) === -1) {
+        lineChart[5].push(elem.date)
+      }
+    })
+    for (let i = 0; i < lineChart.length - 1; i++) {
+      for (let j = 0; j < lineChart[5].length; j++) {
+        lineChart[i][j] = 0
+      }
+    }
+    state.ratings.forEach((elem) => {
+      for (let i = 0; i < lineChart[5].length; i++) {
+        if (elem.date === lineChart[5][i]) {
+          lineChart[elem.emojiId.id - 1][i]++
+        }
+      }
+    })
+    console.log(lineChart)
+    return lineChart
   }
 }

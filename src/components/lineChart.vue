@@ -1,61 +1,72 @@
 <template>
-  <div id="chart" class="line-chart">
-    <apexchart type="area" width="1000px" height="350" :options="chartOptions" :series="series"></apexchart>
+<div class="container" id="chart">
+  <div class="title-container">
+    <p class="title">Ratings</p>
+    <img src="../assets/images/dots-vertical.png"
+         alt="...">
   </div>
+  <apexchart ref="linechart" type="area" height="350" :options="chartOptions" :series="series"></apexchart>
+
+</div>
 </template>
 
 <script>
 import VueApexCharts from 'vue-apexcharts'
-
 export default {
-  name: 'LineChart',
+  name: 'lineChart',
   components: {
     apexchart: VueApexCharts
   },
-  data: function () {
+  data () {
     return {
-      series: [{
+    }
+  },
+  computed: {
+    statistic () {
+      return this.$store.getters.getSumRatingsLine
+    },
+    series () {
+      return [{
         name: 'Very happy',
-        data: [31, 40, 28, 51, 42, 109, 100]
+        data: this.statistic[0]
       }, {
-        name: 'Happy',
-        data: [11, 32, 45, 32, 34, 52, 41]
+        name: 'happy',
+        data: this.statistic[1]
       }, {
         name: 'Meh',
-        data: [11, 32, 45, 32, 34, 52, 41]
+        data: this.statistic[2]
       }, {
         name: 'Sad',
-        data: [11, 32, 45, 32, 34, 52, 41]
+        data: this.statistic[3]
       }, {
         name: 'Very sad',
-        data: [11, 32, 45, 32, 34, 52, 41]
-      }],
-      chartOptions: {
+        data: this.statistic[4]
+      }]
+    },
+    chartOptions () {
+      return {
         chart: {
-          foreColor: 'rgba(255,255,255,0.50)',
-          height: 350,
-          type: 'area'
+          type: 'area',
+          foreColor: 'rgba(255,255,255,0.5)'
         },
-        legend: {
-          markers: {
-            radius: 0
-          }
-        },
-        colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         dataLabels: {
           enabled: false
         },
+        colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         stroke: {
           curve: 'smooth'
         },
         xaxis: {
           type: 'datetime',
-          categories: ['2018-09-19T00:00:00.000Z', '2018-09-19T01:30:00.000Z', '2018-09-19T02:30:00.000Z', '2018-09-19T03:30:00.000Z', '2018-09-19T04:30:00.000Z', '2018-09-19T05:30:00.000Z', '2018-09-19T06:30:00.000Z']
+          categories: this.statistic[5]
         },
         tooltip: {
           x: {
             format: 'dd/MM/yy HH:mm'
           }
+        },
+        markers: {
+          colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)']
         }
       }
     }
@@ -63,9 +74,25 @@ export default {
 }
 </script>
 
-<style>
-.line-chart {
-  background-color: #2D3038;
-  width: 1289px;
+<style scoped lang="scss">
+.container{
+  width: 100%;
+  height:100%;
+  .title-container {
+    box-sizing: border-box;
+    padding: 20px 24px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    p {
+      color: $white-850;
+      font-family: 'Roboto-Medium', sans-serif;
+      line-height: 20px;
+      margin: 0;
+    }
+    img{
+      height: 20px;
+    }
+  }
 }
 </style>

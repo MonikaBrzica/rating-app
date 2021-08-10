@@ -6,8 +6,16 @@
         <p class="header">Today is a new day. Check your ratings!</p>
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
-      <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
+      <div class="main-container">
+        <div class="line-chart-container">
+          <LineChart/>
+        </div>
+        <div class="pie-chart-container">
+          <PieChart/>
+        </div>
+        <div class="table-container">
+          <!-- <Table/> -->
+        </div>
       </div>
     </div>
     <RightNav/>
@@ -18,16 +26,25 @@ import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import store from '../store/index'
 import PieChart from '../components/pieChart'
-
+import LineChart from '../components/lineChart'
 export default {
   name: 'Today',
   components: {
     LeftNav,
     RightNav,
-    PieChart
+    PieChart,
+    LineChart
   },
   created () {
-    store.dispatch('checkToken')
+    const token = localStorage.getItem('token')
+    if (token && !store.state.user.token) {
+      console.log('if block')
+      store.dispatch('checkToken')
+        .then(() => store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+        )
+    } else {
+      store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+    }
   },
   data () {
     return {
@@ -49,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 
 .today {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -63,13 +80,7 @@ export default {
     background-repeat: no-repeat;
     background-position: top right, top right,top right;
     background-size: 50%;
-    .pie-chart-container {
-      width: 419px;
-      height: 432px;
-      margin-top: 200px;
-      margin-right: 20px;
-      display: inline;
-    }
+    flex-wrap: wrap;
     .header-container{
       max-width: 75%;
       height: 40%;
@@ -88,6 +99,26 @@ export default {
         font-family: 'Roboto-Regular',sans-serif;
         font-size: 18px;
         line-height: 26px;
+      }
+    }
+    .main-container{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 16px;
+      padding-bottom: 100px;
+      column-gap: 1rem;
+      row-gap: 1rem;
+      justify-content: space-between;
+      .line-chart-container{
+        width: 72.5%;
+        background-color: $bg;
+      }
+      .pie-chart-container {
+        width: 25%;
+        background-color: $bg;
+      }
+      .table-container {
       }
     }
   }
