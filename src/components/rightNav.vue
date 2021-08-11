@@ -23,6 +23,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .right-nav-container {
+  z-index: 4;
   background-color: $bg;
   width: 64px;
   text-align: center;
@@ -84,6 +85,9 @@ export default {
   .right-nav-container {
     width: 64px;
     height: 60px;
+    position: absolute;
+    right: 0;
+    order:2;
     .drop {
       img {
         margin-top: 10px;

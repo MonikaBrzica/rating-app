@@ -5,7 +5,7 @@
       <img src="../assets/images/dots-vertical.png"
            alt="...">
     </div>
-    <apexchart type="pie" width="419" height="390" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="pie" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 <script>
@@ -20,9 +20,22 @@ export default {
       chartOptions: {
         chart: {
           type: 'pie',
+          offsetY: 35,
           foreColor: 'rgba(255,255,255,0.85)',
           fill: {
             colors: '#B0B0B2'
+          }
+        },
+        noData: {
+          text: 'No data in database',
+          align: 'center',
+          verticalAlign: 'middle',
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+            color: 'rgba(255,255,255,0.85)',
+            fontSize: '20px',
+            fontFamily: "'Roboto-Medium', sans-serif"
           }
         },
         legend: {
@@ -48,7 +61,6 @@ export default {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
             }
           }
         }]
@@ -65,8 +77,6 @@ export default {
 <style scoped lang="scss">
 .pie-chart {
   background-color: $bg;
-  width: 100%;
-  height: 100%;
   border-radius: 4px;
   .title-container {
     padding: 10px 20px 20px 20px;

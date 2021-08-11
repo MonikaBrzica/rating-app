@@ -45,9 +45,12 @@ li:nth-child(4) {
   bottom: 0;
 }
 .nav-container {
+  z-index: 4;
+  position: relative;
   background-color: $bg;
   width: 100px;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   order: 1;
   .logo {
     margin: 14px 23px;
@@ -69,8 +72,10 @@ li:nth-child(4) {
   .nav-container {
     width: calc(100% - 64px);
     height: 60px;
+    min-height: unset;
     position: absolute;
     display: flex;
+    order:1;
     .logo {
       margin: 3px 5px;
       width: 54px;

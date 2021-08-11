@@ -20,8 +20,7 @@ const routes = [
   {
     path: '/',
     name: 'Public',
-    component: Public,
-    props: true
+    component: Public
   }
 ]
 const router = new VueRouter({

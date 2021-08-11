@@ -2,7 +2,7 @@
   <div class="reports">
     <LeftNav/>
     <div class="main-reports">
-      <v-date-picker v-model="range"
+          <v-date-picker v-model="range"
                      class='date-picker'
                      :value="null"
                      is-range
@@ -26,10 +26,14 @@
           </div>
         </template>
       </v-date-picker>
-      <div class="pie">
-        <PieChart/>
-      </div>
-      <div class="table-container">
+        <div class="main-container">
+          <div class="line-chart-container">
+            <LineChart/>
+          </div>
+          <div class="pie-chart-container">
+          <PieChart/>
+          </div>
+          <div class="table-container">
         <Table/>
       </div>
     </div>
@@ -41,6 +45,7 @@ import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import store from '../store'
 import PieChart from '../components/pieChart'
+import LineChart from '../components/lineChart.vue'
 import Table from '../components/table'
 
 export default {
@@ -49,7 +54,19 @@ export default {
     LeftNav,
     RightNav,
     PieChart,
+    LineChart,
     Table
+  },
+  created () {
+    const token = localStorage.getItem('token')
+    if (token && !store.state.user.token) {
+      console.log('if block')
+      store.dispatch('checkToken')
+        .then(() => store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+        )
+    } else {
+      store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+    }
   },
   data () {
     return {
@@ -103,14 +120,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 .reports {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   justify-content: space-between;
   .main-reports {
-    margin-left: 16px;
-    width: calc(100% - 164px);
+    flex-grow: 1;
     order:2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    
     .date-picker /deep/ .vc-container.vc-is-dark {
       color: rgba(255, 255, 255, 0.85);
       background-color: #2D3038;
@@ -151,14 +171,8 @@ export default {
       font-weight: 400 !important;
       opacity: 0.85;
     }
-    .pie {
-      width: 419px;
-      height: 432px;
-    }
-    .table-container {
-      margin-top: 50px;
-    }
-    .input-container{
+    
+    input-container{
       margin-top: 16px;
       margin-bottom: 16px;
       img {
@@ -194,22 +208,71 @@ export default {
           font-size: 14px;
           line-height: 20px;
           text-align: center;
+          }
+          }
+          }
+    .main-container{
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 11px 16px;
+      column-gap: 1rem;
+      row-gap: 1rem;
+      .line-chart-container{
+        width: 72.5%;
+        height: 432px;
+        background-color: $bg;
+        padding-bottom: 16px;
+      }
+      .pie-chart-container {
+        width: 25%;
+        max-height: 432px;
+        background-color: $bg;
+        padding-bottom: 16px;
+      }
+      .table-container {
+        margin-top: 2rem;
+        width: 37%;
+        background-color: blue;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .reports{
+    .main-reports{
+      .main-container{
+        flex-direction: column;
+        align-items: center;
+        .line-chart-container{
+          width: 100%;
+        }
+        .pie-chart-container{
+          width: 50%;
+        }
+        .table-container{
+          width: 70%;
         }
       }
     }
   }
 }
 @media only screen and (max-width: 768px) {
-  .reports {
+  .reports{
     .main-reports {
-      width: 100vh;
-      margin-top: 64px;
-      .pie {
-        margin-top: 100px;
-        width: 100%;
-      }
-      .table-container {
-        margin-top: 50px;
+      margin-top: 60px;
+      width: 100%;
+      order: 3;
+      .main-container{
+        flex-direction: column;
+        align-items: center;
+        .line-chart-container{
+          width: 90%;
+        }
+        .pie-chart-container {
+          width: 60%;
+        }
       }
     }
   }
