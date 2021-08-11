@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8080",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "pusher-js": "^7.0.3",
+    "v-calendar": "^2.3.2",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.6.2",
     "vue-google-oauth2": "^1.5.8",

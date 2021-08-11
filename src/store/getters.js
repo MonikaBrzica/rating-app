@@ -39,9 +39,7 @@ export default {
   getSumRatings (state) {
     const series = [0, 0, 0, 0, 0]
     if (!state.ratings) {
-      return series
-    } else {
-      for (let i = 0; i < state.ratings.length; i++) {
+      for (i = 0; i < state.ratings.length; i++) {
         if (state.ratings[i].emojiId.id === 1) {
           series[0]++
         }

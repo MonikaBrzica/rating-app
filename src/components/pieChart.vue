@@ -1,9 +1,9 @@
 <template>
-  <div id="chart" class="pie-chart" >
+  <div id="chart" class="pie-chart">
     <div class="title-container">
       <p class="title">Ratings</p>
       <img src="../assets/images/dots-vertical.png"
-      alt="...">
+           alt="...">
     </div>
     <apexchart type="pie" :options="chartOptions" :series="series"></apexchart>
   </div>
@@ -14,9 +14,6 @@ export default {
   name: 'PieChart',
   components: {
     apexchart: VueApexCharts
-  },
-  props: {
-    data: Object
   },
   data: function () {
     return {
@@ -70,8 +67,6 @@ export default {
       }
     }
   },
-  created () {
-  },
   computed: {
     series () {
       return this.$store.getters.getSumRatings
@@ -85,7 +80,6 @@ export default {
   border-radius: 4px;
   .title-container {
     padding: 10px 20px 20px 20px;
-    height: 24px;
     display: flex;
     justify-content: space-between;
     p {
@@ -96,7 +90,7 @@ export default {
       margin: 0;
     }
     img {
-      height: 20px;
+      margin: 2.5px;
     }
   }
 }

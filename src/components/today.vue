@@ -17,9 +17,7 @@
           <PieChart/>
         </div>
         <div class="table-container">
-          <!-- <Table/> -->
-          <p>table</p>
-        </div>
+        <Table/>
       </div>
     </div>
     <RightNav/>
@@ -31,6 +29,8 @@ import RightNav from '../components/rightNav'
 import store from '../store/index'
 import PieChart from '../components/pieChart'
 import LineChart from '../components/lineChart'
+import Table from '../components/table'
+
 export default {
   name: 'Today',
   components: {
@@ -38,6 +38,7 @@ export default {
     RightNav,
     PieChart,
     LineChart
+    Table
   },
   created () {
     const token = localStorage.getItem('token')
@@ -145,6 +146,20 @@ export default {
         height: 192px;
         background-color: blue;
       }
+    }
+    .pie-chart-container {
+      width: 419px;
+      height: 432px;
+      margin-top: 200px;
+      margin-right: 20px;
+      display: inline;
+    }
+    .table-container {
+      padding-left: 16px;
+      position: absolute;
+      margin-top: 500px;
+      border-radius: 4px;
+      width: 707px;
     }
   }
 }

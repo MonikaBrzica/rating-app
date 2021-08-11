@@ -43,6 +43,26 @@ export default {
       commit('storeUser', { role: response.data.role.toLowerCase(), user: data })
     })
   },
+  getReports ({ dispatch }, data) {
+    let start = new Date(data.dateFirst)
+    start = start.toISOString()
+    let end = new Date(data.dateEnd)
+    end = end.toISOString()
+    HTTP.post('rating/statistics',
+      {
+        startDate: start,
+        endDate: end
+      },
+      {
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+      })
+      .then(response => dispatch('setRatings', response.data.ratings))
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data)
+        }
+      })
+  },
   checkToken ({ dispatch, state }) {
     const token = localStorage.getItem('token')
     axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
@@ -53,21 +73,6 @@ export default {
       .then(response => {
         dispatch('storeUser', { token: token, info: response.data })
       })
-      .catch(() => {
-        router.push('/')
-        localStorage.removeItem('token')
-      })
-  },
-  getReports ({ commit, state }, data) {
-    HTTP.post('rating/statistics',
-      {
-        startDate: data.dateFirst,
-        endDate: data.dateEnd
-      },
-      {
-        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
-      })
-      .then(response => commit('setRatings', response.data.ratings))
       .catch(() => {
         router.push('/')
         localStorage.removeItem('token')
