@@ -39,6 +39,7 @@
 <script>
 import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
+import store from '../store'
 import PieChart from '../components/pieChart'
 import Table from '../components/table'
 
@@ -49,6 +50,9 @@ export default {
     RightNav,
     PieChart,
     Table
+  },
+  created () {
+    store.dispatch('checkToken')
   },
   data () {
     return {

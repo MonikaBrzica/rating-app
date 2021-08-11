@@ -28,7 +28,7 @@ export default {
     return state.ratings
   },
   getNav (state) {
-    if (state.user.role !== 'ADMIN') {
+    if (state.user.role !== 'admin') {
       return state.nav.filter((e) => {
         return e.id !== 3
       })
