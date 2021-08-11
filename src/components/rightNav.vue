@@ -23,6 +23,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .right-nav-container {
+  z-index: 4;
   background-color: $bg;
   width: 64px;
   text-align: center;

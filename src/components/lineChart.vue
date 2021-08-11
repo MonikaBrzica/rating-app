@@ -47,8 +47,14 @@ export default {
       return {
         chart: {
           type: 'area',
-          height: '432px',
-          foreColor: 'rgba(255,255,255,0.5)'
+          height: '364px',
+          foreColor: 'rgba(255,255,255,0.5)',
+          zoom: {
+            enabled: false
+          },
+          toolbar: {
+            show: false
+          }
         },
         noData: {
           text: 'No data in database',
@@ -66,8 +72,15 @@ export default {
           position: 'back',
           yaxis: {
             lines: {
-              show: true
+              show: true,
+              style: 'dashed'
             }
+          },
+          padding: {
+            top: 40,
+            right: 24,
+            bottom: 28,
+            left: 32
           }
         },
         dataLabels: {
@@ -75,11 +88,15 @@ export default {
         },
         colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         stroke: {
-          curve: 'smooth'
+          curve: 'smooth',
+          width: '1'
         },
         xaxis: {
           type: 'datetime',
           categories: this.statistic[5]
+        },
+        yaxis: {
+          align: 'right'
         },
         tooltip: {
           x: {

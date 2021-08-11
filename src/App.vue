@@ -60,5 +60,6 @@ export default {
   height: 100%;
   width: 100%;
   background-color: $bg-dark;
+  overflow-x: hidden;
 }
 </style>

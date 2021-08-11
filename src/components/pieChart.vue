@@ -23,7 +23,7 @@ export default {
       chartOptions: {
         chart: {
           type: 'pie',
-          height: '432px',
+          offsetY: 35,
           foreColor: 'rgba(255,255,255,0.85)',
           fill: {
             colors: '#B0B0B2'
@@ -64,7 +64,6 @@ export default {
           breakpoint: 480,
           options: {
             chart: {
-              width: 150
             }
           }
         }]
@@ -97,6 +96,7 @@ export default {
       margin: 0;
     }
     img {
+      height: 20px;
     }
   }
 }
