@@ -68,10 +68,9 @@ export default {
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
       .then(response => commit('setRatings', response.data.ratings))
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
+      .catch(() => {
+        router.push('/')
+        localStorage.removeItem('token')
       })
   }
 }

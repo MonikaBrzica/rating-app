@@ -71,6 +71,7 @@ li:nth-child(4) {
     height: 60px;
     position: absolute;
     display: flex;
+    order:1;
     .logo {
       margin: 3px 5px;
       width: 54px;

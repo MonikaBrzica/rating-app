@@ -37,26 +37,29 @@ export default {
     }
   },
   getSumRatings (state) {
-    let i = 0
     const series = [0, 0, 0, 0, 0]
-    for (i = 0; i < state.ratings.length; i++) {
-      if (state.ratings[i].emojiId.id === 1) {
-        series[0]++
+    if (!state.ratings) {
+      return series
+    } else {
+      for (let i = 0; i < state.ratings.length; i++) {
+        if (state.ratings[i].emojiId.id === 1) {
+          series[0]++
+        }
+        if (state.ratings[i].emojiId.id === 2) {
+          series[1]++
+        }
+        if (state.ratings[i].emojiId.id === 3) {
+          series[2]++
+        }
+        if (state.ratings[i].emojiId.id === 4) {
+          series[3]++
+        }
+        if (state.ratings[i].emojiId.id === 5) {
+          series[4]++
+        }
       }
-      if (state.ratings[i].emojiId.id === 2) {
-        series[1]++
-      }
-      if (state.ratings[i].emojiId.id === 3) {
-        series[2]++
-      }
-      if (state.ratings[i].emojiId.id === 4) {
-        series[3]++
-      }
-      if (state.ratings[i].emojiId.id === 5) {
-        series[4]++
-      }
+      return series
     }
-    return series
   },
   getSumRatingsLine (state) {
     const lineChart = [
@@ -67,29 +70,32 @@ export default {
       [],
       []
     ]
-    // setting date array with elements
-    // first getting all ratings, then replacing minutes and seconds
-    // and pushing to array if the element isn't already in.
-    state.ratings.forEach((elem) => {
-      const remind = elem.date.slice(13)
-      elem.date = elem.date.replace(remind, ':00:00Z')
-      if (lineChart[5].indexOf(elem.date) === -1) {
-        lineChart[5].push(elem.date)
-      }
-    })
-    for (let i = 0; i < lineChart.length - 1; i++) {
-      for (let j = 0; j < lineChart[5].length; j++) {
-        lineChart[i][j] = 0
-      }
-    }
-    state.ratings.forEach((elem) => {
-      for (let i = 0; i < lineChart[5].length; i++) {
-        if (elem.date === lineChart[5][i]) {
-          lineChart[elem.emojiId.id - 1][i]++
+    if (!state.ratings) {
+      return lineChart
+    } else {
+      // setting date array with elements
+      // first getting all ratings, then replacing minutes and seconds
+      // and pushing to array if the element isn't already in.
+      state.ratings.forEach((elem) => {
+        const remind = elem.date.slice(13)
+        elem.date = elem.date.replace(remind, ':00:00Z')
+        if (lineChart[5].indexOf(elem.date) === -1) {
+          lineChart[5].push(elem.date)
+        }
+      })
+      for (let i = 0; i < lineChart.length - 1; i++) {
+        for (let j = 0; j < lineChart[5].length; j++) {
+          lineChart[i][j] = 0
         }
       }
-    })
-    console.log(lineChart)
-    return lineChart
+      state.ratings.forEach((elem) => {
+        for (let i = 0; i < lineChart[5].length; i++) {
+          if (elem.date === lineChart[5][i]) {
+            lineChart[elem.emojiId.id - 1][i]++
+          }
+        }
+      })
+      return lineChart
+    }
   }
 }

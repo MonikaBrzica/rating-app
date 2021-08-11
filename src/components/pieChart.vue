@@ -5,12 +5,11 @@
       <img src="../assets/images/dots-vertical.png"
       alt="...">
     </div>
-    <apexchart type="pie" width="419" height="390" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="pie" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 <script>
 import VueApexCharts from 'vue-apexcharts'
-import { HTTP } from '../../api/axios'
 export default {
   name: 'PieChart',
   components: {
@@ -24,9 +23,22 @@ export default {
       chartOptions: {
         chart: {
           type: 'pie',
+          height: '432px',
           foreColor: 'rgba(255,255,255,0.85)',
           fill: {
             colors: '#B0B0B2'
+          }
+        },
+        noData: {
+          text: 'No data in database',
+          align: 'center',
+          verticalAlign: 'middle',
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+            color: 'rgba(255,255,255,0.85)',
+            fontSize: '20px',
+            fontFamily: "'Roboto-Medium', sans-serif"
           }
         },
         legend: {
@@ -52,7 +64,7 @@ export default {
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 150
             }
           }
         }]
@@ -60,20 +72,6 @@ export default {
     }
   },
   created () {
-    HTTP.post('rating/statistics',
-      {
-        startDate: this.data.first,
-        endDate: this.data.end
-      },
-      {
-        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
-      })
-      .then(response => this.$store.dispatch('setRatings', response.data.ratings))
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
-      })
   },
   computed: {
     series () {
@@ -85,8 +83,6 @@ export default {
 <style scoped lang="scss">
 .pie-chart {
   background-color: $bg;
-  width: 419px;
-  height: 432px;
   border-radius: 4px;
   .title-container {
     padding: 10px 20px 20px 20px;

@@ -5,7 +5,7 @@
     <img src="../assets/images/dots-vertical.png"
          alt="...">
   </div>
-  <apexchart ref="linechart" type="area" height="350" :options="chartOptions" :series="series"></apexchart>
+  <apexchart ref="linechart" type="area" :options="chartOptions" :series="series"></apexchart>
 
 </div>
 </template>
@@ -47,7 +47,28 @@ export default {
       return {
         chart: {
           type: 'area',
+          height: '432px',
           foreColor: 'rgba(255,255,255,0.5)'
+        },
+        noData: {
+          text: 'No data in database',
+          align: 'center',
+          verticalAlign: 'middle',
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+            color: 'rgba(255,255,255,0.85)',
+            fontSize: '20px',
+            fontFamily: "'Roboto-Medium', sans-serif"
+          }
+        },
+        grid: {
+          position: 'back',
+          yaxis: {
+            lines: {
+              show: true
+            }
+          }
         },
         dataLabels: {
           enabled: false

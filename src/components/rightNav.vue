@@ -84,6 +84,9 @@ export default {
   .right-nav-container {
     width: 64px;
     height: 60px;
+    position: absolute;
+    right: 0;
+    order:2;
     .drop {
       img {
         margin-top: 10px;

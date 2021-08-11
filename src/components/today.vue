@@ -11,7 +11,7 @@
           <LineChart/>
         </div>
         <div class="pie-chart-container">
-          <PieChart/>
+          <PieChart v-bind:data="{first:dateFirst , end:dateEnd}" />
         </div>
         <div class="table-container">
           <!-- <Table/> -->
@@ -38,7 +38,6 @@ export default {
   created () {
     const token = localStorage.getItem('token')
     if (token && !store.state.user.token) {
-      console.log('if block')
       store.dispatch('checkToken')
         .then(() => store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
         )
@@ -106,7 +105,6 @@ export default {
       display: flex;
       flex-wrap: wrap;
       padding: 16px;
-      padding-bottom: 100px;
       column-gap: 1rem;
       row-gap: 1rem;
       justify-content: space-between;
@@ -129,6 +127,7 @@ export default {
     .main-today {
       margin-top: 60px;
       width: 100%;
+      order: 3;
       .header-container{
         padding: 2rem 0 0 2rem;
         max-width: unset;
@@ -140,6 +139,16 @@ export default {
         .sub-header{
           font-size: 1rem;
           line-height: 20px;
+        }
+      }
+      .main-container{
+        flex-direction: column;
+        align-items: center;
+        .line-chart-container{
+          width: 90%;
+        }
+        .pie-chart-container {
+          width: 70%;
         }
       }
     }

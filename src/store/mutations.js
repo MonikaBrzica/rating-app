@@ -18,7 +18,6 @@ export default {
   },
   setRatings (state, data) {
     state.ratings = data
-    console.log(state.ratings)
   },
   logoutUser (state) {
     state.user = {

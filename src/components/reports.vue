@@ -7,7 +7,7 @@
             <LineChart/>
           </div>
           <div class="pie-chart-container">
-            <PieChart/>
+          <PieChart v-bind:data="{first:dateFirst , end:dateEnd}" />
           </div>
           <div class="table-container">
             <!-- <Table/> -->
