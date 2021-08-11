@@ -4,7 +4,6 @@ import Public from '../views/public'
 import Today from '../components/today'
 import Reports from '../components/reports'
 import store from '../store/index'
-import Table from '../components/table'
 
 Vue.use(VueRouter)
 

@@ -25,7 +25,6 @@ export default {
     }
   },
   created () {
-    // waititng for $gAuts to initialize.
     // initilazing socket
     this.subscribe()
     this.$store.dispatch('getCurrentSettings')

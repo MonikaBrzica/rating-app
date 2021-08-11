@@ -7,7 +7,10 @@
         <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
       </div>
       <div class="pie-chart-container">
-        <PieChart  v-bind:data="{end: this.dateEnd, first: this.dateFirst}"/>
+        <PieChart/>
+      </div>
+      <div class="table-container">
+        <Table/>
       </div>
     </div>
     <RightNav/>
@@ -18,13 +21,15 @@ import LeftNav from '../components/leftNav'
 import RightNav from '../components/rightNav'
 import store from '../store/index'
 import PieChart from '../components/pieChart'
+import Table from '../components/table'
 
 export default {
   name: 'Today',
   components: {
     LeftNav,
     RightNav,
-    PieChart
+    PieChart,
+    Table
   },
   created () {
     store.dispatch('checkToken')
@@ -32,6 +37,9 @@ export default {
   data () {
     return {
     }
+  },
+  created () {
+    this.$store.dispatch('getReports', { start: this.dateFirst, end: this.dateEnd })
   },
   computed: {
     dateFirst () {
@@ -63,13 +71,6 @@ export default {
     background-repeat: no-repeat;
     background-position: top right, top right,top right;
     background-size: 50%;
-    .pie-chart-container {
-      width: 419px;
-      height: 432px;
-      margin-top: 200px;
-      margin-right: 20px;
-      display: inline;
-    }
     .header-container{
       max-width: 75%;
       height: 40%;
@@ -89,6 +90,20 @@ export default {
         font-size: 18px;
         line-height: 26px;
       }
+    }
+    .pie-chart-container {
+      width: 419px;
+      height: 432px;
+      margin-top: 200px;
+      margin-right: 20px;
+      display: inline;
+    }
+    .table-container {
+      padding-left: 16px;
+      position: absolute;
+      margin-top: 500px;
+      border-radius: 4px;
+      width: 707px;
     }
   }
 }
@@ -110,6 +125,16 @@ export default {
           font-size: 1rem;
           line-height: 20px;
         }
+      }
+      .pie-chart-container {
+        width: 100%;
+        height: 300px;
+        margin-top: 300px;
+        margin-right: 0px;
+        display: inline;
+      }
+      .table-container {
+        padding-top: 600px;
       }
     }
   }
