@@ -51,9 +51,6 @@ export default {
     PieChart,
     Table
   },
-  created () {
-    store.dispatch('checkToken')
-  },
   data () {
     return {
       selectAttribute: {
@@ -79,13 +76,20 @@ export default {
   },
   methods: {
     onDayClick () {
-      this.$store.dispatch('getReports', { start: this.dateFirst, end: this.dateEnd })
+      store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
     }
   },
   created () {
     const event = new Date()
     event.setDate(1)
-    this.$store.dispatch('getReports', { start: event, end: new Date() })
+    const token = localStorage.getItem('token')
+    if (token && !store.state.user.token) {
+      store.dispatch('checkToken')
+        .then(() => store.dispatch('getReports', { dateFirst: event, dateEnd: new Date() })
+        )
+    } else {
+      store.dispatch('getReports', { dateFirst: event, dateEnd: new Date() })
+    }
   },
   computed: {
     dateFirst () {

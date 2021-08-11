@@ -15,7 +15,7 @@ export default {
       role: data.role
     }
     state.user = user
-    },
+  },
   setRatings (state, data) {
     state.ratings = data
   },

@@ -32,14 +32,18 @@ export default {
     Table
   },
   created () {
-    store.dispatch('checkToken')
+    const token = localStorage.getItem('token')
+    if (token && !store.state.user.token) {
+      store.dispatch('checkToken')
+        .then(() => store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+        )
+    } else {
+      store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+    }
   },
   data () {
     return {
     }
-  },
-  created () {
-    this.$store.dispatch('getReports', { start: this.dateFirst, end: this.dateEnd })
   },
   computed: {
     dateFirst () {

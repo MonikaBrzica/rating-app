@@ -2,7 +2,7 @@ import { HTTP } from '../../api/axios'
 import router from '../router/index'
 import axios from 'axios'
 export default {
-  
+
   logoutUser ({ state }) {
     localStorage.removeItem('token')
     HTTP.post('auth/revoke', {
@@ -10,7 +10,7 @@ export default {
     }).then(() => router.push('/'))
       .then(() => localStorage.removeItem('token'))
   },
-   setRatings (context, data) {
+  setRatings (context, data) {
     context.commit('setRatings', data)
   },
   getCurrentSettings ({ commit }) {
@@ -44,9 +44,9 @@ export default {
     })
   },
   getReports ({ dispatch }, data) {
-    let start = new Date(data.start)
+    let start = new Date(data.dateFirst)
     start = start.toISOString()
-    let end = new Date(data.end)
+    let end = new Date(data.dateEnd)
     end = end.toISOString()
     HTTP.post('rating/statistics',
       {
@@ -54,7 +54,7 @@ export default {
         endDate: end
       },
       {
-        headers: { Authorization: 'Bearer ' + this.state.user.token }
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
       .then(response => dispatch('setRatings', response.data.ratings))
       .catch(function (error) {
@@ -62,21 +62,20 @@ export default {
           console.log(error.response.data)
         }
       })
+  },
   checkToken ({ dispatch, state }) {
     const token = localStorage.getItem('token')
-    if (token && !state.user.token) {
-      axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-          Authorization: 'Bearer ' + token
-        }
+    axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    })
+      .then(response => {
+        dispatch('storeUser', { token: token, info: response.data })
       })
-        .then(response => {
-          dispatch('storeUser', { token: token, info: response.data })
-        })
-        .catch(() => {
-          router.push('/')
-          localStorage.removeItem('token')
-        })
-    }
+      .catch(() => {
+        router.push('/')
+        localStorage.removeItem('token')
+      })
   }
 }
