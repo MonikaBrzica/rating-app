@@ -3,6 +3,7 @@
     <LeftNav/>
     <div class="main-reports">
       <v-date-picker v-model="range"
+                     class='date-picker'
                      :value="null"
                      is-range
                      is-dark
@@ -16,15 +17,11 @@
             <img src="../assets/images/calendar-range.png"
                  alt="calendar">
             <fieldset>
-              <input
-                :value="inputValue.start"
-                v-on="inputEvents.start"
-              />
+              <input :value="inputValue.start"
+                     v-on="inputEvents.start"/>
               <p>-</p>
-              <input class="end"
-                     :value="inputValue.end"
-                     v-on="inputEvents.end"
-              />
+              <input :value="inputValue.end"
+                     v-on="inputEvents.end"/>
             </fieldset>
           </div>
         </template>
@@ -57,9 +54,9 @@ export default {
     return {
       selectAttribute: {
         highlight: {
-          start: { fillMode: 'light', color: 'gray' },
-          base: { fillMode: 'light', color: 'gray' },
-          end: { fillMode: 'solid', color: 'blue', borderRadius: 0 }
+          start: { fillMode: 'light' },
+          base: { fillMode: 'light' },
+          end: { fillMode: 'solid' }
         },
         dates: { start: this.dateFirst, end: this.dateEnd }
       },
@@ -97,17 +94,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.vc-container {
-  .vc-is-dark .vc-weekday[data-v-74ad501d] {
-    color: var(--accent-600);
-  }
-
-  .vc-container.vc-is-dark {
-    color: rgba(255, 255, 255, 0.85);
-    background-color: #2D3038;
-    border-color: #2D3038;
-  }
-}
 .reports {
   height: 100vh;
   width: 100%;
@@ -117,6 +103,46 @@ export default {
     margin-left: 16px;
     width: calc(100% - 164px);
     order:2;
+    .date-picker /deep/ .vc-container.vc-is-dark {
+      color: rgba(255, 255, 255, 0.85);
+      background-color: #2D3038;
+      border-color: #2D3038;
+    }
+    /deep/ .vc-is-dark .vc-title {
+      color: rgba(255, 255, 255, 0.85);
+      font-family: Roboto-Medium;
+      font-weight: normal;
+      font-size: 14px;
+      text-align: center;
+    }
+    /deep/ .vc-is-dark .vc-weekday {
+      color: #006BF5;
+    }
+    /deep/ .vc-day-layer {
+      padding: 1px;
+    }
+    /deep/ .vc-highlight {
+      background-color: #1B1E24 !important;
+      border-radius: 4px !important;
+    }
+    /deep/ .vc-highlight-base-end {
+      opacity: 1 !important;
+      background-color: #006BF5 !important;
+      z-index: 1;
+      width: 100% !important;
+    }
+    /deep/ .vc-dot {
+      background-color: #006BF5 !important;
+      margin-bottom: 1px;
+    }
+    /deep/ .vc-day.is-not-in-month *{
+      opacity: 0.5;
+    }
+    /deep/ .vc-day-content {
+      font-family: Roboto-Regular;
+      font-weight: 400 !important;
+      opacity: 0.85;
+    }
     .pie {
       width: 419px;
       height: 432px;
@@ -147,6 +173,7 @@ export default {
         padding: 0;
         width: 192px;
         height: 32px;
+        border-width: 2px;
         input {
           font-family: "Roboto-Regular", sans-serif;
           background-color: transparent;
