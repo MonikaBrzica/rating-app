@@ -70,7 +70,6 @@ export default {
   border-radius: 4px;
   .title-container {
     padding: 10px 20px 20px 20px;
-    height: 24px;
     display: flex;
     justify-content: space-between;
     p {
@@ -81,6 +80,7 @@ export default {
       margin: 0;
     }
     img {
+      margin: 2.5px;
     }
   }
 }

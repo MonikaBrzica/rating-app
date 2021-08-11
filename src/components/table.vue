@@ -119,12 +119,13 @@ export default {
       width: 354px;
       height: 47px;
       background-color: rgb(62, 65, 72);
-    }
-    img {
-      text-align: start;
-      margin-left: 20px;
-      width: 24px;
-      height: 24px;
+
+      img {
+        width: 24px;
+        height: 24px;
+        padding-top: 6px;
+        padding-left: 6px;
+      }
     }
     td {
       font-size: 14px;
