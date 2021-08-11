@@ -37,8 +37,9 @@ export default {
     }
   },
   getSumRatings (state) {
+    let i = 0
     const series = [0, 0, 0, 0, 0]
-    if (!state.ratings) {
+    if (state.ratings !== null) {
       for (i = 0; i < state.ratings.length; i++) {
         if (state.ratings[i].emojiId.id === 1) {
           series[0]++
@@ -56,8 +57,8 @@ export default {
           series[4]++
         }
       }
-      return series
     }
+    return series
   },
   getSumRatingsLine (state) {
     const lineChart = [

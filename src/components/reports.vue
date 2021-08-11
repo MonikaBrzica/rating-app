@@ -2,6 +2,7 @@
   <div class="reports">
     <LeftNav/>
     <div class="main-reports">
+      <div class="calendar">
           <v-date-picker v-model="range"
                      class='date-picker'
                      :value="null"
@@ -26,6 +27,7 @@
           </div>
         </template>
       </v-date-picker>
+        </div>
         <div class="main-container">
           <div class="line-chart-container">
             <LineChart/>
@@ -34,9 +36,10 @@
           <PieChart/>
           </div>
           <div class="table-container">
-        <Table/>
+            <Table/>
       </div>
     </div>
+  </div>
     <RightNav/>
   </div>
 </template>
@@ -96,18 +99,6 @@ export default {
       store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
     }
   },
-  created () {
-    const event = new Date()
-    event.setDate(1)
-    const token = localStorage.getItem('token')
-    if (token && !store.state.user.token) {
-      store.dispatch('checkToken')
-        .then(() => store.dispatch('getReports', { dateFirst: event, dateEnd: new Date() })
-        )
-    } else {
-      store.dispatch('getReports', { dateFirst: event, dateEnd: new Date() })
-    }
-  },
   computed: {
     dateFirst () {
       return this.range.start
@@ -129,8 +120,11 @@ export default {
     order:2;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    
+    align-content: flex-start;
+    .calendar {
+      width: 100%;
+      margin-left: 16px;
+    }
     .date-picker /deep/ .vc-container.vc-is-dark {
       color: rgba(255, 255, 255, 0.85);
       background-color: #2D3038;
@@ -171,10 +165,8 @@ export default {
       font-weight: 400 !important;
       opacity: 0.85;
     }
-    
-    input-container{
+    .input-container{
       margin-top: 16px;
-      margin-bottom: 16px;
       img {
         opacity: 0.6;
         width: 24px;
@@ -209,8 +201,8 @@ export default {
           line-height: 20px;
           text-align: center;
           }
-          }
-          }
+      }
+    }
     .main-container{
       z-index: 2;
       width: 100%;
@@ -220,21 +212,21 @@ export default {
       column-gap: 1rem;
       row-gap: 1rem;
       .line-chart-container{
+        border-radius: 4px;
         width: 72.5%;
         height: 432px;
         background-color: $bg;
         padding-bottom: 16px;
       }
       .pie-chart-container {
+        border-radius: 4px;
         width: 25%;
         max-height: 432px;
         background-color: $bg;
         padding-bottom: 16px;
       }
       .table-container {
-        margin-top: 2rem;
         width: 37%;
-        background-color: blue;
       }
     }
   }

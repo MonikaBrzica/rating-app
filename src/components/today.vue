@@ -20,6 +20,7 @@
         <Table/>
       </div>
     </div>
+  </div>
     <RightNav/>
   </div>
 </template>
@@ -37,7 +38,7 @@ export default {
     LeftNav,
     RightNav,
     PieChart,
-    LineChart
+    LineChart,
     Table
   },
   created () {
@@ -129,37 +130,23 @@ export default {
       column-gap: 1rem;
       row-gap: 1rem;
       .line-chart-container{
+        border-radius: 4px;
         width: 72.5%;
         height: 432px;
         background-color: $bg;
         padding-bottom: 16px;
       }
       .pie-chart-container {
+        border-radius: 4px;
         width: 25%;
         max-height: 432px;
         background-color: $bg;
         padding-bottom: 16px;
       }
       .table-container {
-        margin-top: 2rem;
-        width: 37%;
-        height: 192px;
-        background-color: blue;
+        border-radius: 4px;
+        width: 707px;
       }
-    }
-    .pie-chart-container {
-      width: 419px;
-      height: 432px;
-      margin-top: 200px;
-      margin-right: 20px;
-      display: inline;
-    }
-    .table-container {
-      padding-left: 16px;
-      position: absolute;
-      margin-top: 500px;
-      border-radius: 4px;
-      width: 707px;
     }
   }
 }
