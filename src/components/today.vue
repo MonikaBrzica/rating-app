@@ -14,7 +14,7 @@
           <LineChart/>
         </div>
         <div class="pie-chart-container">
-          <PieChart v-bind:data="{first:dateFirst , end:dateEnd}" />
+          <PieChart/>
         </div>
         <div class="table-container">
           <!-- <Table/> -->
@@ -43,10 +43,10 @@ export default {
     const token = localStorage.getItem('token')
     if (token && !store.state.user.token) {
       store.dispatch('checkToken')
-        .then(() => store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+        .then(() => store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
         )
     } else {
-      store.dispatch('getStatistic', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+      store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
     }
   },
   data () {

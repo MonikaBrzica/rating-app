@@ -58,7 +58,7 @@ export default {
         localStorage.removeItem('token')
       })
   },
-  getStatistic ({ commit, state }, data) {
+  getReports ({ commit, state }, data) {
     HTTP.post('rating/statistics',
       {
         startDate: data.dateFirst,
