@@ -68,7 +68,6 @@ export default {
       let i
       for (i = 0; i < list.length; i++) {
         list[i].score = this.$store.getters.getSumRatings[i]
-        console.log(list[i].score)
       }
       if (this.sort.key) {
         list.sort((a, b) => {

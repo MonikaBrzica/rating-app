@@ -63,7 +63,6 @@ export default {
   created () {
     const token = localStorage.getItem('token')
     if (token && !store.state.user.token) {
-      console.log('if block')
       store.dispatch('checkToken')
         .then(() => store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
         )
@@ -220,7 +219,7 @@ export default {
       }
       .pie-chart-container {
         border-radius: 4px;
-        width: 25%;
+        width: 26%;
         max-height: 432px;
         background-color: $bg;
         padding-bottom: 16px;

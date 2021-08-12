@@ -143,6 +143,7 @@ export default {
       font-family: 'Roboto-Bold', sans-serif;
       font-size: 1.5rem;
       line-height: 29px;
+      margin: 1.5rem 0;
     }
     img {
       height: 20px;
@@ -165,6 +166,9 @@ export default {
     .emoticons-preview-container {
       color: $white-500;
       flex-basis: calc(50% - 1.5rem);
+      p {
+        margin-bottom: 8px;
+      }
       img {
         height: 24px;
         width: 24px;

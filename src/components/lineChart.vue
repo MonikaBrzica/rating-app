@@ -86,7 +86,7 @@ export default {
         dataLabels: {
           enabled: false
         },
-        colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
+        colors: ['rgb(4, 210, 124)', 'rgb(65, 179, 233)', 'rgb(176, 176, 178)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         stroke: {
           curve: 'smooth',
           width: '1'
@@ -103,8 +103,13 @@ export default {
             format: 'dd/MM/yy HH:mm'
           }
         },
+        legend: {
+          markers: {
+            radius: 0
+          }
+        },
         markers: {
-          colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)']
+          colors: ['rgb(4, 210, 124)', 'rgb(65, 179, 233)', 'rgb(176, 176, 178)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)']
         }
       }
     }
@@ -117,11 +122,10 @@ export default {
   width: 100%;
   height:100%;
   .title-container {
-    box-sizing: border-box;
-    padding: 20px 24px;
-    height: 20px;
+    padding: 20px 20px 0px 20px;
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
     p {
       color: $white-850;
       font-family: 'Roboto-Medium', sans-serif;
@@ -129,7 +133,7 @@ export default {
       margin: 0;
     }
     img{
-      height: 20px;
+      height: 24px;
     }
   }
 }

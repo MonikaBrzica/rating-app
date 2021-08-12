@@ -5,11 +5,12 @@
       <img src="../assets/images/dots-vertical.png"
            alt="...">
     </div>
-    <apexchart type="pie" :options="chartOptions" :series="series"></apexchart>
+    <apexchart type="pie" width="90%" height="380" :options="chartOptions" :series="series"></apexchart>
   </div>
 </template>
 <script>
 import VueApexCharts from 'vue-apexcharts'
+
 export default {
   name: 'PieChart',
   components: {
@@ -20,7 +21,7 @@ export default {
       chartOptions: {
         chart: {
           type: 'pie',
-          offsetY: 35,
+          offsetX: 20,
           foreColor: 'rgba(255,255,255,0.85)',
           fill: {
             colors: '#B0B0B2'
@@ -42,8 +43,7 @@ export default {
           position: 'bottom',
           markers: {
             radius: 0
-          },
-          padding: 5
+          }
         },
         dataLabels: {
           textAnchor: 'middle',
@@ -52,18 +52,11 @@ export default {
           }
         },
         labels: ['Very happy', 'Happy', 'Meh', 'Sad', 'Very sad'],
-        colors: ['rgb(0, 168, 107)', 'rgb(65, 179, 233)', 'rgb(122, 122, 122)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
+        colors: ['rgb(4, 210, 124)', 'rgb(65, 179, 233)', 'rgb(176, 176, 178)', 'rgb(255, 186, 19)', 'rgb(249, 88, 90)'],
         stroke: {
           colors: 'rgb(45, 48, 56)',
           width: 4
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-            }
-          }
-        }]
+        }
       }
     }
   },
@@ -79,7 +72,7 @@ export default {
   background-color: $bg;
   border-radius: 4px;
   .title-container {
-    padding: 10px 20px 20px 20px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     p {

@@ -44,7 +44,6 @@ li{
     width: 100px;
     height: 72px;
     text-align: center;
-    padding-top: 10px;
     img {
       margin-top: 10px;
     }

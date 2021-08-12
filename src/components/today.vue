@@ -4,7 +4,7 @@
     <div class="main-today">
       <div class="header-container">
         <p class="header">Today is a new day. Check your ratings!</p>
-        <p class="sub-header">Graphs presents you rating results. Today you have 225 rates, check it on dashboard.</p>
+        <p class="sub-header">Graphs presents you rating results. Today you have {{ this.count }} ratings, check it on dashboard.</p>
       </div>
       <img src="../assets/images/Oval.svg" alt="" id="bg-one">
       <img src="../assets/images/ovalcopy.svg" alt="" id="bg-two">
@@ -64,6 +64,14 @@ export default {
     dateEnd () {
       const event = new Date()
       return event.toISOString()
+    },
+    count () {
+      let count = 0
+      const ratings = store.getters.getRatings
+      for (let i = 0; i < ratings.length; i++) {
+        count++
+      }
+      return count
     }
   }
 }
@@ -85,11 +93,13 @@ export default {
       max-width: 75%;
       padding: 4rem 0 0 4rem;
       margin-bottom: 12%;
-      .header, .sub-header{
+      .sub-header {
         color: $white-600;
         text-align: left;
       }
       .header{
+        color: $white-700;
+        text-align: left;
         font-family: 'Roboto-Bold',sans-serif;
         font-size: 3rem;
         line-height: 58px;
@@ -138,10 +148,10 @@ export default {
       }
       .pie-chart-container {
         border-radius: 4px;
-        width: 25%;
+        width: 26%;
+        padding-bottom: 16px;
         max-height: 432px;
         background-color: $bg;
-        padding-bottom: 16px;
       }
       .table-container {
         border-radius: 4px;
