@@ -88,7 +88,7 @@ export default {
         }
       ],
       range: {
-        start: new Date().setDate(1),
+        start: new Date().setHours(2, 0, 0, 0),
         end: new Date()
       }
     }

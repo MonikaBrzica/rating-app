@@ -69,11 +69,10 @@ export default {
           }
         },
         grid: {
-          position: 'back',
+          position: 'front',
           yaxis: {
-            lines: {
-              show: true,
-              style: 'dashed'
+            line: {
+              show: true
             }
           },
           padding: {

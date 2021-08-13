@@ -3,9 +3,13 @@
     <img class="logo"
          src="../assets/images/logo.png"
          alt="logo">
-    <NavLink v-bind:data="{id: item.id, src: item.src, text: item.text, link: item.link }"
-             v-for="item in nav"
-             v-bind:key="item.id"
+    <NavLink v-for="item in nav"
+             :key="item.id"
+             :data="{id: item.id, src: item.src, text: item.text, link: item.link }"
+             active-class="active"
+             class="active"
+             tag="li"/>
+    <NavLink :data="{id: settings.id, src: settings.src, text: settings.text, link: settings.link }"
              v-on:show="itemClicked()"/>
     <div class="set-container"
          v-show="showModal">
@@ -24,6 +28,7 @@ export default {
   },
   data () {
     return {
+      settings: this.$store.state.nav[2],
       showModal: false
     }
   },
@@ -40,10 +45,17 @@ export default {
 }
 </script>
 <style scoped lang=scss>
+li.router-link-active {
+  opacity: 1;
+}
+li.active.router-link-active {
+  background-color: $bg-light;
+}
 li:nth-child(4) {
   position: absolute;
   bottom: 0;
 }
+
 .nav-container {
   z-index: 4;
   position: relative;
@@ -87,10 +99,10 @@ li:nth-child(4) {
       height: 100%;
       top:60px;
     }
-    li:last-of-type {
+    .li:last-of-type {
       position: relative;
     }
-    li {
+    .li {
       display: inline-block;
     }
   }

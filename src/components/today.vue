@@ -9,7 +9,7 @@
       <img src="../assets/images/Oval.svg" alt="" id="bg-one">
       <img src="../assets/images/ovalcopy.svg" alt="" id="bg-two">
       <img src="../assets/images/Artwork.svg" alt="" id="bg-three">
-      <div class="main-container">
+      <div class="main-container" v-show="this.count">
         <div class="line-chart-container">
           <LineChart/>
         </div>
@@ -92,8 +92,9 @@ export default {
       z-index: 2;
       max-width: 75%;
       padding: 4rem 0 0 4rem;
-      margin-bottom: 12%;
+      margin-bottom: 8.5%;
       .sub-header {
+        margin-top: 24px;
         color: $white-600;
         text-align: left;
       }
@@ -148,7 +149,7 @@ export default {
       }
       .pie-chart-container {
         border-radius: 4px;
-        width: 26%;
+        width: 26.2%;
         padding-bottom: 16px;
         max-height: 432px;
         background-color: $bg;

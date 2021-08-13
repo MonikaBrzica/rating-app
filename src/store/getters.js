@@ -28,13 +28,10 @@ export default {
     return state.ratings
   },
   getNav (state) {
-    if (state.user.role !== 'admin') {
-      return state.nav.filter((e) => {
-        return e.id !== 3
-      })
-    } else {
-      return state.nav
-    }
+    return state.nav.filter((e) => {
+      console.log(e)
+      return e.id !== 3
+    })
   },
   getSumRatings (state) {
     let i = 0
