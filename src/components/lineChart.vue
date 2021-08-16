@@ -54,6 +54,19 @@ export default {
           },
           toolbar: {
             show: false
+          },
+          animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 900,
+            animateGradually: {
+              enabled: true,
+              delay: 350
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 1500
+            }
           }
         },
         noData: {
