@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rightNav renders correctly 1`] = `
+<div
+  class="right-nav-container"
+>
+  <div
+    class="drop"
+  >
+    <img
+      alt="Profile"
+      src="src"
+    />
+     
+    <div
+      class="dropdown-content"
+    >
+      <p>
+        Ivan
+      </p>
+       
+      <button>
+        Logout
+      </button>
+    </div>
+  </div>
+   
+  <hr />
+</div>
+`;
