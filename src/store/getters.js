@@ -29,28 +29,27 @@ export default {
   },
   getNav (state) {
     return state.nav.filter((e) => {
-      console.log(e)
       return e.id !== 3
     })
   },
   getSumRatings (state) {
-    let i = 0
+    const ratings = state.ratings
     const series = [0, 0, 0, 0, 0]
-    if (state.ratings !== null) {
-      for (i = 0; i < state.ratings.length; i++) {
-        if (state.ratings[i].emojiId.id === 1) {
+    if (ratings !== null) {
+      for (let i = 0; i < ratings.length; i++) {
+        if (ratings[i].emojiId === 1) {
           series[0]++
         }
-        if (state.ratings[i].emojiId.id === 2) {
+        if (ratings[i].emojiId === 2) {
           series[1]++
         }
-        if (state.ratings[i].emojiId.id === 3) {
+        if (ratings[i].emojiId === 3) {
           series[2]++
         }
-        if (state.ratings[i].emojiId.id === 4) {
+        if (ratings[i].emojiId === 4) {
           series[3]++
         }
-        if (state.ratings[i].emojiId.id === 5) {
+        if (ratings[i].emojiId === 5) {
           series[4]++
         }
       }
@@ -58,6 +57,7 @@ export default {
     return series
   },
   getSumRatingsLine (state) {
+    const ratings = state.ratings
     const lineChart = [
       [],
       [],
@@ -66,13 +66,13 @@ export default {
       [],
       []
     ]
-    if (!state.ratings) {
+    if (!ratings) {
       return lineChart
     } else {
       // setting date array with elements
       // first getting all ratings, then replacing minutes and seconds
       // and pushing to array if the element isn't already in.
-      state.ratings.forEach((elem) => {
+      ratings.forEach((elem) => {
         const remind = elem.date.slice(13)
         elem.date = elem.date.replace(remind, ':00:00Z')
         if (lineChart[5].indexOf(elem.date) === -1) {
@@ -84,10 +84,10 @@ export default {
           lineChart[i][j] = 0
         }
       }
-      state.ratings.forEach((elem) => {
+      ratings.forEach((elem) => {
         for (let i = 0; i < lineChart[5].length; i++) {
           if (elem.date === lineChart[5][i]) {
-            lineChart[elem.emojiId.id - 1][i]++
+            lineChart[elem.emojiId - 1][i]++
           }
         }
       })

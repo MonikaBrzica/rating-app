@@ -54,6 +54,7 @@ describe('InputComponent', () => {
   wrapper.setData({
     dataValidated: true
   })
+  
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
