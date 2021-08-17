@@ -67,6 +67,28 @@ export default {
   background-color: $bg-dark;
   overflow-x: hidden;
 }
+div  ::-webkit-scrollbar {
+  width: 0px !important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $white-500;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $bg-dark;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 .alert {
   box-sizing: border-box;
   display: block;
