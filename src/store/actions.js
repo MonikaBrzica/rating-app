@@ -77,5 +77,15 @@ export default {
         router.push('/')
         localStorage.removeItem('token')
       })
+  },
+  changeSettings ({ state }, updatedSettings) {
+    HTTP.put('rating/settings', updatedSettings, {
+      headers: { Authorization: 'Bearer ' + state.user.token }
+    })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data)
+        }
+      })
   }
 }

@@ -27,7 +27,6 @@
 </template>
 <script>
 import Input from './inputComponent'
-import { HTTP } from '../../api/axios'
 export default {
   name: 'Settings',
   components: {
@@ -85,11 +84,6 @@ export default {
       // method that is called on updateSettings event.
       // copying settings.
       const updatedSettings = this.settings
-      // if block that sets msg to null if it is empty.
-      // This is because the msg can be empty and it is stored as null in database.
-      if (data.name === 'msg' && data.value === '') {
-        data.value = null
-      }
       // for block that goes through all properties from updatedSettings object.
       for (const property in updatedSettings) {
         // if block that updates correct value in object.
@@ -97,28 +91,14 @@ export default {
           updatedSettings[property] = data.value
         }
       }
+      // if block that sets msg to null if it is empty.
+      // This is because the msg can be empty and it is stored as null in database.
+      if ((data.name === 'msg' && data.value === '') || !updatedSettings) {
+        updatedSettings.msg = null
+      }
+      // dispatch store action that sends PUT request to backend
+      this.$store.dispatch('changeSettings', updatedSettings)
       // PUT request sent to backend to store updated settings.
-      HTTP.put('rating/settings', updatedSettings, {
-        headers: { Authorization: 'Bearer ' + this.$store.state.user.token }
-      })
-        .catch(function (error) {
-          if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log(error.response.data)
-            console.log(error.response.status)
-            console.log(error.response.headers)
-          } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-            console.log(error.request)
-          } else {
-            // Something happened in setting up the request that triggered an Error
-            console.log('Error', error.message)
-          }
-          console.log(error.config)
-        })
     },
     closeModal () {
       this.$emit('close')
@@ -128,6 +108,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .settings-container {
+  z-index: 5;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -135,6 +116,7 @@ export default {
   background-color: $bg;
   padding: 2rem 3rem;
   .title-container {
+    z-index: 5;
     padding: 2rem 0 2rem 1rem;
     display: flex;
     justify-content: space-between;

@@ -6,6 +6,7 @@ import VCalendar from 'v-calendar'
 
 Vue.use(VCalendar)
 Vue.config.productionTip = false
+Vue.config.performance = true
 
 new Vue({
   router,
