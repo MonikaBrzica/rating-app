@@ -46,25 +46,35 @@ export default {
     }
     .dropdown-content {
       position: absolute;
-      right: 30px;
+      right: 64px;
       min-width: 160px;
-      background-color: $bg-light;
+      background-color: $bg;
+      box-shadow: 0px 0px 4px 1px #1B1E24;
       z-index: 1;
       display: none;
       text-align: center;
-      padding: 1.5rem 0.5rem;
-      border-radius: 15px;
+      border-radius: 5px;
       border-top-right-radius: 0;
+      p {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 1rem 0rem 0.5rem 0rem;
+      }
+      button {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 0.5rem 0rem 1rem 0rem;
+      }
       p, button {
         font-family: 'Roboto-Medium', sans-serif;
         font-size: 1rem;
         color: $white-850;
+        opacity: 0.5;
         &:hover {
-          color: $white-500;
+          background-color: $bg-light;
+          color: $white-850;
+          opacity: 1;
         }
-      }
-      p {
-        margin: 0 0 1rem 0;
       }
       button {
         background-color: transparent;
