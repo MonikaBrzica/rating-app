@@ -66,13 +66,12 @@ export default {
       return event.toISOString()
     },
     count () {
-      let count = 0
       const ratings = store.getters.getRatings
-      if (!ratings) {
-        return count
-      }
-      for (let i = 0; i < ratings.length; i++) {
-        count++
+      let count = 0
+      if (ratings) {
+        for (let i = 0; i < ratings.length; i++) {
+          count++
+        }
       }
       return count
     }
@@ -100,11 +99,6 @@ export default {
       max-width: 75%;
       padding: 4rem 0 0 4rem;
       margin-bottom: 8.5%;
-      .sub-header {
-        margin-top: 24px;
-        color: $white-600;
-        text-align: left;
-      }
       .header{
         color: $white-700;
         text-align: left;
@@ -114,7 +108,10 @@ export default {
         margin: 0;
         width: 24ch;
       }
-      .sub-header{
+      .sub-header {
+        margin-top: 24px;
+        color: $white-600;
+        text-align: left;
         font-family: 'Roboto-Regular',sans-serif;
         font-size: 18px;
         line-height: 26px;
@@ -169,9 +166,33 @@ export default {
   }
 }
 /* Media query */
+
+@media screen and (max-width: 1440px) {
+  .today {
+    .main-today {
+      .header-container {
+        .sub-header {
+          width: 40%;
+        }
+      }
+    }
+  }
+}
 @media screen and (max-width: 1024px) {
   .today{
     .main-today{
+      .header-container {
+        width: 30%;
+        .header {
+          width: 100%;
+        }
+        .sub-header {
+          width: 100%;
+        }
+      }
+      #bg-three {
+        right: 10%;
+      }
       .main-container{
         flex-direction: column;
         align-items: center;
@@ -195,7 +216,7 @@ export default {
       width: 100%;
       order: 3;
       .header-container{
-        padding: 2rem 0 0 2rem;
+        padding: 20.5rem 0 1rem 2rem;
         max-width: unset;
         width: 100%;
         .header{
@@ -203,9 +224,13 @@ export default {
           line-height: 30px;
         }
         .sub-header{
+          color: $white-700;
           font-size: 1rem;
           line-height: 20px;
         }
+      }
+      #bg-three {
+        top: 50px;
       }
       .main-container{
         flex-direction: column;
@@ -216,6 +241,21 @@ export default {
         .pie-chart-container {
           width: 60%;
         }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  .today{
+    .main-today {
+      .header-container {
+        padding: 10rem 0 5rem 2rem;
+      }
+      img {
+        height: 20%;
+      }
+        #bg-three {
+          top: 50px;
       }
     }
   }

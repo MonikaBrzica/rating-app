@@ -11,10 +11,10 @@
                text: item.text,
                link: item.link
               }"
-             active-class="active"
              class="active"
              tag="li"/>
-    <NavLink v-if="this.$store.state.user.role === 'admin'"
+    <NavLink class="last"
+             v-if="this.$store.state.user.role === 'admin'"
             :data="{
               id: settings.id,
               src: settings.src,
@@ -56,17 +56,14 @@ export default {
 }
 </script>
 <style scoped lang=scss>
-li.router-link-active {
-  opacity: 1;
-}
 li.active.router-link-active {
   background-color: $bg-light;
+  opacity: 1;
 }
 li:nth-child(4) {
   position: absolute;
   bottom: 0;
 }
-
 .nav-container {
   z-index: 4;
   position: relative;
@@ -110,10 +107,10 @@ li:nth-child(4) {
       height: 100%;
       top:60px;
     }
-    .li:last-of-type {
+    .last {
       position: relative;
     }
-    .li {
+    .active {
       display: inline-block;
     }
   }
