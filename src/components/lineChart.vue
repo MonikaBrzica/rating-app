@@ -122,11 +122,11 @@ export default {
         },
         legend: {
           markers: {
-            radius: 0,
-            height: 14,
-            width: 14,
+            radius: 2,
+            height: 12,
+            width: 12,
             customHTML: function () {
-              return '<img src= "https://res.cloudinary.com/dxlyytkww/image/upload/v1629139678/RatingApp/check_ht3d6x.png" height="14px" width="14px">'
+              return '<img src= "https://res.cloudinary.com/dxlyytkww/image/upload/v1629139678/RatingApp/check_ht3d6x.png" style="margin-bottom: 3px" height="12px" width="12px">'
             }
           }
         },
