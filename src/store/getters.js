@@ -33,11 +33,10 @@ export default {
     })
   },
   getSumRatings (state) {
-    let i = 0
     const ratings = state.ratings
     const series = [0, 0, 0, 0, 0]
     if (ratings !== null) {
-      for (i = 0; i < ratings.length; i++) {
+      for (let i = 0; i < ratings.length; i++) {
         if (ratings[i].emojiId === 1) {
           series[0]++
         }
@@ -58,6 +57,7 @@ export default {
     return series
   },
   getSumRatingsLine (state) {
+    const ratings = state.ratings
     const lineChart = [
       [],
       [],
@@ -66,13 +66,13 @@ export default {
       [],
       []
     ]
-    if (!state.ratings) {
+    if (!ratings) {
       return lineChart
     } else {
       // setting date array with elements
       // first getting all ratings, then replacing minutes and seconds
       // and pushing to array if the element isn't already in.
-      state.ratings.forEach((elem) => {
+      ratings.forEach((elem) => {
         const remind = elem.date.slice(13)
         elem.date = elem.date.replace(remind, ':00:00Z')
         if (lineChart[5].indexOf(elem.date) === -1) {
@@ -84,7 +84,7 @@ export default {
           lineChart[i][j] = 0
         }
       }
-      state.ratings.forEach((elem) => {
+      ratings.forEach((elem) => {
         for (let i = 0; i < lineChart[5].length; i++) {
           if (elem.date === lineChart[5][i]) {
             lineChart[elem.emojiId - 1][i]++
