@@ -73,8 +73,6 @@ export default {
       // first getting all ratings, then replacing minutes and seconds
       // and pushing to array if the element isn't already in.
       ratings.forEach((elem) => {
-        const remind = elem.date.slice(13)
-        elem.date = elem.date.replace(remind, ':00:00Z')
         if (lineChart[5].indexOf(elem.date) === -1) {
           lineChart[5].push(elem.date)
         }

@@ -25,6 +25,9 @@ export default {
           foreColor: 'rgba(255,255,255,0.85)',
           fill: {
             colors: '#B0B0B2'
+          },
+          zoom: {
+            enabled: true
           }
         },
         noData: {
@@ -42,7 +45,12 @@ export default {
         legend: {
           position: 'bottom',
           markers: {
-            radius: 0
+            radius: 0,
+            height: 14,
+            width: 14,
+            customHTML: function () {
+              return '<img src= "https://res.cloudinary.com/dxlyytkww/image/upload/v1629139678/RatingApp/check_ht3d6x.png" height="14px" width="14px">'
+            }
           }
         },
         dataLabels: {

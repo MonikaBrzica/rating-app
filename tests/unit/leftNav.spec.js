@@ -1,4 +1,4 @@
-import { shallowMount,createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import leftNav from '../../src/components/leftNav'
 import Vuex from 'vuex'
 

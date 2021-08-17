@@ -68,6 +68,9 @@ export default {
     count () {
       let count = 0
       const ratings = store.getters.getRatings
+      if (!ratings) {
+        return count
+      }
       for (let i = 0; i < ratings.length; i++) {
         count++
       }
