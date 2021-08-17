@@ -87,7 +87,7 @@ export default {
       state.ratings.forEach((elem) => {
         for (let i = 0; i < lineChart[5].length; i++) {
           if (elem.date === lineChart[5][i]) {
-            lineChart[elem.emojiId.id - 1][i]++
+            lineChart[elem.emojiId - 1][i]++
           }
         }
       })

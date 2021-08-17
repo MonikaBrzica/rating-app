@@ -29,7 +29,7 @@
           </template>
         </v-date-picker>
       </div>
-      <div class="main-container" v-show="this.$store.getters.getRatings">
+      <div class="main-container">
         <div class="line-chart-container">
           <LineChart/>
         </div>
