@@ -27,5 +27,8 @@ export default {
       loggedIn: false,
       token: ''
     }
+  },
+  clearRatings (state) {
+    state.ratings = []
   }
 }

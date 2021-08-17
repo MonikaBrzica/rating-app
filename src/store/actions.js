@@ -11,6 +11,9 @@ export default {
       .then(() => localStorage.removeItem('token'))
   },
   setRatings (context, data) {
+    if (!data) {
+      context.commit('clearRatings')
+    }
     // parsing date from backend. Turning it to local time and reseting minutes and seconds
     // this is done because of formating line chart data.
     data.forEach((elem) => {

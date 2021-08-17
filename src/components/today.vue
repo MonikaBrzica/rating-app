@@ -75,6 +75,10 @@ export default {
       }
       return count
     }
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$store.commit('clearRatings')
+    next()
   }
 }
 </script>
