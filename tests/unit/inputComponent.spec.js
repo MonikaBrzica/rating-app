@@ -3,6 +3,7 @@ import InputComponent from '../../src/components/inputComponent'
 import Vuex from 'vuex'
 const localVue = createLocalVue()
 localVue.use(Vuex)
+
 const store = new Vuex.Store({
   state: {
     settings: {},
@@ -48,6 +49,7 @@ describe('InputComponent', () => {
         text: '',
         type: 'text',
         value: 'FSdn'
+
       }
     }
   })
@@ -61,12 +63,13 @@ describe('InputComponent', () => {
   it('should have updateData method', function () {
     expect(typeof wrapper.vm.updateData).toBe('function')
   })
-  wrapper.vm.updateData('numOfEmoticons', 3)
-  it('should emit updateSettings  event', function () {
+  wrapper.vm.updateData('msg', 'HelloWorld')
+  it('should emit updateSettings event', function () {
     expect(wrapper.emitted().updateSettings).toBeTruthy()
   })
-  it('should emit updateEmotions event', function () {
-    expect(wrapper.emitted().updateEmotions).toBeTruthy()
+  wrapper.vm.updateData('numOfEmoticons', 5)
+  it('should emit two events updateEmotions and updateSettings', function () {
+    expect(wrapper.emittedByOrder().map(e => e.name)).toEqual(['updateSettings', 'updateEmotions', 'updateSettings'])
   })
   it('should have updateEmotionsPreview method', function () {
     expect(typeof wrapper.vm.updateEmotionsPreview).toBe('function')

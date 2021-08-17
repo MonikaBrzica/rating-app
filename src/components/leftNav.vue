@@ -82,12 +82,12 @@ li:nth-child(4) {
   .set-container {
     margin-left: 100px;
     height: 100vh;
-    width: calc(100% - 100px);
+    width: calc(100% - 164px);
     max-width: 1056px;
     position: fixed;
     bottom: 0;
     top:0;
-    z-index: 1;
+    z-index: 5;
     box-shadow: 5px 5px 5px 5px #1B1E24;
   }
 }
