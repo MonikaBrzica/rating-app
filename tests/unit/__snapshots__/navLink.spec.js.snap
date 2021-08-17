@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`navLink renders correctly 1`] = `
+<li>
+  <div
+    class="item"
+  >
+    <img
+      alt="Emoticon"
+      src=""
+    />
+     
+    <p>
+      Today
+    </p>
+  </div>
+</li>
+`;

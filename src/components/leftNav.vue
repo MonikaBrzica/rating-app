@@ -5,15 +5,26 @@
          alt="logo">
     <NavLink v-for="item in nav"
              :key="item.id"
-             :data="{id: item.id, src: item.src, text: item.text, link: item.link }"
+             :data="{
+               id: item.id,
+               src: item.src,
+               text: item.text,
+               link: item.link
+              }"
              class="active"
              tag="li"/>
     <NavLink class="last"
-      :data="{id: settings.id, src: settings.src, text: settings.text, link: settings.link }"
+             v-if="this.$store.state.user.role === 'admin'"
+            :data="{
+              id: settings.id,
+              src: settings.src,
+              text: settings.text,
+              link: settings.link
+            }"
              v-on:show="itemClicked()"/>
     <div class="set-container"
-         v-show="showModal">
-      <Settings  v-on:close="itemClicked()"/>
+          v-show="showModal">
+         <Settings v-on:close="itemClicked()"/>
     </div>
   </div>
 </template>
@@ -68,12 +79,12 @@ li:nth-child(4) {
   .set-container {
     margin-left: 100px;
     height: 100vh;
-    width: calc(100% - 100px);
+    width: calc(100% - 164px);
     max-width: 1056px;
     position: fixed;
     bottom: 0;
     top:0;
-    z-index: 1;
+    z-index: 5;
     box-shadow: 5px 5px 5px 5px #1B1E24;
   }
 }

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lineChart renders correctly 1`] = `
+<div
+  class="container"
+  id="chart"
+>
+  <div
+    class="title-container"
+  >
+    <p
+      class="title"
+    >
+      Ratings
+    </p>
+     
+    <img
+      alt="..."
+      src="../assets/images/dots-vertical.png"
+    />
+  </div>
+   
+  <apexchart-stub
+    height="auto"
+    options="[object Object]"
+    series="[object Object],[object Object],[object Object],[object Object],[object Object]"
+    type="area"
+    width="100%"
+  />
+</div>
+`;

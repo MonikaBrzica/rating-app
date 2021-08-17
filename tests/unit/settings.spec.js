@@ -1,13 +1,19 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import Settings from '../../src/components/settings'
+import Settings from '../../src/components/Settings'
 import Vuex from 'vuex'
 const localVue = createLocalVue()
 localVue.use(Vuex)
+
 const store = new Vuex.Store({
   state: {
     settings: {},
     emoticons: [],
-    emotionsArr: ['very_happy.svg', 'happy.svg', 'meh.svg', 'sad.svg', 'very_sad.svg']
+    emotionsArr: ['very_happy.svg', 'happy.svg', 'meh.svg', 'sad.svg', 'very_sad.svg'],
+    user: {
+      user: {
+        token: 'ya.45644fds5af4ds56f4ds5f4ds5a6f4d5sf45s64fd5s64fds4f56ds4fds1vcsa46'
+      }
+    }
   },
   getters: {
     getSettings (state) {
@@ -42,6 +48,7 @@ describe('Settings', () => {
     store,
     localVue
   })
+
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })

@@ -21,8 +21,49 @@ exports[`today renders correctly 1`] = `
       <p
         class="sub-header"
       >
-        Graphs presents you rating results. Today you have 225 rates, check it on dashboard.
+        Graphs presents you rating results. Today you have 0 ratings, check it on dashboard.
       </p>
+    </div>
+     
+    <img
+      alt=""
+      id="bg-one"
+      src="../assets/images/Oval.svg"
+    />
+     
+    <img
+      alt=""
+      id="bg-two"
+      src="../assets/images/ovalcopy.svg"
+    />
+     
+    <img
+      alt=""
+      id="bg-three"
+      src="../assets/images/Artwork.svg"
+    />
+     
+    <div
+      class="main-container"
+      style="display: none;"
+    >
+      <div
+        class="line-chart-container"
+      >
+        <linechart-stub />
+      </div>
+       
+      <div
+        class="pie-chart-container"
+      >
+        <piechart-stub />
+      </div>
+       
+      <div
+        class="table-container"
+      >
+        <table-stub />
+      </div>
     </div>
   </div>
    

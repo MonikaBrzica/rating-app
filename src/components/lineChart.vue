@@ -47,13 +47,26 @@ export default {
       return {
         chart: {
           type: 'area',
-          height: '364px',
           foreColor: 'rgba(255,255,255,0.5)',
+          height: '364px',
           zoom: {
             enabled: false
           },
           toolbar: {
             show: false
+          },
+          animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 900,
+            animateGradually: {
+              enabled: true,
+              delay: 350
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 1500
+            }
           }
         },
         noData: {
@@ -69,7 +82,9 @@ export default {
           }
         },
         grid: {
-          position: 'front',
+          position: 'back',
+          strokeDashArray: 2,
+          borderColor: 'rgba(255,255,255,0.2)',
           yaxis: {
             line: {
               show: true
@@ -92,7 +107,10 @@ export default {
         },
         xaxis: {
           type: 'datetime',
-          categories: this.statistic[5]
+          categories: this.statistic[5],
+          labels: {
+            datetimeUTC: false
+          }
         },
         yaxis: {
           align: 'right'
@@ -104,7 +122,12 @@ export default {
         },
         legend: {
           markers: {
-            radius: 0
+            radius: 0,
+            height: 14,
+            width: 14,
+            customHTML: function () {
+              return '<img src= "https://res.cloudinary.com/dxlyytkww/image/upload/v1629139678/RatingApp/check_ht3d6x.png" height="14px" width="14px">'
+            }
           }
         },
         markers: {
@@ -120,6 +143,7 @@ export default {
 .container{
   width: 100%;
   height:100%;
+  overflow: hidden;
   .title-container {
     padding: 20px 20px 0px 20px;
     display: flex;

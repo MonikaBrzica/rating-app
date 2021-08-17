@@ -11,11 +11,54 @@ exports[`leftNav renders correctly 1`] = `
   />
    
   <navlink-stub
+    active-class="active"
+    class="active"
     data="[object Object]"
+    tag="li"
   />
+  <navlink-stub
+    active-class="active"
+    class="active"
+    data="[object Object]"
+    tag="li"
+  />
+   
   <navlink-stub
     data="[object Object]"
   />
+   
+  <div
+    class="set-container"
+    style="display: none;"
+  >
+    <settings-stub />
+  </div>
+</div>
+`;
+
+exports[`leftNav shows settings 1`] = `
+<div
+  class="nav-container"
+>
+  <img
+    alt="logo"
+    class="logo"
+    src="../assets/images/logo.png"
+  />
+   
+  <navlink-stub
+    active-class="active"
+    class="active"
+    data="[object Object]"
+    tag="li"
+  />
+  <navlink-stub
+    active-class="active"
+    class="active"
+    data="[object Object]"
+    tag="li"
+  />
+   
   <navlink-stub
     data="[object Object]"
   />

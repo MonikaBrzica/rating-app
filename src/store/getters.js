@@ -34,22 +34,23 @@ export default {
   },
   getSumRatings (state) {
     let i = 0
+    const ratings = state.ratings
     const series = [0, 0, 0, 0, 0]
-    if (state.ratings !== null) {
-      for (i = 0; i < state.ratings.length; i++) {
-        if (state.ratings[i].emojiId.id === 1) {
+    if (ratings !== null) {
+      for (i = 0; i < ratings.length; i++) {
+        if (ratings[i].emojiId === 1) {
           series[0]++
         }
-        if (state.ratings[i].emojiId.id === 2) {
+        if (ratings[i].emojiId === 2) {
           series[1]++
         }
-        if (state.ratings[i].emojiId.id === 3) {
+        if (ratings[i].emojiId === 3) {
           series[2]++
         }
-        if (state.ratings[i].emojiId.id === 4) {
+        if (ratings[i].emojiId === 4) {
           series[3]++
         }
-        if (state.ratings[i].emojiId.id === 5) {
+        if (ratings[i].emojiId === 5) {
           series[4]++
         }
       }

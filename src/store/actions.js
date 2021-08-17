@@ -11,6 +11,16 @@ export default {
       .then(() => localStorage.removeItem('token'))
   },
   setRatings (context, data) {
+    // parsing date from backend. Turning it to local time and reseting minutes and seconds
+    // this is done because of formating line chart data.
+    data.forEach((elem) => {
+      // making a Date object from string
+      elem.date = new Date(elem.date)
+      // setting min and sec to 0
+      elem.date.setMinutes(0, 0, 0)
+      // making ISO string to feed into line chart.
+      elem.date = elem.date.toISOString()
+    })
     context.commit('setRatings', data)
   },
   getCurrentSettings ({ commit }) {
@@ -76,6 +86,16 @@ export default {
       .catch(() => {
         router.push('/')
         localStorage.removeItem('token')
+      })
+  },
+  changeSettings ({ state }, updatedSettings) {
+    HTTP.put('rating/settings', updatedSettings, {
+      headers: { Authorization: 'Bearer ' + state.user.token }
+    })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data)
+        }
       })
   }
 }

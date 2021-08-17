@@ -9,14 +9,14 @@ exports[`rightNav renders correctly 1`] = `
   >
     <img
       alt="Profile"
-      src="../assets/images/profile.png"
+      src="src"
     />
      
     <div
       class="dropdown-content"
     >
       <p>
-        Pero Peric
+        Ivan
       </p>
        
       <button>
