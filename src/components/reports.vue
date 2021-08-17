@@ -102,7 +102,7 @@ export default {
       const updateMaxDate = new Date(this.selectedDay)
       const diffInMs = new Date() - new Date(this.selectedDay)
       const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24))
-      if (diffInDays < 30 || diffInDays < 31) {
+      if (diffInDays < 30) {
         this.maxDate = new Date()
       } else {
         this.maxDate = this.addDays(updateMaxDate, 31)
