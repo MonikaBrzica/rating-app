@@ -29,7 +29,6 @@ export default {
   },
   getNav (state) {
     return state.nav.filter((e) => {
-      console.log(e)
       return e.id !== 3
     })
   },

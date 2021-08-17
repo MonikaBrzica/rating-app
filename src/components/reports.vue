@@ -3,43 +3,44 @@
     <LeftNav/>
     <div class="main-reports">
       <div class="calendar">
-          <v-date-picker v-model="range"
-                     class='date-picker'
-                     :value="null"
-                     is-range
-                     is-dark
-                     :select-attribute="selectAttribute"
-                     :first-day-of-week="2"
-                     :attributes='attrs'
-                     :max-date="new Date()"
-                     @dayclick="onDayClick">
-        <template v-slot="{ inputValue, inputEvents }">
-          <div class="input-container">
-            <img src="../assets/images/calendar-range.png"
-                 alt="calendar">
-            <fieldset>
-              <input :value="inputValue.start"
-                     v-on="inputEvents.start"/>
-              <p>-</p>
-              <input :value="inputValue.end"
-                     v-on="inputEvents.end"/>
-            </fieldset>
-          </div>
-        </template>
-      </v-date-picker>
+        <v-date-picker v-model="range"
+                       class='date-picker'
+                       :value="null"
+                       is-range
+                       is-dark
+                       :select-attribute="selectAttribute"
+                       :first-day-of-week="2"
+                       :attributes='attrs'
+                       :max-date="maxDate"
+                       @dayclick="onDayClick"
+                       :masks="{ input: ['DD/MM/YYYY']}">
+          <template v-slot="{ inputValue, inputEvents }">
+            <div class="input-container">
+              <img src="../assets/images/calendar-range.png"
+                   alt="calendar">
+              <fieldset>
+                <input :value="inputValue.start"
+                       v-on="inputEvents.start"/>
+                <p>-</p>
+                <input :value="inputValue.end"
+                       v-on="inputEvents.end"/>
+              </fieldset>
+            </div>
+          </template>
+        </v-date-picker>
+      </div>
+      <div class="main-container" v-show="this.$store.getters.getRatings">
+        <div class="line-chart-container">
+          <LineChart/>
         </div>
-        <div class="main-container">
-          <div class="line-chart-container">
-            <LineChart/>
-          </div>
-          <div class="pie-chart-container">
+        <div class="pie-chart-container">
           <PieChart/>
-          </div>
-          <div class="table-container">
-            <Table/>
+        </div>
+        <div class="table-container">
+          <Table/>
+        </div>
       </div>
     </div>
-  </div>
     <RightNav/>
   </div>
 </template>
@@ -72,6 +73,8 @@ export default {
   },
   data () {
     return {
+      selectedDay: null,
+      maxDate: new Date(),
       selectAttribute: {
         highlight: {
           start: { fillMode: 'light' },
@@ -94,8 +97,20 @@ export default {
     }
   },
   methods: {
-    onDayClick () {
+    onDayClick (day) {
+      this.selectedDay = day.date
+      const updateMaxDate = new Date(this.selectedDay)
+      const diffInMs = new Date() - new Date(this.selectedDay)
+      const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24))
+      if (diffInDays < 30 || diffInDays < 31) {
+        this.maxDate = new Date()
+      } else {
+        this.maxDate = this.addDays(updateMaxDate, 31)
+      }
       store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })
+    },
+    addDays (theDate, days) {
+      return new Date(theDate.getTime() + days * 24 * 60 * 60 * 1000)
     }
   },
   computed: {
@@ -199,7 +214,7 @@ export default {
           font-size: 14px;
           line-height: 20px;
           text-align: center;
-          }
+        }
       }
     }
     .main-container{
