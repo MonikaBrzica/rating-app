@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`table renders correctly 1`] = `
+<div
+  class="table"
+>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Emoticon
+        
+          <img
+            alt="drop-down"
+            src="../assets/images/caret-down-solid.svg"
+          />
+        </th>
+         
+        <th>
+          Count
+        
+          <img
+            alt="drop-down"
+            src="../assets/images/caret-down-solid.svg"
+          />
+        </th>
+      </tr>
+    </thead>
+     
+    <tbody>
+      <tr>
+        <td>
+          Very happy
+        </td>
+         
+        <td>
+          1
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Happy
+        </td>
+         
+        <td>
+          1
+        </td>
+      </tr>
+      <tr
+        style="display: none;"
+      >
+        <td>
+          Meh
+        </td>
+         
+        <td>
+          0
+        </td>
+      </tr>
+      <tr
+        style="display: none;"
+      >
+        <td>
+          Sad
+        </td>
+         
+        <td>
+          0
+        </td>
+      </tr>
+      <tr
+        style="display: none;"
+      >
+        <td>
+          Very sad
+        </td>
+         
+        <td>
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

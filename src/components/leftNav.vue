@@ -5,15 +5,26 @@
          alt="logo">
     <NavLink v-for="item in nav"
              :key="item.id"
-             :data="{id: item.id, src: item.src, text: item.text, link: item.link }"
+             :data="{
+               id: item.id,
+               src: item.src,
+               text: item.text,
+               link: item.link
+              }"
              active-class="active"
              class="active"
              tag="li"/>
-    <NavLink :data="{id: settings.id, src: settings.src, text: settings.text, link: settings.link }"
+    <NavLink v-if="this.$store.state.user.role === 'admin'"
+            :data="{
+              id: settings.id,
+              src: settings.src,
+              text: settings.text,
+              link: settings.link
+            }"
              v-on:show="itemClicked()"/>
     <div class="set-container"
-         v-show="showModal">
-      <Settings  v-on:close="itemClicked()"/>
+          v-show="showModal">
+         <Settings v-on:close="itemClicked()"/>
     </div>
   </div>
 </template>

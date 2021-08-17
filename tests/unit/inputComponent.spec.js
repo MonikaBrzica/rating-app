@@ -56,9 +56,9 @@ describe('InputComponent', () => {
   wrapper.setData({
     dataValidated: true
   })
-
-  it('is vue instance', () => {
-    expect(wrapper.isVueInstance()).toBe(true)
+  
+  it('renders correctly', () => {
+    expect(wrapper.element).toMatchSnapshot()
   })
   it('should have updateData method', function () {
     expect(typeof wrapper.vm.updateData).toBe('function')

@@ -11,7 +11,7 @@
                      :select-attribute="selectAttribute"
                      :first-day-of-week="2"
                      :attributes='attrs'
-                     :max-date="new Date()"
+                     :max-date="maxDate"
                      @dayclick="onDayClick">
         <template v-slot="{ inputValue, inputEvents }">
           <div class="input-container">
@@ -104,6 +104,9 @@ export default {
     },
     dateEnd () {
       return this.range.end
+    },
+    maxDate () {
+      return new Date()
     }
   }
 }
