@@ -91,7 +91,7 @@ export default {
         }
       ],
       range: {
-        start: new Date().setHours(2, 0, 0, 0),
+        start: new Date().setUTCHours(0, 0, 0, 0),
         end: new Date()
       }
     }
@@ -100,7 +100,7 @@ export default {
     onDayClick (day) {
       this.selectedDay = day.date
       const updateMaxDate = new Date(this.selectedDay)
-      const diffInMs = new Date() - new Date(this.selectedDay)
+      const diffInMs = new Date() - updateMaxDate
       const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24))
       if (diffInDays < 30) {
         this.maxDate = new Date()

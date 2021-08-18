@@ -6,10 +6,17 @@
         <p class="header">Today is a new day. Check your ratings!</p>
         <p class="sub-header">Graphs presents you rating results. Today you have {{ this.count }} ratings, check it on dashboard.</p>
       </div>
-      <img src="../assets/images/Oval.svg" alt="" id="bg-one">
-      <img src="../assets/images/ovalcopy.svg" alt="" id="bg-two">
-      <img src="../assets/images/Artwork.svg" alt="" id="bg-three">
-      <div class="main-container" v-show="this.count">
+      <img src="../assets/images/Oval.svg"
+           alt="one"
+           id="bg-one">
+      <img src="../assets/images/ovalcopy.svg"
+           alt="two"
+           id="bg-two">
+      <img src="../assets/images/Artwork.svg"
+           alt="three"
+           id="bg-three">
+      <div class="main-container"
+           v-show="this.count">
         <div class="line-chart-container">
           <LineChart/>
         </div>
@@ -58,8 +65,8 @@ export default {
   computed: {
     dateFirst () {
       const event = new Date()
-      event.setHours(2, 0, 0, 0)
-      return event.toISOString()
+      event.setUTCHours(0, 0, 0, 0)
+      return event
     },
     dateEnd () {
       const event = new Date()

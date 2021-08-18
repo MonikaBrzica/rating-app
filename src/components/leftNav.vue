@@ -3,28 +3,27 @@
     <img class="logo"
          src="../assets/images/logo.png"
          alt="logo">
-    <NavLink v-for="item in nav"
+    <NavLink class="active"
+             v-for="item in nav"
              :key="item.id"
              :data="{
                id: item.id,
                src: item.src,
                text: item.text,
                link: item.link
-              }"
-             class="active"
-             tag="li"/>
+              }"/>
     <NavLink class="last"
              v-if="this.$store.state.user.role === 'admin'"
-            :data="{
+             :data="{
               id: settings.id,
               src: settings.src,
               text: settings.text,
               link: settings.link
-            }"
+             }"
              v-on:show="itemClicked()"/>
     <div class="set-container"
           v-show="showModal">
-         <Settings v-on:close="itemClicked()"/>
+      <Settings v-on:close="itemClicked()"/>
     </div>
   </div>
 </template>
@@ -102,7 +101,7 @@ li:nth-child(4) {
       height: 54px;
     }
     .set-container {
-      margin-left: 0px;
+      margin-left: 0;
       width: 100%;
       height: 100%;
       top:60px;

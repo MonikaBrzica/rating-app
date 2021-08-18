@@ -1,7 +1,8 @@
 <template>
   <router-link tag="li"
                :to="this.data.link">
-    <div class="item" v-on:click="itemClicked(data.id)">
+    <div class="item"
+         v-on:click="itemClicked(data.id)">
       <img :src="require('../assets/images/'+ this.data.src)"
            alt="Emoticon">
       <p>{{this.data.text}}</p>

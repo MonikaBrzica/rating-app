@@ -4,7 +4,6 @@ import axios from 'axios'
 export default {
 
   logoutUser ({ state }) {
-    localStorage.removeItem('token')
     HTTP.post('auth/revoke', {
       accessToken: state.user.token
     }).then(() => router.push('/'))

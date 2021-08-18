@@ -7,7 +7,7 @@
           <img src="../assets/images/caret-down-solid.svg"
                alt="drop-down">
         </th>
-        <th @click="sortBy('score')">Count
+        <th @click="sortBy('count')">Count
           <img src="../assets/images/caret-down-solid.svg"
                alt="drop-down">
         </th>
@@ -16,9 +16,9 @@
       <tbody>
       <tr v-for="item in this.sortedItems"
           v-bind:key="item.name"
-          v-show="item.score != 0">
+          v-show="item.count != 0">
         <td>{{item.name}}</td>
-        <td>{{ item.score}}</td>
+        <td>{{ item.count}}</td>
       </tr>
       </tbody>
     </table>
@@ -37,27 +37,27 @@ export default {
         {
           id: 1,
           name: 'Very happy',
-          score: 0
+          count: 0
         },
         {
           id: 2,
           name: 'Happy',
-          score: 0
+          count: 0
         },
         {
           id: 3,
           name: 'Meh',
-          score: 0
+          count: 0
         },
         {
           id: 4,
           name: 'Sad',
-          score: 0
+          count: 0
         },
         {
           id: 5,
           name: 'Very sad',
-          score: 0
+          count: 0
         }
       ]
     }
@@ -67,7 +67,7 @@ export default {
       const list = this.tableData.slice()
       let i
       for (i = 0; i < list.length; i++) {
-        list[i].score = this.$store.getters.getSumRatings[i]
+        list[i].count = this.$store.getters.getSumRatings[i]
       }
       if (this.sort.key) {
         list.sort((a, b) => {
