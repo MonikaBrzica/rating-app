@@ -68,26 +68,26 @@ export default {
   overflow-x: hidden;
 }
 div  ::-webkit-scrollbar {
-  width: 0px !important;
+  width: 0 !important;
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
+  background-color: $bg;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
-  background: $white-500;
+  background-color: $bg;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $bg-dark;
+  background: $white-300;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background-color: $bg;
 }
 .alert {
   box-sizing: border-box;
