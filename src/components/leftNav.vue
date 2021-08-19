@@ -65,7 +65,8 @@ li:nth-child(4) {
 }
 .nav-container {
   z-index: 4;
-  position: relative;
+  position: fixed;
+  left: 0;
   background-color: $bg;
   width: 100px;
   min-height: 100%;

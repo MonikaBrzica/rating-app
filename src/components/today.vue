@@ -96,6 +96,8 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-left: 100px;
+  margin-right: 64px;
   .main-today {
     flex-grow: 1;
     order:2;
