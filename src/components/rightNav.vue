@@ -28,6 +28,9 @@ export default {
   width: 64px;
   text-align: center;
   order: 3;
+  position: fixed;
+  right: 0;
+  height: 100%;
   .drop {
     font-size: 1rem;
     cursor: pointer;

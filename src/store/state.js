@@ -30,5 +30,6 @@ export default {
       src: 'cog.svg',
       link: ''
     }
-  ]
+  ],
+  isActive: false
 }
