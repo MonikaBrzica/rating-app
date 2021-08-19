@@ -1,44 +1,34 @@
 <template>
   <div id="app">
-    <div class="alert" v-bind:class="{ 'alert-active': isActive }">
+    <div class="alert" v-bind:class="{ 'alert-active': this.$store.state.isActive }">
       <p>Settings have beed changed!</p>
     </div>
     <router-view/>
   </div>
 </template>
 <script>
-import Pusher from 'pusher-js'
+import initializePusher from './utils/pusher'
 export default {
   name: 'app',
   components: {
   },
   data () {
     return {
-      isActive: false
     }
   },
   methods: {
-    subscribe () {
-      const pusher = new Pusher('f47f2ad6b875f07ee437', {
-        cluster: 'eu'
-      })
-      pusher.subscribe('settings')
-      pusher.bind('settings-updated', (data) => {
-        this.isActive = true
-        setTimeout(function () { this.isActive = false }.bind(this), 2000)
-        this.$store.commit('setSettings', data.value)
-      })
-    }
   },
   created () {
     // initilazing socket
-    this.subscribe()
+    initializePusher()
     this.$store.dispatch('getCurrentSettings')
     this.$store.dispatch('getEmojiArray')
     // event triggered in emoticon component that has payload with id of the emoticon user has selected and that should trigger POST request
     this.$root.$on('post', (id) => {
       this.$store.dispatch('postRating', id)
     })
+  },
+  computed: {
   }
 }
 </script>
