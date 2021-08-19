@@ -5,7 +5,7 @@
            alt="Profile">
       <div class="dropdown-content">
         <p>{{this.$store.state.user.fullname}}</p>
-        <button @click="logOut()">Logout</button>
+        <button class="btn" @click="logOut()">Logout</button>
       </div>
     </div>
     <hr>

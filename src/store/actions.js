@@ -3,11 +3,12 @@ import router from '../router/index'
 import axios from 'axios'
 export default {
 
-  logoutUser ({ state }) {
+  logoutUser ({ commit, state }) {
     HTTP.post('auth/revoke', {
       accessToken: state.user.token
     }).then(() => router.push('/'))
       .then(() => localStorage.removeItem('token'))
+      .then(() => commit('logoutUser'))
   },
   setRatings (context, data) {
     if (!data) {

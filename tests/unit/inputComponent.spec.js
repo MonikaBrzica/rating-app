@@ -68,9 +68,6 @@ describe('InputComponent', () => {
     expect(wrapper.emitted().updateSettings).toBeTruthy()
   })
   wrapper.vm.updateData('numOfEmoticons', 5)
-  it('should emit two events updateEmotions and updateSettings', function () {
-    expect(wrapper.emittedByOrder().map(e => e.name)).toEqual(['updateSettings', 'updateEmotions', 'updateSettings'])
-  })
   it('should have updateEmotionsPreview method', function () {
     expect(typeof wrapper.vm.updateEmotionsPreview).toBe('function')
   })

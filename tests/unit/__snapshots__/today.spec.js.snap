@@ -3,6 +3,7 @@
 exports[`today renders correctly 1`] = `
 <div
   class="today"
+  data="[object Object]"
 >
   <leftnav-stub />
    

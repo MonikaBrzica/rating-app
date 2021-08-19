@@ -3,6 +3,7 @@
 exports[`reports renders correctly 1`] = `
 <div
   class="reports"
+  data="[object Object]"
 >
   <leftnav-stub />
    
@@ -18,7 +19,8 @@ exports[`reports renders correctly 1`] = `
         first-day-of-week="2"
         is-dark=""
         is-range=""
-        max-date="Mon Aug 16 2021 11:22:19 GMT+0200 (Central European Summer Time)"
+        masks="[object Object]"
+        max-date="Thu Aug 19 2021 08:43:52 GMT+0200 (Central European Summer Time)"
         select-attribute="[object Object]"
       />
     </div>
