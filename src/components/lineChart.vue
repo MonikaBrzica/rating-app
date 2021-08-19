@@ -5,7 +5,7 @@
     <img src="../assets/images/dots-vertical.png"
          alt="...">
   </div>
-  <apexchart ref="linechart" type="area" :options="chartOptions" :series="series"></apexchart>
+  <apexchart ref="linechart" class="area" type="area" :options="chartOptions" :series="series"></apexchart>
 
 </div>
 </template>
@@ -84,9 +84,10 @@ export default {
         grid: {
           position: 'back',
           strokeDashArray: 2,
+          height: 1,
           borderColor: 'rgba(255,255,255,0.2)',
           yaxis: {
-            line: {
+            lines: {
               show: true
             }
           },
@@ -110,14 +111,33 @@ export default {
           categories: this.statistic[5],
           labels: {
             datetimeUTC: false
+          },
+          axisTicks: {
+            show: false
+          },
+          axisBorder: {
+            show: true,
+            color: 'rgba(255,255,255,0.2)',
+            height: 1,
+            width: '100%'
           }
         },
         yaxis: {
           align: 'right'
         },
         tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
+          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            return '<div class="arrow_box" style=" background-color: #FFFFFF; border-radius: 4px; width: 36px; position: relative;">' +
+              '<span style="color: #222222">' + series[seriesIndex][dataPointIndex] + '</span>' +
+              '</div>'
+          }
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            opacityFrom: 0.5,
+            opacityTo: 0.1,
+            inverseColors: 'rgba(255,255,255,0.2)'
           }
         },
         legend: {
@@ -144,6 +164,21 @@ export default {
   width: 100%;
   height:100%;
   overflow: hidden;
+  .area /deep/ .apexcharts-xaxistooltip.apexcharts-active {
+    opacity: 0;
+  }
+  /deep/ .apexcharts-xcrosshairs.apexcharts-active, .apexcharts-ycrosshairs.apexcharts-active {
+    opacity: 0;
+  }
+  /deep/ .apexcharts-tooltip {
+    text-align: center;
+    padding: 10px 0px;
+    padding: 10px 0px;
+    top: 40% !important;
+  }
+  /deep/ line#SvgjsLine {
+    opacity: 0 !important;
+  }
   .title-container {
     padding: 20px 20px 0px 20px;
     display: flex;

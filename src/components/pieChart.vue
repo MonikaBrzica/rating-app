@@ -22,7 +22,7 @@ export default {
         chart: {
           type: 'pie',
           offsetX: 20,
-          foreColor: 'rgba(255,255,255,0.85)',
+          foreColor: 'rgba(255,255,255,0.5)',
           fill: {
             colors: '#B0B0B2'
           },
