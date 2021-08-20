@@ -20,15 +20,7 @@ exports[`reports renders correctly 1`] = `
         is-dark=""
         is-range=""
         masks="[object Object]"
-<<<<<<< HEAD
         max-date="Thu Aug 19 2021 08:43:52 GMT+0200 (Central European Summer Time)"
-=======
-<<<<<<< HEAD
-        max-date="Thu Aug 19 2021 21:04:12 GMT+0200 (Central European Summer Time)"
-=======
-        max-date="Thu Aug 19 2021 08:43:52 GMT+0200 (Central European Summer Time)"
->>>>>>> c4dc202 (mutation,getters tests)
->>>>>>> 913ab8d (mutation,getters tests)
         select-attribute="[object Object]"
       />
     </div>

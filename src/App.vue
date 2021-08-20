@@ -19,10 +19,6 @@ export default {
   methods: {
   },
   created () {
-    // for (let i = 0; i < 200; i++) {
-    //   const id = Math.random() * (3 - 1) + 1
-    //   this.$store.dispatch('postRating', parseInt(id))
-    // }
     // initilazing socket
     initializePusher()
     this.$store.dispatch('getCurrentSettings')
