@@ -127,4 +127,24 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 425px) {
+  .reports{
+    margin-left: 20px;
+    margin-right: 20px;
+    .main-reports {
+      .main-container {
+        padding: 0;
+      }
+      .header-container {
+        padding: 10rem 0 0 0;
+      }
+      img {
+        height: 20%;
+      }
+      #bg-three {
+        top: 50px;
+      }
+    }
+  }
+}
 </style>

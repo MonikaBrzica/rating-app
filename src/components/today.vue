@@ -256,9 +256,14 @@ export default {
 }
 @media only screen and (max-width: 425px) {
   .today{
+    margin-left: 20px;
+    margin-right: 20px;
     .main-today {
+      .main-container {
+        padding: 0;
+      }
       .header-container {
-        padding: 10rem 0 5rem 2rem;
+        padding: 10rem 0 0 0;
       }
       img {
         height: 20%;
