@@ -110,18 +110,28 @@ export default {
 }
 @media only screen and (max-width: 768px) {
   .reports{
+    margin-left: 30px;
+    margin-right: 30px;
     .main-reports {
       margin-top: 60px;
       width: 100%;
       order: 3;
+      .calendar {
+        margin-bottom: 20px;
+      }
       .main-container{
+        padding: 0;
         flex-direction: column;
         align-items: center;
         .line-chart-container{
           width: 90%;
         }
         .pie-chart-container {
-          width: 60%;
+          width: 90%;
+        }
+        .table-container {
+          width: 90%;
+          margin-bottom: 20px;
         }
       }
     }
@@ -132,8 +142,21 @@ export default {
     margin-left: 20px;
     margin-right: 20px;
     .main-reports {
+      .calendar {
+        margin-bottom: 20px;
+      }
       .main-container {
         padding: 0;
+        .line-chart-container{
+          width: 100%;
+        }
+        .pie-chart-container {
+          width: 100%;
+        }
+        .table-container {
+          width: 100%;
+          margin-bottom: 20px;
+        }
       }
       .header-container {
         padding: 10rem 0 0 0;

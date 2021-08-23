@@ -20,12 +20,10 @@ export default {
       // making a Date object from string
       elem.date = new Date(elem.date)
       if (data.difference > 3) {
-        console.log(elem.date, 'elem prije')
         elem.date.setUTCHours(0)
       }
       // setting min and sec to 0
       elem.date.setMinutes(0, 0, 0)
-      console.log(elem.date, 'elem poslje')
       // making ISO string to feed into line chart.
       elem.date = elem.date.toISOString()
     })
@@ -65,7 +63,6 @@ export default {
     let start = new Date(data.dateFirst)
     let end = new Date(data.dateEnd)
     const dayDiff = parseInt((end.getTime() - start.getTime()) / 86400000)
-    console.log(dayDiff)
     start = start.toISOString()
     end = end.toISOString()
     HTTP.post('rating/statistics',
