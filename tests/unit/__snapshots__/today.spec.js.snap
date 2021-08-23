@@ -27,19 +27,19 @@ exports[`today renders correctly 1`] = `
     </div>
      
     <img
-      alt=""
+      alt="one"
       id="bg-one"
       src="../assets/images/Oval.svg"
     />
      
     <img
-      alt=""
+      alt="two"
       id="bg-two"
       src="../assets/images/ovalcopy.svg"
     />
      
     <img
-      alt=""
+      alt="three"
       id="bg-three"
       src="../assets/images/Artwork.svg"
     />

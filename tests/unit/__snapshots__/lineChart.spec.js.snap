@@ -21,6 +21,7 @@ exports[`lineChart renders correctly 1`] = `
   </div>
    
   <apexchart-stub
+    class="area"
     height="auto"
     options="[object Object]"
     series="[object Object],[object Object],[object Object],[object Object],[object Object]"

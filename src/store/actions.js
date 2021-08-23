@@ -11,20 +11,25 @@ export default {
       .then(() => commit('logoutUser'))
   },
   setRatings (context, data) {
-    if (!data) {
+    if (!data.ratings) {
       context.commit('clearRatings')
     }
     // parsing date from backend. Turning it to local time and reseting minutes and seconds
     // this is done because of formating line chart data.
-    data.forEach((elem) => {
+    data.ratings.forEach((elem) => {
       // making a Date object from string
       elem.date = new Date(elem.date)
+      if (data.difference > 3) {
+        console.log(elem.date, 'elem prije')
+        elem.date.setUTCHours(0)
+      }
       // setting min and sec to 0
       elem.date.setMinutes(0, 0, 0)
+      console.log(elem.date, 'elem poslje')
       // making ISO string to feed into line chart.
       elem.date = elem.date.toISOString()
     })
-    context.commit('setRatings', data)
+    context.commit('setRatings', data.ratings)
   },
   getCurrentSettings ({ commit }) {
     HTTP.get('/rating/current-settings')
@@ -58,8 +63,10 @@ export default {
   },
   getReports ({ dispatch }, data) {
     let start = new Date(data.dateFirst)
-    start = start.toISOString()
     let end = new Date(data.dateEnd)
+    const dayDiff = parseInt((end.getTime() - start.getTime()) / 86400000)
+    console.log(dayDiff)
+    start = start.toISOString()
     end = end.toISOString()
     HTTP.post('rating/statistics',
       {
@@ -69,7 +76,7 @@ export default {
       {
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
-      .then(response => dispatch('setRatings', response.data.ratings))
+      .then(response => dispatch('setRatings', { ratings: response.data.ratings, difference: dayDiff }))
       .catch(function (error) {
         if (error.response) {
           console.log(error.response.data)
