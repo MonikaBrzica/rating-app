@@ -1,55 +1,93 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import leftNav from '../../src/components/leftNav'
 import Vuex from 'vuex'
+import { RouterLinkStub } from '@vue/test-utils'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-const store = new Vuex.Store({
-  actions: {
-  },
-  state: {
-    nav: [
-      {
-        id: 1,
-        text: 'Today',
-        src: 'view-dashboard.svg',
-        link: '/today'
-      },
-      {
-        id: 2,
-        text: 'Reports',
-        src: 'file-document.svg',
-        link: '/reports'
-      },
-      {
-        id: 3,
-        text: 'Settings',
-        src: 'cog.svg',
-        link: ''
-      }
-    ],
-    user: {
-      role: 'admin'
+
+const actions = {}
+const state = {
+  nav: [
+    {
+      id: 1,
+      text: 'Today',
+      src: 'view-dashboard.svg',
+      link: '/today'
+    },
+    {
+      id: 2,
+      text: 'Reports',
+      src: 'file-document.svg',
+      link: '/reports'
+    },
+    {
+      id: 3,
+      text: 'Settings',
+      src: 'cog.svg',
+      link: ''
     }
+  ],
+  user: {
+    role: 'admin',
+    token: 'ya.45644fds5af4ds56f4ds5f4ds5a6f4d5sf45s64fd5s64fds4f56ds4fds1vcsa46'
   },
-  getters: {
-    getNav (state) {
-      return state.nav.filter((e) => {
-        return e.id !== 3
+  settings: {},
+  emoticons: [],
+  emotionsArr: ['very_happy.svg', 'happy.svg', 'meh.svg', 'sad.svg', 'very_sad.svg'],
+}
+const getters = {
+  getNav (state) {
+    return state.nav.filter((e) => {
+      return e.id !== 3
+    })
+  },
+  getSettings (state) {
+    return state.settings
+  },
+  getEmoticons (state) {
+    return state.emoticons
+  },
+  getEmotionsArr: (state) => (count) => {
+    if (count === 5) {
+      return state.emotionsArr
+    }
+    if (count === 4) {
+      return state.emotionsArr.filter(element => {
+        if (element !== 'sad.svg') {
+          return element
+        }
+      })
+    }
+    if (count === 3) {
+      return state.emotionsArr.filter(element => {
+        if (element !== 'sad.svg' && element !== 'happy.svg') {
+          return element
+        }
       })
     }
   }
+}
+const store = new Vuex.Store({
+  actions,
+  state,
+  getters
 })
 
 describe('leftNav', () => {
-  const wrapper = shallowMount(leftNav, {
+  const wrapper = mount(leftNav, {
     store,
-    localVue
+    localVue,
+    stubs: {
+      RouterLink: RouterLinkStub
+  },
   })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('shows settings', () => {
-    expect(wrapper.element).toMatchSnapshot()
-  })
+  // it('displays settings modal when clicked', async () => {
+  //   const button = wrapper.find('.last')
+  //   await button.trigger('click')
+  //   expect(wrapper.vm.showModal).toBe(true)
+  // })
 })

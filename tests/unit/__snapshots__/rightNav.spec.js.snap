@@ -19,7 +19,9 @@ exports[`rightNav renders correctly 1`] = `
         Ivan
       </p>
        
-      <button>
+      <button
+        class="btn"
+      >
         Logout
       </button>
     </div>

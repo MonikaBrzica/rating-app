@@ -3,6 +3,7 @@
 exports[`reports renders correctly 1`] = `
 <div
   class="reports"
+  data="[object Object]"
 >
   <leftnav-stub />
    
@@ -12,15 +13,7 @@ exports[`reports renders correctly 1`] = `
     <div
       class="calendar"
     >
-      <v-date-picker
-        attributes="[object Object]"
-        class="date-picker"
-        first-day-of-week="2"
-        is-dark=""
-        is-range=""
-        max-date="Mon Aug 16 2021 11:22:19 GMT+0200 (Central European Summer Time)"
-        select-attribute="[object Object]"
-      />
+      <calendar-stub />
     </div>
      
     <div

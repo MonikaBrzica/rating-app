@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import Settings from '../../src/components/Settings'
+import Settings from '../../src/components/settings'
 import Vuex from 'vuex'
+import { HTTP } from '../../api/axios'
 const localVue = createLocalVue()
 localVue.use(Vuex)
 
@@ -41,6 +42,18 @@ const store = new Vuex.Store({
         })
       }
     }
+  },
+  actions: {
+    changeSettings ({ state }, updatedSettings) {
+      HTTP.put('rating/settings', updatedSettings, {
+        headers: { Authorization: 'Bearer ' + state.user.token }
+      })
+        .catch(function (error) {
+          if (error.response) {
+            console.log(error.response.data)
+          }
+        })
+      }
   }
 })
 describe('Settings', () => {
