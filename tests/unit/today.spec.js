@@ -1,5 +1,5 @@
 import { shallowMount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
-import today from '../../src/components/today'
+import today from '../../src/views/today'
 import Vuex from 'vuex'
 
 const localVue = createLocalVue()

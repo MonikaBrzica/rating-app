@@ -15,12 +15,9 @@ export default {
   props: {
     data: Object
   },
-  data: function () {
-    return {
-    }
-  },
   methods: {
     itemClicked: function (id) {
+      // emiting event that shows settings modal
       if (id === 3) {
         this.$emit('show')
       }

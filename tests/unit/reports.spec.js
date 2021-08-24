@@ -1,5 +1,5 @@
 import { shallowMount,createLocalVue } from '@vue/test-utils'
-import reports from '../../src/components/reports'
+import reports from '../../src/views/reports'
 import { RouterLinkStub } from '@vue/test-utils'
 import Vuex from 'vuex'
 

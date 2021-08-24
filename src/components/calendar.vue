@@ -56,6 +56,9 @@ export default {
     }
   },
   created () {
+    // checking for token in vuex state and in local storage
+    // if token isn't stored in store dispatching checkToken actions
+    // after that dispatching getReports action that gets reports from server
     const token = localStorage.getItem('token')
     if (token && !store.state.user.token) {
       store.dispatch('checkToken')
@@ -67,13 +70,19 @@ export default {
   },
   methods: {
     onDayClick (day) {
+      // method that is called when user selects date from calendar
+      // updating selected date
       this.selectedDay = day.date
+      // updating maxDate that user can select
+      // value is eather Today or 30 days from the Date selected
       const updateMaxDate = new Date(this.selectedDay)
       const diffInMs = new Date() - updateMaxDate
       const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24))
+      // if difference in dates selected is less than 30 days max date that user can select is today
       if (diffInDays < 30) {
         this.maxDate = new Date()
       } else {
+        // and if difference is less than 30 days max date is 31 days from selected date.
         this.maxDate = this.addDays(updateMaxDate, 31)
       }
       store.dispatch('getReports', { dateFirst: this.dateFirst, dateEnd: this.dateEnd })

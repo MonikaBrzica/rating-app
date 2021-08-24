@@ -64,9 +64,9 @@ export default {
   },
   computed: {
     sortedItems () {
+      // sorting table data by id and count eather ascending or descending
       const list = this.tableData.slice()
-      let i
-      for (i = 0; i < list.length; i++) {
+      for (let i = 0; i < list.length; i++) {
         list[i].count = this.$store.getters.getSumRatings[i]
       }
       if (this.sort.key) {

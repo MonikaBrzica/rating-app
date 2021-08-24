@@ -1,14 +1,10 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import lineChart from '../../src/components/lineChart'
 import Vuex from 'vuex'
+import lineChart from '../../src/components/lineChart'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
 const store = new Vuex.Store({
-  actions: {
-  },
-  state: {
-  },
   getters: {
     getSumRatingsLine (state) {
       const ratings = state.ratings
@@ -23,9 +19,6 @@ const store = new Vuex.Store({
       if (!ratings) {
         return lineChart
       } else {
-        // setting date array with elements
-        // first getting all ratings, then replacing minutes and seconds
-        // and pushing to array if the element isn't already in.
         ratings.forEach((elem) => {
           const remind = elem.date.slice(13)
           elem.date = elem.date.replace(remind, ':00:00Z')

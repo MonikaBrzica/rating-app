@@ -23,9 +23,11 @@ export default {
   },
   computed: {
     statistic () {
+      // data for line chart
       return this.$store.getters.getSumRatingsLine
     },
     series () {
+      // data used in line chart
       return [{
         name: 'Very happy',
         data: this.statistic[0]
@@ -44,6 +46,7 @@ export default {
       }]
     },
     chartOptions () {
+      // options for line chart
       return {
         chart: {
           type: 'area',

@@ -21,6 +21,7 @@
               link: settings.link
              }"
              v-on:show="itemClicked()"/>
+             <!-- Settings modal -->
     <div class="set-container"
           v-show="showModal">
       <Settings v-on:close="itemClicked()"/>

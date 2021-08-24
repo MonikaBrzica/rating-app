@@ -49,6 +49,9 @@ export default {
     Table
   },
   created () {
+    // checking for token in vuex state and in local storage
+    // if token isn't stored in store dispatching checkToken actions
+    // after that dispatching getReports action that gets reports from server
     const token = localStorage.getItem('token')
     if (token && !store.state.user.token) {
       store.dispatch('checkToken')
