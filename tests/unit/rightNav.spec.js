@@ -4,33 +4,42 @@ import Vuex from 'vuex'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
-const store = new Vuex.Store({
-  actions: {
-    logoutUser ({ state }) {
-      localStorage.removeItem('token')
-      HTTP.post('auth/revoke', {
-        accessToken: state.user.token
-      }).then(() => router.push('/'))
-        .then(() => localStorage.removeItem('token'))
-    }
-  },
-  state: {
-    user: {
-      imgSrc: 'src',
-      fullname: 'Ivan'
-    }
-  }
-})
-
 describe('rightNav', () => {
-  const wrapper = shallowMount(rightNav, {
-    store,
-    localVue
-  })
+    let actions
+    let store
+    let state
+    beforeEach(() => {
+        actions = {
+          logoutUser: jest.fn()
+        },
+        state = {
+            user: {
+                fullname: 'Ivan',
+                email: '',
+                imgSrc: 'src',
+                loggedIn: false,
+                token: '',
+                role: null
+              }
+        }
+        store = new Vuex.Store({
+          actions,
+          state
+        })
+      })
   it('renders correctly', () => {
+    const wrapper = shallowMount(rightNav, {
+        store,
+        localVue
+      })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should have logout method', function () {
-    expect(typeof wrapper.vm.logOut).toBe('function')
+  it('dispatches logOutUser when Logout button is clicked', () => {
+    const wrapper = shallowMount(rightNav, {
+        store,
+        localVue
+      })
+    const btn = wrapper.find('button.btn').trigger('click')
+    expect(actions.logoutUser).toHaveBeenCalled()
   })
 })

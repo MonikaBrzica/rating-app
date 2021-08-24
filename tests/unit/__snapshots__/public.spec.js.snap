@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Public renders correctly 1`] = `
+<rating-stub
+  emoticons="[object Object],[object Object],[object Object],[object Object],[object Object]"
+  settings="[object Object]"
+/>
+`;

@@ -13,16 +13,7 @@ exports[`reports renders correctly 1`] = `
     <div
       class="calendar"
     >
-      <v-date-picker
-        attributes="[object Object]"
-        class="date-picker"
-        first-day-of-week="2"
-        is-dark=""
-        is-range=""
-        masks="[object Object]"
-        max-date="Thu Aug 19 2021 08:43:52 GMT+0200 (Central European Summer Time)"
-        select-attribute="[object Object]"
-      />
+      <calendar-stub />
     </div>
      
     <div

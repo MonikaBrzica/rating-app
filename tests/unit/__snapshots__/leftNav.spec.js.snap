@@ -12,7 +12,6 @@ exports[`leftNav renders correctly 1`] = `
    
   <li
     class="active"
-    tag="li"
   >
     <div
       class="item"
@@ -29,7 +28,6 @@ exports[`leftNav renders correctly 1`] = `
   </li>
   <li
     class="active"
-    tag="li"
   >
     <div
       class="item"

@@ -27,8 +27,9 @@ export default {
     context.commit('setRatings', data)
   },
   getCurrentSettings ({ commit }) {
+    console.log(commit)
     HTTP.get('/rating/current-settings')
-      .then(response => commit('setSettings', response.data.ratingSettings))
+      .then(response => console.log('setSettings', response.data.ratingSettings))
       .catch(function (error) {
         console.error(error)
       })

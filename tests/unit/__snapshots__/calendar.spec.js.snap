@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calendar renders correctly 1`] = `
+<v-date-picker
+  attributes="[object Object]"
+  class="date-picker"
+  first-day-of-week="2"
+  is-dark=""
+  is-range=""
+  masks="[object Object]"
+  max-date="Mon Aug 23 2021 22:04:44 GMT+0200 (Central European Summer Time)"
+  select-attribute="[object Object]"
+/>
+`;

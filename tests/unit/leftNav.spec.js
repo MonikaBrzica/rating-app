@@ -1,7 +1,6 @@
-import { mount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
 import leftNav from '../../src/components/leftNav'
 import Vuex from 'vuex'
-import { RouterLinkStub } from '@vue/test-utils'
 
 const localVue = createLocalVue()
 localVue.use(Vuex)
@@ -34,7 +33,7 @@ const state = {
   },
   settings: {},
   emoticons: [],
-  emotionsArr: ['very_happy.svg', 'happy.svg', 'meh.svg', 'sad.svg', 'very_sad.svg'],
+  emotionsArr: ['very_happy.svg', 'happy.svg', 'meh.svg', 'sad.svg', 'very_sad.svg']
 }
 const getters = {
   getNav (state) {
@@ -80,14 +79,13 @@ describe('leftNav', () => {
     localVue,
     stubs: {
       RouterLink: RouterLinkStub
-  },
+    }
   })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-  // it('displays settings modal when clicked', async () => {
-  //   const button = wrapper.find('.last')
-  //   await button.trigger('click')
-  //   expect(wrapper.vm.showModal).toBe(true)
-  // })
+  it('changes show modal on function call', () => {
+    wrapper.vm.itemClicked()
+    expect(wrapper.vm.showModal).toBe(true)
+  })
 })
