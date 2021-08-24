@@ -220,12 +220,14 @@ export default {
 }
 @media only screen and (max-width: 768px) {
   .today{
+    margin-left: 30px;
+    margin-right: 30px;
     .main-today {
       margin-top: 60px;
       width: 100%;
       order: 3;
       .header-container{
-        padding: 20.5rem 0 1rem 2rem;
+        padding: 20.5rem 0 0 0;
         max-width: unset;
         width: 100%;
         .header{
@@ -242,13 +244,18 @@ export default {
         top: 50px;
       }
       .main-container{
+        padding: 0;
         flex-direction: column;
         align-items: center;
         .line-chart-container{
           width: 90%;
         }
         .pie-chart-container {
-          width: 60%;
+          width: 90%;
+        }
+        .table-container {
+          width: 90%;
+          margin-bottom: 20px;
         }
       }
     }
@@ -256,9 +263,24 @@ export default {
 }
 @media only screen and (max-width: 425px) {
   .today{
+    margin-left: 20px;
+    margin-right: 20px;
     .main-today {
+      .main-container {
+        padding: 0;
+        .line-chart-container{
+          width: 100%;
+        }
+        .pie-chart-container {
+          width: 100%;
+        }
+        .table-container {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
       .header-container {
-        padding: 10rem 0 5rem 2rem;
+        padding: 10rem 0 0 0;
       }
       img {
         height: 20%;
