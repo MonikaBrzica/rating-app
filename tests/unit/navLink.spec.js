@@ -1,6 +1,5 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
 import navLink from '../../src/components/navLink'
-import { RouterLinkStub } from '@vue/test-utils'
 import Vuex from 'vuex'
 
 const localVue = createLocalVue()
@@ -30,5 +29,9 @@ describe('navLink', () => {
   })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
+  })
+  it('renders correctly', () => { 
+    wrapper.vm.itemClicked(3)
+    expect(wrapper.emitted().show).toBeTruthy()
   })
 })

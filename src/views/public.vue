@@ -10,11 +10,6 @@ export default {
   components: {
     Rating
   },
-  data () {
-    return {
-
-    }
-  },
   computed: {
     settings () {
       return this.$store.getters.getSettings

@@ -5,7 +5,7 @@ exports[`InputComponent renders correctly 1`] = `
   class="input-container"
 >
   <fieldset
-    class="invalidFieldset"
+    class=""
   >
     <legend>
       Thank you message
@@ -17,7 +17,7 @@ exports[`InputComponent renders correctly 1`] = `
   </fieldset>
    
   <p
-    class="invalidText"
+    class=""
   >
     
   </p>

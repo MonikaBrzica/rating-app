@@ -10,9 +10,9 @@ export default {
       .then(() => localStorage.removeItem('token'))
       .then(() => commit('logoutUser'))
   },
-  setRatings (context, data) {
+  setRatings ({ commit }, data) {
     if (!data.ratings) {
-      context.commit('clearRatings')
+      commit('clearRatings')
     }
     // parsing date from backend. Turning it to local time and reseting minutes and seconds
     // this is done because of formating line chart data.
@@ -27,7 +27,7 @@ export default {
       // making ISO string to feed into line chart.
       elem.date = elem.date.toISOString()
     })
-    context.commit('setRatings', data.ratings)
+    commit('setRatings', data.ratings)
   },
   getCurrentSettings ({ commit }) {
     HTTP.get('/rating/current-settings')
@@ -57,7 +57,8 @@ export default {
     }).then(response => {
       // if everything is alright storing user in vuex store.
       commit('storeUser', { role: response.data.role.toLowerCase(), user: data })
-    })
+    }).catch(() => router.push('/'))
+      .then(() => localStorage.removeItem('token'))
   },
   getReports ({ dispatch }, data) {
     let start = new Date(data.dateFirst)
@@ -80,7 +81,7 @@ export default {
         }
       })
   },
-  checkToken ({ dispatch, state }) {
+  checkToken ({ dispatch }) {
     const token = localStorage.getItem('token')
     axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
       headers: {
