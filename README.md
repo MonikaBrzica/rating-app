@@ -12,7 +12,7 @@ Note: when instaling on linux you have to have both docker and docker-compose
 
 ### Get started
 
-First clone project!
+Clone the project first!
 
 When you clone the project and have docker up and running, you need to navigate in your terminal (for Linux) or Git Bash (for Win) to the project folder that you cloned. Next step is to execute the following command that will run our bash script:
 
