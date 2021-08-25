@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pieChart renders correctly 1`] = `
+<div
+  class="pie-chart"
+  id="chart"
+>
+  <div
+    class="title-container"
+  >
+    <p
+      class="title"
+    >
+      Ratings
+    </p>
+     
+    <img
+      alt="..."
+      src="../assets/images/dots-vertical.png"
+    />
+  </div>
+   
+  <apexchart-stub
+    height="380"
+    options="[object Object]"
+    series=""
+    type="pie"
+    width="90%"
+  />
+</div>
+`;

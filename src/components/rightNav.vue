@@ -1,11 +1,11 @@
 <template>
   <div class="right-nav-container">
-    <div class="dropbtn">
-      <img src="../assets/profile.png"
+    <div class="drop">
+      <img :src= this.$store.state.user.imgSrc
            alt="Profile">
       <div class="dropdown-content">
-        <a>Pero Peric</a>
-        <a href="#">Logout</a>
+        <p>{{this.$store.state.user.fullname}}</p>
+        <button class="btn" @click="logOut()">Logout</button>
       </div>
     </div>
     <hr>
@@ -13,26 +13,35 @@
 </template>
 <script>
 export default {
-  name: 'RightNav'
+  name: 'RightNav',
+  methods: {
+    logOut () {
+      this.$store.dispatch('logoutUser')
+    }
+  }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .right-nav-container {
-  background-color:#2C3039;
+  z-index: 4;
+  background-color: $bg;
   width: 64px;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  display: inline-block;
   text-align: center;
-  .dropbtn {
-    font-size: 16px;
-    border: none;
+  order: 3;
+  position: fixed;
+  right: 0;
+  height: 100%;
+  .drop {
+    font-size: 1rem;
     cursor: pointer;
     width: 64px;
     height: 64px;
+    &:hover {
+      .dropdown-content {
+        display: block;
+      }
+    }
     img {
-      background-size: 100%;
       border-radius: 100%;
       width: 40px;
       height: 40px;
@@ -40,35 +49,66 @@ export default {
     }
     .dropdown-content {
       position: absolute;
-      right: 0;
+      right: 64px;
       min-width: 160px;
-      background-color: #2C3039;
+      background-color: $bg;
+      box-shadow: 0px 0px 4px 1px #1B1E24;
       z-index: 1;
       display: none;
-    }
-    a {
-      font-family: Roboto-Medium;
-      text-align: left;
-      font-size: 15px;
-      color: #FFF;
-    }
-    .dropdown-content a {
-      text-decoration: none;
-      padding: 12px 16px;
-      display: block;
+      text-align: center;
+      border-radius: 5px;
+      border-top-right-radius: 0;
+      p {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 1rem 0rem 0.5rem 0rem;
+      }
+      button {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 0.5rem 0rem 1rem 0rem;
+      }
+      p, button {
+        font-family: 'Roboto-Medium', sans-serif;
+        font-size: 1rem;
+        color: $white-850;
+        opacity: 0.5;
+        &:hover {
+          background-color: $bg-light;
+          color: $white-850;
+          opacity: 1;
+        }
+      }
+      button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        width: 100%;
+      }
     }
   }
   hr {
-    background-color: #FFFFFF;
-    opacity: 0.5;
+    background-color: $white-500;
     height: 1px;
-    border: 0;
+    border: none;
   }
 }
-.right-nav-container:hover .dropdown-content {
-  display: block;
-}
-.dropdown-content a:hover {
-  opacity: 0.5;
+/* Media query */
+@media only screen and (max-width: 768px) {
+  .right-nav-container {
+    width: 64px;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    order:2;
+    .drop {
+      img {
+        margin-top: 10px;
+      }
+    }
+    hr {
+      visibility: hidden;
+    }
+  }
 }
 </style>

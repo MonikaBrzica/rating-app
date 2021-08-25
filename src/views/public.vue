@@ -10,20 +10,13 @@ export default {
   components: {
     Rating
   },
-  data () {
-    return {
-
-    }
-  },
   computed: {
     settings () {
-      return this.$store.state.settings
+      return this.$store.getters.getSettings
     },
     emoticons () {
-      return this.$store.state.emoticons
+      return this.$store.getters.getEmoticons
     }
-  },
-  created () {
   }
 }
 </script>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="999px" height="540px" viewBox="0 0 999 540" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>31EE6724-A187-4E1F-A414-3199B3FF723A</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="103.258995%" y1="48.5516065%" x2="12.9138511%" y2="62.7078139%" id="linearGradient-1">
+            <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.0369233631">
+        <g id="rating-app-today" transform="translate(-781.000000, 0.000000)" fill="url(#linearGradient-1)">
+            <path d="M1306.85414,539.822162 C1556.76299,539.822162 1778.38266,377.620242 1778.38266,196.746987 C1778.38266,115.38798 1790.69124,-5.35094514 1714.15255,-57.1524287 C1620.53427,-120.513401 1424.35093,-106.177838 1286.85414,-106.177838 C1157.94923,-106.177838 868.771705,-168.777703 786.354144,-106.177838 C708.988203,-47.4149076 888.547261,158.740654 888.547261,246.318091 C888.547261,427.191346 1056.94529,539.822162 1306.85414,539.822162 Z" id="Oval-Copy"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`leftNav renders correctly 1`] = `
+<div
+  class="nav-container"
+>
+  <img
+    alt="logo"
+    class="logo"
+    src="../assets/images/logo.png"
+  />
+   
+  <li
+    class="active"
+  >
+    <div
+      class="item"
+    >
+      <img
+        alt="Emoticon"
+        src=""
+      />
+       
+      <p>
+        Today
+      </p>
+    </div>
+  </li>
+  <li
+    class="active"
+  >
+    <div
+      class="item"
+    >
+      <img
+        alt="Emoticon"
+        src=""
+      />
+       
+      <p>
+        Reports
+      </p>
+    </div>
+  </li>
+   
+  <li
+    class="last"
+  >
+    <div
+      class="item"
+    >
+      <img
+        alt="Emoticon"
+        src=""
+      />
+       
+      <p>
+        Settings
+      </p>
+    </div>
+  </li>
+   
+  <div
+    class="set-container"
+    style="display: none;"
+  >
+    <div
+      class="settings-container"
+    >
+      <div
+        class="title-container"
+      >
+        <p
+          class="title"
+        >
+          Settings
+        </p>
+         
+        <img
+          alt="X"
+          src="../assets/images/cancel.svg"
+        />
+      </div>
+       
+      <div
+        class="separator"
+      />
+       
+      <div
+        class="main-container"
+      >
+        <div
+          class="emoticons-preview-container"
+        >
+          <p>
+            Emotions preview
+          </p>
+           
+        </div>
+         
+        <div
+          class="input-container"
+        >
+          <fieldset
+            class=""
+          >
+            <legend>
+              Thank you message
+            </legend>
+             
+            <input
+              type="text"
+            />
+          </fieldset>
+           
+          <p
+            class=""
+          >
+            
+          </p>
+        </div>
+        <div
+          class="input-container"
+        >
+          <fieldset
+            class=""
+          >
+            <legend>
+              Number of emotions
+            </legend>
+             
+            <input
+              type="number"
+            />
+          </fieldset>
+           
+          <p
+            class=""
+          >
+            Enter number from 3-5
+          </p>
+        </div>
+        <div
+          class="input-container"
+        >
+          <fieldset
+            class=""
+          >
+            <legend>
+              Message timeout
+            </legend>
+             
+            <input
+              type="number"
+            />
+          </fieldset>
+           
+          <p
+            class=""
+          >
+            Can be from 0-10
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

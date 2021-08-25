@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reports renders correctly 1`] = `
+<div
+  class="reports"
+  data="[object Object]"
+>
+  <leftnav-stub />
+   
+  <div
+    class="main-reports"
+  >
+    <div
+      class="calendar"
+    >
+      <calendar-stub />
+    </div>
+     
+    <div
+      class="main-container"
+    >
+      <div
+        class="line-chart-container"
+      >
+        <linechart-stub />
+      </div>
+       
+      <div
+        class="pie-chart-container"
+      >
+        <piechart-stub />
+      </div>
+       
+      <div
+        class="table-container"
+      >
+        <table-stub />
+      </div>
+    </div>
+  </div>
+   
+  <rightnav-stub />
+</div>
+`;

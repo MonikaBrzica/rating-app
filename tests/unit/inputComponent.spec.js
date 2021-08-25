@@ -56,34 +56,43 @@ describe('InputComponent', () => {
   wrapper.setData({
     dataValidated: true
   })
-
-  it('is vue instance', () => {
-    expect(wrapper.isVueInstance()).toBe(true)
+  
+  it('renders correctly', () => {
+    expect(wrapper.element).toMatchSnapshot()
   })
   it('should have updateData method', function () {
     expect(typeof wrapper.vm.updateData).toBe('function')
   })
-  wrapper.vm.updateData('msg', 'HelloWorld')
   it('should emit updateSettings event', function () {
+    wrapper.vm.updateData('msg', 'HelloWorld')
     expect(wrapper.emitted().updateSettings).toBeTruthy()
   })
-  wrapper.vm.updateData('numOfEmoticons', 5)
-  it('should emit two events updateEmotions and updateSettings', function () {
-    expect(wrapper.emittedByOrder().map(e => e.name)).toEqual(['updateSettings', 'updateEmotions', 'updateSettings'])
-  })
   it('should have updateEmotionsPreview method', function () {
+    wrapper.vm.updateData('numOfEmoticons', 5)
     expect(typeof wrapper.vm.updateEmotionsPreview).toBe('function')
   })
-  wrapper.vm.validateData('numOfEmoticons', 8)
   it('should set dataValidated to false (numOfEmoticons, 8)', function () {
+    wrapper.vm.validateData('numOfEmoticons', 8)
     expect(wrapper.vm.dataValidated).toBe(false)
   })
-  wrapper.vm.validateData('msg', 'Th')
+  it('should set dataValidated to true (numOfEmoticons, 5)', function () {
+    wrapper.vm.validateData('numOfEmoticons', 5)
+    expect(wrapper.vm.dataValidated).toBe(true)
+  })
   it('should set dataValidated to false (msg, Th)', function () {
+    wrapper.vm.validateData('msg', 'Th')
     expect(wrapper.vm.dataValidated).toBe(false)
   })
-  wrapper.vm.validateData('timeout', 11)
+  it('should set dataValidated to true (msg, Thanks)', function () {
+    wrapper.vm.validateData('msg', 'Thanks')
+    expect(wrapper.vm.dataValidated).toBe(true)
+  })
   it('should set dataValidated to false (timeout, 11)', function () {
+    wrapper.vm.validateData('timeout', 11)
     expect(wrapper.vm.dataValidated).toBe(false)
+  })
+  it('should set dataValidated to true (timeout, 5)', function () {
+    wrapper.vm.validateData('timeout', 5)
+    expect(wrapper.vm.dataValidated).toBe(true)
   })
 })
