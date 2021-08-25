@@ -10,32 +10,42 @@ In order to run the application you need to have Docker and docker-compose insta
 
 Note: when instaling on linux you have to have both docker and docker-compose
 
-When you have docker up and running you need to navigate to the project folder that you cloned. Next step is to execute the following command that will run our bash script:
+### Get started
 
-* `bash rating-app-backend.sh`
+First clone project!
 
-It will clone two other projects (backend and public), as well as this one, and store it in /rating-application folder. To conclude, it will also run `docker-compose up -d` command. 
+When you clone the project and have docker up and running, you need to navigate in your terminal (for Linux) or Git Bash (for Win) to the project folder that you cloned. Next step is to execute the following command that will run our bash script:
 
-After everything has started you have your application running on http://localhost:8080/, backend on http://localhost:8081/ and phpMyAdmin on http://localhost:8000/. You can access the database 
-"rating_app" with the following credentials:
-* username: root
-* password: password123
+- ```bash rating-app.sh```
+
+It will clone two other projects (backend and public), as well as this one, and store it in /rating-application folder. 
+
+<b>If everything is done, that's it! :D</b>
+
+Now, after everything has started;
+- you have your application running on: http://localhost:8080/
+- backend on: http://localhost:8081/
+- phpMyAdmin on: http://localhost:8000/
+
+ You can access the database "rating_app" with the following credentials: <b> username:</b> root <b> password:</b> password123
 
 ## If you want to install only our rating-app run these command in order:
-* git clone https://github.com/MonikaBrzica/rating-app.git
-* cd rating-app
-* npm i
-* npm run serve
 
-App should be running on localhost:8080
-Note: App depends on rating-app-public and rating-app-backend
-### Project plan
+1. ```git clone https://github.com/MonikaBrzica/rating-app.git```
+2. ```cd rating-app```
+3. ```npm i```
+4. ```npm run serve```
+
+App should be running on http://localhost:8080
+Note: App depends on rating-app-public and rating-app-backend!
+
+## Project plan
 
 - [plan]
 
 [plan]: https://docs.google.com/document/d/1O-3YSnG2QlStAvaewg9r7RYsU_tpwuup2dgsG0-afds/edit?usp=sharing
 
-### Project documentation
+## Project documentation
 
 - [documentation]
 
