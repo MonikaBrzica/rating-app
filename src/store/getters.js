@@ -88,7 +88,7 @@ export default {
       lineChart[5].sort(function (a, b) {
         return (a < b) ? -1 : ((a > b) ? 1 : 0)
       })
-      
+
       // filling linechart with zeroes so we can increment them later.
       for (let i = 0; i < lineChart.length - 1; i++) {
         for (let j = 0; j < lineChart[5].length; j++) {
