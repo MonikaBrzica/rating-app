@@ -48,6 +48,7 @@ export default {
       margin-top: 12px;
     }
     .dropdown-content {
+      top: 32px;
       position: absolute;
       right: 64px;
       min-width: 160px;

@@ -8,13 +8,19 @@ In order to run the application you need to have Docker and docker-compose insta
 - Install docker for [Linux-docker](https://docs.docker.com/engine/install/)
 - Install docker-compose for [Linux-docker-compose](https://docs.docker.com/compose/install/)
 
-Note: for Windows and Mac you must have only docker installing, but when installing on linux you have to have both docker and docker-compose
+Note: for Windows and Mac you need to have only docker-desktop installed, but  on linux you need to have both docker and docker-compose.
 
 ### Get started
 
-Clone the project first!
+Clone the project first:
 
-When you clone the project and have docker up and running, you need to navigate in your terminal (for Linux) or Git Bash (for Win) to the project folder that you cloned. Next step is to execute the following command that will run our bash script:
+- ```git clone https://github.com/MonikaBrzica/rating-app.git```
+
+When you clone the project and have docker up and running, you need to navigate in your terminal (for Linux) or Git Bash (for Win) to the project folder that you cloned:
+
+- ```cd rating-app```
+
+Next step is to execute the following command that will run our bash script:
 
 - ```bash rating-app.sh```
 
@@ -23,7 +29,7 @@ It will clone two other projects (backend and public), as well as this one, and 
 <b>If everything is done, that's it! :D</b>
 
 Now, after everything has started;
-- you have your application running on: http://localhost:8080/
+- you have your application running on: http://localhost/
 - backend on: http://localhost:8081/
 - phpMyAdmin on: http://localhost:8000/
 
