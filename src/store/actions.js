@@ -39,26 +39,17 @@ export default {
     // on app load getting settings from server
     HTTP.get('/rating/current-settings')
       .then(response => commit('setSettings', response.data.ratingSettings))
-      .catch(function (error) {
-        console.error(error)
-      })
   },
   getEmojiArray ({ commit }) {
     // on app load getting emoji list from server
     HTTP.get('/emoji')
       .then(response => commit('setEmoticons', response.data.emojiList))
-      .catch(function (error) {
-        console.error(error)
-      })
   },
   postRating ({ commit }, id) {
     // sending Post request to server with id of the emoticon user selected as payload.
     HTTP.post('/rating', {
       emojiId: id
     })
-      .catch(function (error) {
-        console.error(error)
-      })
   },
   storeUser ({ commit }, data) {
     // checking with server if the token is valid and what role does the user have.
@@ -92,11 +83,6 @@ export default {
         headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
       })
       .then(response => dispatch('setRatings', { ratings: response.data.ratings, difference: dayDiff }))
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
-      })
   },
   checkToken ({ dispatch }) {
     // checking token with google oauth server, retreiveing user info and storing it store
@@ -119,10 +105,5 @@ export default {
     HTTP.put('rating/settings', updatedSettings, {
       headers: { Authorization: 'Bearer ' + state.user.token }
     })
-      .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data)
-        }
-      })
   }
 }
